@@ -27,7 +27,6 @@ $user    = 'root';
 $pass    = '';
 $db      = 'codework';
 
-$lang    = "en-us";
 $site    = "CodeWork";
 
 $logo    = "asset/logo.png";

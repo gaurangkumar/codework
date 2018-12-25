@@ -34,17 +34,8 @@ require("include/db.php");
 
     <title>Home</title>
 
-    <meta http-equiv="Content-Language" content="en">
-    <meta name="description" content="">
-    <meta name="author" content="<?=$web_name?>">
-	<meta name="robots" content="index, follow">
-
 	<link href="<?=$favicon?>" rel="shortcut icon">
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
-	<link href="<?=SR?>" rel="alternate" hreflang="x-default">
-	<link href="<?=SR?>" rel="alternate" hreflang="en">
-	<link href="https://www.codework.in/" rel="canonical">
-	<link href="https://m.codework.com" rel="alternate" media="only screen and (max-width:640px)">
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -78,7 +69,7 @@ require("include/db.php");
     <nav id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#page-top"><?=$site_name?></a>
+          <a class="js-scroll-trigger" href="#page-top"><?=$site?></a>
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="#page-top">Home</a>
@@ -100,7 +91,7 @@ require("include/db.php");
 
     <nav class="col-2 navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><?=$site_name?></a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top"><?=$site?></a>
       </div>
     </nav>
 
@@ -108,8 +99,8 @@ require("include/db.php");
     <header class="masthead d-flex">
       <div class="container text-center my-auto">
         <h1 class="mb-1">
-            <img src="<?=$brand_image;?>" alt="logo" width="65" style="margin-top:-10px">
-            <?=$site_name?>
+            <img src="<?=$logo;?>" alt="logo" width="65" style="margin-top:-10px">
+            <?=$site?>
         </h1>
         <h3 class="mb-5">
           <em>Get Hire, Get Paid</em>
@@ -218,7 +209,7 @@ require("include/db.php");
                   <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
                 </span>
               </span>
-              <img class="img-fluid" src="<?=SR?>asset/img/portfolio-1.jpg" alt="">
+              <img class="img-fluid" src="asset/img/portfolio-1.jpg" alt="">
             </a>
           </div>
           <div class="col-lg-6">
@@ -229,7 +220,7 @@ require("include/db.php");
                   <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
                 </span>
               </span>
-              <img class="img-fluid" src="<?=SR?>asset/img/portfolio-2.jpg" alt="">
+              <img class="img-fluid" src="asset/img/portfolio-2.jpg" alt="">
             </a>
           </div>
           <div class="col-lg-6">
@@ -240,7 +231,7 @@ require("include/db.php");
                   <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
                 </span>
               </span>
-              <img class="img-fluid" src="<?=SR?>asset/img/portfolio-3.jpg" alt="">
+              <img class="img-fluid" src="asset/img/portfolio-3.jpg" alt="">
             </a>
           </div>
           <div class="col-lg-6">
@@ -251,7 +242,7 @@ require("include/db.php");
                   <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
                 </span>
               </span>
-              <img class="img-fluid" src="<?=SR?>asset/img/portfolio-4.jpg" alt="">
+              <img class="img-fluid" src="asset/img/portfolio-4.jpg" alt="">
             </a>
           </div>
         </div>
@@ -323,176 +314,6 @@ require("include/db.php");
       </div>
     </footer>
 
-    <div class="portfolio-modal modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top:1%;position:absolute;">
-	    <div class="modal-content">
-  	<a class="btn btn-dark btn-lg toggle pull-right" id="login_close">
-  		<i class="fa fa-times"></i>
-    </a>
-    <div class="row">
-    	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
-				<div class="col-lg-6 col-md-6">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Log In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" action="prc/check" method="post">
-                            <input type="hidden" name="return_url" value="<?php echo $rtn_uri; ?>" />
-														<fieldset>
-						        					<div class="form-group">
-                                	<input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                              </div>
-                              <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                              </div>
-                              <div class="checkbox">
-                                <label>
-                                	<input name="remember" type="checkbox" value="Remember Me">Remember Me
-                              	</label>
-                              </div>
-                              <!-- Change this to a button or input when using this as a form -->
-															<input type="submit" value="Login" class="btn btn-success btn-lg btn-block">
-								            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-			</div>
-				<div class="col-lg-6 col-md-6">
-        	<div class="col-md-12 col-md-offset-0">
-          	<div class="login-panel panel panel-default">
-            	<div class="panel-heading">
-                <h3 class="panel-title">Sign Up</h3>
-              </div>
-              <div class="panel-body">
-                <form role="form" action="<?php echo SR; ?>prc/add-user" method="post">
-                  <input type="hidden" name="return_url" value="<?php echo $rtn_uri; ?>" />
-                	<fieldset>
-                    <div class="col-lg-6">
-											<div class="form-group input-group">
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input class="form-control" placeholder="First Name" required="" value="" name="fname" type="text">
-                      </div>
-										</div>
-                    <div class="col-lg-6">
-											<div class="form-group input-group">
-                    		<span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    		<input class="form-control" placeholder="Last Name" required="" value="" name="lname" type="text">
-                    	</div>
-										</div>
-                    <div class="col-lg-12">
-											<div class="form-group input-group">
-                    		<span class="input-group-addon"><i class="fa fa-at"></i></span>
-                    		<input class="form-control" placeholder="E-mail" required="" value="" name="email" type="email">
-                    	</div>
-										</div>
-                    <div class="col-lg-12">
-											<div class="form-group input-group">
-                    		<span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    		<input class="form-control" placeholder="User Name" required="" value="" name="username">
-                    	</div>
-										</div>
-                    <div class="col-lg-6">
-											<div class="form-group input-group">
-                    		<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    		<input class="form-control" placeholder="Password" required="" name="password" type="password" value="">
-                    	</div>
-										</div>
-                    <div class="col-lg-6">
-											<div class="form-group input-group">
-                    		<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    		<input class="form-control" placeholder="Re-Password" required="" name="repassword" type="password" value="">
-                    	</div>
-										</div>
-                    <div class="col-lg-6">
-											<div class="form-group input-group">
-                    	<?php
-												$_SESSION = array();
-												include(RT.'simple-php-captcha.php');
-												$_SESSION['captcha'] = simple_php_captcha();
-												echo '<img class="no_border_img" width=132 src='.$_SESSION['captcha']['image_src'].' title="CAPTCHA" alt="CAPTCHA code"/>';
-											?>
-											</div>
-										</div>
-        						<div class="col-lg-6">
-											<div class="form-group input-group">
-                        <span class="input-group-addon"><i class="fa fa-check"></i></span>
-                        <input class="form-control" placeholder="Captcha" required="" name="captcha" type="text" value=""/>
-        							</div>
-										</div>
-        						<div class="col-lg-12">
-                      <div class="checkbox">
-                        <label>
-                          <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                        </label>
-                      </div>
-                    </div>
-										<div class="col-lg-12">
-                    	<input type="submit" value="Accept Terms &amp; Signup" class="btn btn-lg btn-info btn-block">
-                    </div>
-									</fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-				</div>
-    	</div>
-    </div>
-	</div>
-    </div>
-    <div class="portfolio-modal modal" id="post1" tabindex="-1" role="dialog" aria-hidden="true" style="margin-top:1%;position:absolute;">
-	    <div class="modal-content">
-  	<a class="btn btn-dark btn-lg toggle pull-right" id="post_close">
-  		<i class="fa fa-times"></i>
-    </a>
-    <div class="row">
-    	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top:10px;">
-				<?php if($auth!=true){?>
-      	<div class="col-lg-6 col-md-6">
-            <div class="col-md-12 col-md-offset-0">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Log In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" action="prc/check" method="post">
-                            <input type="hidden" name="return_url" value="<?php echo $rtn_uri; ?>" />
-														<fieldset>
-						        					<div class="form-group">
-                              	<input class="form-control" placeholder="E-mail" name="post_email" type="email" autofocus >
-                              </div>
-                              <div class="form-group">
-                                <input class="form-control" placeholder="Password" name="post_password" type="password" value="" >
-                              </div>
-                              <div class="checkbox">
-                                <label>
-                                	<input name="post_remember" type="checkbox" value="Remember Me">Remember Me
-                              	</label>
-                              </div>
-                              <input type="submit" value="Login" class="btn btn-success btn-lg btn-block">
-								            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-        	<div class="col-md-12 col-md-offset-0">
-          	<div class="login-panel panel panel-default">
-            	<div class="panel-body">
-                <div class="col-lg-6">
-									<p>Please Login, To Post Your Project</p>
-								</div>
-              </div>
-            </div>
-          </div>
-				</div>
-        <?php }?>
-    	</div>
-    </div>
-	</div>
-    </div>
     <div class="portfolio-modal modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -532,17 +353,17 @@ require("include/db.php");
     </a>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="<?=SR?>vendor/jquery/jquery.min.js"></script>
-    <script src="<?=SR?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="<?=SR?>vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="<?=SR?>asset/js/stylish-portfolio.min.js"></script>
+    <script src="asset/js/stylish-portfolio.min.js"></script>
 
-    <script src="<?=CDN?>age/js/jqBootstrapValidation.js"></script>
-    <script src="<?=CDN?>age/js/contact_me.js"></script>
+    <script src="asset/js/jqBootstrapValidation.js"></script>
+    <script src="asset/js/contact_me.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>
