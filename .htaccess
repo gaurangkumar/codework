@@ -1,0 +1,37 @@
+# BEGIN gkwebtec
+	
+	<IfModule mod_rewrite.c>
+		RewriteEngine On
+		RewriteBase /
+		RewriteRule ^index\.php$ - [L]
+		RewriteCond %{REQUEST_FILENAME} !-f
+		RewriteCond %{REQUEST_FILENAME} !-d
+		RewriteRule . /index.php [L]
+	</IfModule>
+	
+	<IfModule mod_expires.c>
+	    ExpiresActive on
+	    ExpiresByType image/jpg "access plus 1 month"
+	    ExpiresByType image/jpeg "access plus 1 month"
+	    ExpiresByType image/gif "access plus 1 month"
+	    ExpiresByType image/png "access plus 1 month"
+	</IfModule>
+
+	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^www\.gkwebtec\.com$
+	RewriteRule ^/?$ "http\:\/\/gkwebtec\.com\/" [R=301,L]
+
+	RewriteEngine On
+	RewriteCond %{HTTP_HOST} ^166\.62\.10\.186
+	RewriteRule (.*) http://www.gkwebtec.com/$1 [R=301,L]
+
+	RewriteCond %{HTTP_USER_AGENT} libwww-perl.* 
+	RewriteRule .* ? [F,L]
+
+	Options +MultiViews
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+# END gkwebtec
