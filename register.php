@@ -121,65 +121,59 @@ require("include/db.php");
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="include/login-process.php" method="post">
-                        <h3 class="text-center m-b-20">Login</h3>
+                    <form class="form-horizontal form-material" id="signupform" action="include/signup-process.php" method="post">
+                        <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
                             <label class="col-form-label"><?=@$_GET['msg']?></label>
                         </div>
                         <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
-                                        <span class="help-block text-muted">
-                                            <small></small>
-                                        </span>
-                                    </div>
-                                </div>
+                            <div class="col-xs-12">
+                                <input type="text" id="name" name="name" class="form-control form-control-line" placeholder="Name" required="" value="">
+                                <span class="help-block text-muted">
+                                    <small></small>
+                                </span>
+                            </div>
+                        </div>
                         <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
-                                        <span class="help-block text-muted">
-                                            <small></small>
-                                        </span>
-                                    </div>
-                                </div>
+                            <div class="col-xs-12">
+                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
+                                <span class="help-block text-muted">
+                                    <small></small>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
+                                <span class="help-block text-muted">
+                                    <small></small>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
+                                <span class="help-block text-muted">
+                                    <small></small>
+                                </span>
+                            </div>
+                        </div>
                         <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <div class="d-flex no-block align-items-center">
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                            </div>
-                                            <div class="ml-auto">
-                                                <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        <div class="form-group text-center">
-                            <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info btn-rounded">Login</button>
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label> 
+                                </div> 
+                            </div>
+                        </div>
+                        <div class="form-group text-center p-b-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
-                                Don't have an account? <a href="register.php" class="text-info m-l-5"><b>Sign Up</b></a>
-                            </div>
-                        </div>
-                    </form>
-                    <form class="form-horizontal form-material m-t-40" id="recoverform" action="include/forget-password.php" method="post">
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <h3>Recover Password</h3>
-                                <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Email"> </div>
-                        </div>
-                        <div class="form-group text-center m-t-20">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block btn-rounded waves-effect waves-light" type="submit">Reset</button>
+                                Already have an account? <a href="login.php" class="text-info m-l-5"><b>Login</b></a>
                             </div>
                         </div>
                     </form>
