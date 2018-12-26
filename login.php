@@ -54,14 +54,28 @@ require("include/db.php");
     <!-- Custom CSS -->
     <link href="asset/css/stylish-portfolio.min.css" rel="stylesheet">
     <style>
-        .navbar-brand {
-            font-size: 24px;
-            text-shadow: 1px 1px 2px #FFFFFF, 0 0 1em #005500, 0 0 0.2em blue;
-        }
-        .nav-link {
-            font-size: 20px;
-            text-shadow: 1px 1px 2px #FFFFFF, 0 0 1em #005500, 0 0 0.2em blue;
-        }
+    .navbar-brand {
+        font-size: 24px;
+        text-shadow: 1px 1px 2px #FFFFFF, 0 0 1em #005500, 0 0 0.2em blue;
+    }
+    .nav-link {
+        font-size: 20px;
+        text-shadow: 1px 1px 2px #FFFFFF, 0 0 1em #005500, 0 0 0.2em blue;
+    }
+    .btn-rounded{border-radius:60px;padding:7px 18px}.btn-group-lg>.btn-rounded.btn,.btn-rounded.btn-lg{padding:.75rem 1.5rem}.btn-group-sm>.btn-rounded.btn,.btn-rounded.btn-sm{padding:.25rem .5rem;font-size:12px}.btn-rounded.btn-xs{padding:.25rem .5rem;font-size:10px}.btn-rounded.btn-md{padding:12px 35px;font-size:16px}
+    .form-material .form-group{overflow:hidden}.form-material .form-control{background-color:rgba(0, 0, 0, 0);background-position:center bottom, center calc(100% - 1px);background-repeat:no-repeat;background-size:0 2px, 100% 1px;padding:0;-webkit-transition:background 0s ease-out 0s;-o-transition:background 0s ease-out 0s;transition:background 0s ease-out 0s}.form-material .form-control,.form-material .form-control.focus,.form-material .form-control:focus{background-image:-webkit-gradient(linear, left top, left bottom, from(#fb9678), to(#fb9678)), -webkit-gradient(linear, left top, left bottom, from(#e9ecef), to(#e9ecef));background-image:-webkit-linear-gradient(#fb9678, #fb9678), -webkit-linear-gradient(#e9ecef, #e9ecef);background-image:-o-linear-gradient(#fb9678, #fb9678), -o-linear-gradient(#e9ecef, #e9ecef);background-image:linear-gradient(#fb9678, #fb9678), linear-gradient(#e9ecef, #e9ecef);border:0 none;border-radius:0;-webkit-box-shadow:none;box-shadow:none;float:none}.form-material .form-control.focus,.form-material .form-control:focus{background-size:100% 2px, 100% 1px;outline:0 none;-webkit-transition-duration:0.3s;-o-transition-duration:0.3s;transition-duration:0.3s}
+    .form-control-line .form-group {
+        overflow:hidden
+    }
+    .form-control-line .form-control {
+        border:0px;
+        border-radius:0px;
+        padding-left:0px;
+        border-bottom:1px solid #e9ecef
+    }
+    .form-control-line .form-control:focus {
+        border-bottom:1px solid #fb9678
+    }
     </style>
 
 
@@ -105,80 +119,54 @@ require("include/db.php");
     <section class="callout">
         <div class="container text-center">
             <!--<h2 class="mx-auto mb-5"></h2>-->
-            <div class="row">
-                    <div class="col-6 offset-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Login</h4>
-                                    <form class="form-material m-t-40">
-                                    <div class="form-group">
-                                        <input type="email" id="example-email2" name="example-email" class="form-control form-control-line" placeholder="Email">
-                                        <span class="help-block text-muted">
-                                            <small></small>
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Email">
-                                        <span class="help-block text-muted">
-                                            <small></small>
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-block btn-info">Login</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="login-register">
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="http://eliteadmin.themedesigner.in/demos/bt4/music/index.html">
-                        <h3 class="text-center m-b-20">Sign In</h3>
-                        <div class="form-group ">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="text" required="" placeholder="Username" autocomplete="off">
-                            </div>
+                    <form class="form-horizontal form-material" id="loginform" action="include/login-process.php" method="post">
+                        <h3 class="text-center m-b-20">Login</h3>
+                        <div class="form-group">
+                            <label class="col-form-label"><?=@$_GET['msg']?></label>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
-                                <input class="form-control" type="password" required="" placeholder="Password"> </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <div class="d-flex no-block align-items-center">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember me</label>
-                                    </div> 
-                                    <div class="ml-auto">
-                                        <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fas fa-lock m-r-5"></i> Forgot pwd?</a> 
+                                    <div class="col-xs-12">
+                                        <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
+                                        <span class="help-block text-muted">
+                                            <small></small>
+                                        </span>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                        <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
+                                        <span class="help-block text-muted">
+                                            <small></small>
+                                        </span>
+                                    </div>
+                                </div>
+                        <div class="form-group row">
+                                    <div class="col-md-12">
+                                        <div class="d-flex no-block align-items-center">
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                <label class="custom-control-label" for="customCheck1">Remember me</label>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit">Log In</button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
-                                <div class="social">
-                                    <button class="btn  btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fab fa-facebook-f"></i> </button>
-                                    <button class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i aria-hidden="true" class="fab fa-google-plus-g"></i> </button>
-                                </div>
+                                <button class="btn btn-block btn-lg btn-info btn-rounded">Login</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
-                                Don't have an account? <a href="pages-register.html" class="text-info m-l-5"><b>Sign Up</b></a>
+                                Don't have an account? <a href="client-register.php" class="text-info m-l-5"><b>Sign Up</b></a>
                             </div>
                         </div>
                     </form>
-                    <form class="form-horizontal" id="recoverform" action="http://eliteadmin.themedesigner.in/demos/bt4/music/index.html">
+                    <form class="form-horizontal form-material m-t-40" id="recoverform" action="include/forget-password.php" method="post">
                         <div class="form-group ">
                             <div class="col-xs-12">
                                 <h3>Recover Password</h3>
@@ -191,26 +179,12 @@ require("include/db.php");
                         </div>
                         <div class="form-group text-center m-t-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Reset</button>
+                                <button class="btn btn-primary btn-lg btn-block btn-rounded waves-effect waves-light" type="submit">Reset</button>
                             </div>
                         </div>
                     </form>
-                    <form action="include/login_process.php" method="post">
-            <div class="col-6 form-group offset-3">
-                <label class="col-form-label"><?php echo @$_GET['msg'];?></label>   
-            </div>
-            <div class="col-6 form-group offset-3">
-                <input type="email" name="email" class="form-control">   
-            </div>
-            <div class="col-6 form-group offset-3">
-                <input type="password" name="password" class="form-control">   
-            </div>
-            <div class="col-6 form-group offset-3">
-                <button class="btn btn-success">Login</button>
-            </div>
-        </form>
                 </div>
-              </div>
+            </div>
         </div>
     </section>
 
@@ -247,6 +221,9 @@ require("include/db.php");
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="vendor/popper/popper.min.js"></script>
+
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -256,8 +233,6 @@ require("include/db.php");
     <script src="asset/js/jqBootstrapValidation.js"></script>
     <script src="asset/js/contact_me.js"></script>
 
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="vendor/popper/popper.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script>
     // Closes the sidebar menu
@@ -290,5 +265,21 @@ require("include/db.php");
     });
     </script>
 
+    <!--Custom JavaScript -->
+    <script type="text/javascript">
+        $(function() {
+            $(".preloader").fadeOut();
+        });
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+        // ============================================================== 
+        // Login and Recover Password 
+        // ============================================================== 
+        $('#to-recover').on("click", function() {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+    </script>
 </body>
 </html>
