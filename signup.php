@@ -116,7 +116,7 @@ require("include/db.php");
       </div>
     </nav>
 
-    <section class="callout">
+    <header class="masthead">
         <div class="container text-center">
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="login-box card">
@@ -180,7 +180,7 @@ require("include/db.php");
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <!-- Footer -->
     <footer class="footer text-center">
