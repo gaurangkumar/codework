@@ -106,7 +106,7 @@ require("include/db.php");
           <em>Get Hire, Get Paid</em>
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" id="about_btn">Find Out More</a>
-        <a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#login" id="login_btn">Login</a>
+        <a class="btn btn-primary btn-xl" href="login.php" id="login_btn">Login</a>
         <a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#post" id="post_btn">Post a Project</a>
       </div>
       <div class="overlay"></div>

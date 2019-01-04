@@ -23,5 +23,6 @@
 $mysqli = new mysqli($host, $user, $pass, $db);
 
 if($mysqli->connect_errno) {
-    $connect_error = 'Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
+    echo 'Connect Error (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error;
+	exit;
 }
