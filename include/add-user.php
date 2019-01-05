@@ -20,8 +20,8 @@
  * @update        2018-12-21
  */
 
-require("include/config.php");
-require("include/db.php");
+require("config.php");
+require("db.php");
 
 session_start();
 
@@ -35,14 +35,14 @@ if($_POST['email']==''    ||
    $_POST['password']=='' ||
    $_POST['repassword']=='') {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill All Info. !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill All Info !';
 	header("location: ../signup.php");
 	exit();
 }
 
 if($password != $cpassword) {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Password Are Not Same. !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Password Are Not Same !';
     header("location: ../signup.php");
     exit();
 }

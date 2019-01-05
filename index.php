@@ -62,38 +62,10 @@ require("include/db.php");
 
 <body id="page-top">
 
-    <!-- Navigation -->
-    <a class="menu-toggle rounded" href="#">
-      <i class="fa fa-bars"></i>
-    </a>
-    <nav id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#page-top"><?=$site?></a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#page-top">Home</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#services">Services</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </nav>
-
-    <nav class="col-2 navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><?=$site?></a>
-      </div>
-    </nav>
+    <!-- Header -->
+	<?php
+    require("include/header.php");
+	?>
 
     <!-- Header -->
     <header class="masthead d-flex">
@@ -106,7 +78,7 @@ require("include/db.php");
           <em>Get Hire, Get Paid</em>
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" id="about_btn">Find Out More</a>
-        <a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#login" id="login_btn">Login</a>
+        <a class="btn btn-primary btn-xl" href="login.php" id="login_btn">Login</a>
         <a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#post" id="post_btn">Post a Project</a>
       </div>
       <div class="overlay"></div>
@@ -291,28 +263,9 @@ require("include/db.php");
     </section>
 
     <!-- Footer -->
-    <footer class="footer text-center">
-      <div class="container">
-        <ul class="list-inline mb-5">
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/gaurangkumarp">
-              <i class="icon-social-facebook"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/gaurangkumarp">
-              <i class="icon-social-twitter"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="https://github.com/gaurangkumar/codework">
-              <i class="icon-social-github"></i>
-            </a>
-          </li>
-        </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Your Website 2018</p>
-      </div>
-    </footer>
+	<?php
+    require("include/footer.php");
+	?>
 
     <div class="portfolio-modal modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">

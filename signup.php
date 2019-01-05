@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2018-12-26
+ * @update        2019-01-05
  */
 
 require("include/config.php");
@@ -83,48 +83,32 @@ require("include/db.php");
 
 <body id="page-top">
 
-    <!-- Navigation -->
-    <a class="menu-toggle rounded" href="#">
-      <i class="fa fa-bars"></i>
-    </a>
-    <nav id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#page-top"><?=$site?></a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#page-top">Home</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#services">Services</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </nav>
-
-    <nav class="col-2 navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><?=$site?></a>
-      </div>
-    </nav>
+    <!-- Header -->
+	<?php
+    require("include/header.php");
+	?>
 
     <header class="masthead">
         <div class="container text-center">
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="signupform" action="include/signup-process.php" method="post">
+                    <form class="form-horizontal form-material" id="signupform" action="include/add-user.php" method="post">
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
-                            <label class="col-form-label"><?=@$_GET['msg']?></label>
+                        <?php
+                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
+						else{
+                        ?>
+				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					        <?=$_SESSION["msg"]["msg"]?>
+				        </div>
+                        <?php
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
+                        }
+                        ?>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
@@ -183,28 +167,9 @@ require("include/db.php");
     </header>
 
     <!-- Footer -->
-    <footer class="footer text-center">
-        <div class="container">
-        <ul class="list-inline mb-5">
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/gaurangkumarp">
-              <i class="icon-social-facebook"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/gaurangkumarp">
-              <i class="icon-social-twitter"></i>
-            </a>
-          </li>
-          <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="https://github.com/gaurangkumar/codework">
-              <i class="icon-social-github"></i>
-            </a>
-          </li>
-        </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Your Website 2018</p>
-      </div>
-    </footer>
+	<?php
+    require("include/footer.php");
+	?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
