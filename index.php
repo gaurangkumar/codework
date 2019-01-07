@@ -133,7 +133,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" id="about_btn">Find Out More</a>
         <a class="btn btn-primary btn-xl" href="login.php" id="login_btn">Login</a>
-        <a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#post" id="post_btn">Post a Project</a>
+        <a class="btn btn-primary btn-xl" href="signup.php" id="post_btn">Signup</a>
+        <!--a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#post" id="post_btn">Signup</a-->
       </div>
       <div class="overlay"></div>
     </header>
@@ -207,6 +208,9 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             </h4>
             <p class="text-faded mb-0">Suitable For Your Business</p>
           </div>
+        </div>
+        <div class="col-lg-10 mx-auto">
+            <a class="btn btn-dark btn-xl js-scroll-trigger" href="#portfolio">Work We Have Done</a>
         </div>
       </div>
     </section>
