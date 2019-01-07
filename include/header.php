@@ -27,6 +27,6 @@
 
     <nav class="col-2 navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top"><?=$site?></a>
+        <a class="navbar-brand js-scroll-trigger brand-name" href="#page-top"><?=$site?></a>
       </div>
     </nav>

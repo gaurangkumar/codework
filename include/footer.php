@@ -4,17 +4,17 @@
         <ul class="list-inline mb-5">
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/gaurangkumarp">
-              <i class="icon-social-facebook"></i>
+              <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/gaurangkumarp">
-              <i class="icon-social-twitter"></i>
+              <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white" href="https://github.com/gaurangkumar/codework">
-              <i class="icon-social-github"></i>
+              <i class="fa fa-github"></i>
             </a>
           </li>
         </ul>
