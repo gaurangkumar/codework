@@ -111,7 +111,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   background-color: #fed136;
 }
     </style>
-
 </head>
 
 <body id="page-top">
@@ -525,5 +524,12 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     });
     </script>
 
+<div style='text-align: right;position: fixed;z-index:9999999;bottom: 0; width: 100%;cursor: pointer;line-height: 0;display:block !important;'><a title="Hosted on free web hosting 000webhost.com. Host your own website for FREE." target="_blank" href="https://www.000webhost.com/?utm_source=000webhostapp&amp;utm_campaign=000_logo&amp;utm_medium=website&amp;utm_content=footer_img"><img src="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"  alt="www.000webhost.com"></a></div>
+
 </body>
 </html>
+    <script>
+    $(document).ready(function(){
+        $("[alt='www.000webhost.com']").css("display", "none");
+    });
+    </script>
