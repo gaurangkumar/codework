@@ -114,7 +114,19 @@ session_start();
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="" autocomplete="off" autofocus>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="freelancer" name="user-type" value="freelancer" class="custom-control-input" checked>
+                                    <label class="custom-control-label" for="freelancer">Freelancer</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input type="radio" id="client" name="user-type" value="client" class="custom-control-input">
+                                    <label class="custom-control-label" for="client">Client</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <input type="email" id="email" name="user-email" class="form-control form-control-line" placeholder="Email" required="" value="" autocomplete="off" autofocus>
                                 <span class="help-block text-muted">
                                     <small></small>
                                 </span>

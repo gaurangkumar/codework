@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/check-user.php
  * @begin         2018-12-21
- * @update        2018-12-21
+ * @update        2019-01-21
  */
 
 require("config.php");
@@ -25,10 +25,18 @@ require("db.php");
 
 session_start();
 
-$email = $_POST['email'];
-$password = md5($_POST['password']);
+//$crypt_expected = crypt('rasmuslerdorf', '$6$rounds=5000$usesomesillystringforsalt$');
+//$crypt_given = crypt('apple', '$6$rounds=5000$usesomesillystringforsalt$');
+//var_dump(hash_equals($expected, $incorrect));
+//password_hash("rasmuslerdorf", PASSWORD_ARGON2ID  , ['cost' => 12])
+//print_r($password); PASSWORD_DEFAULT PASSWORD_ARGON2I PASSWORD_ARGON2ID 
+//password_verify('rasmuslerdorf', $hash)
 
-$result = $mysqli->query("SELECT * FROM users WHERE `email` = '$email'");
+$email = $_POST['user-email'];
+$user = $_POST['user-type'];
+$password = hash('sha256', $_POST['user-password']);
+
+$result = $mysqli->query("SELECT * FROM `$user` WHERE `email` = '$email'");
 
 if($result->num_rows) {
     $row = $result->fetch_array();
@@ -57,7 +65,7 @@ if($result->num_rows) {
 else {
     //Login Unsuccessful
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Username!</strong>';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Email!</strong>';
     header("Location: ../login.php");
     exit;
 }

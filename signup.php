@@ -32,7 +32,7 @@ require("include/db.php");
 	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Login</title>
+    <title>Signup</title>
 
 	<link href="<?=$favicon?>" rel="shortcut icon">
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
@@ -91,9 +91,9 @@ require("include/db.php");
     <header class="masthead">
         <div class="container text-center">
             <!--<h2 class="mx-auto mb-5"></h2>-->
-            <div class="login-box card">
+            <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="signupform" action="include/add-user.php" method="post">
+                    <form class="form-horizontal form-material" id="signup" action="include/add-user.php" method="post">
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
                         <?php
@@ -141,6 +141,52 @@ require("include/db.php");
                                     <small></small>
                                 </span>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <select class="form-control form-control-line" id="usertype" required="">
+                                    <option value=""> -- FREELANCER / CLIENT -- </option>
+                                    <option value="freelancer">Freelancer</option>
+                                    <option value="client">Client</option>
+                                </select>
+                                <span class="help-block text-muted">
+                                    <small></small>
+                                </span>
+                            </div>
+                        </div>
+                        <div id="freelancerForm" style="display: none">
+                                    <div class="form-group">
+                                        <label>File upload</label>
+                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                            <div class="form-control" data-trigger="fileinput">
+                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                                <span class="fileinput-filename"></span>
+                                            </div>
+                                            <span class="input-group-addon btn btn-default btn-file">
+                                                <span class="fileinput-new">Select file</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="hidden">
+                                                <input type="file" name="cv"> </span>
+                                            <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists"
+                                                data-dismiss="fileinput">Remove</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>File upload</label>
+                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                            <div class="form-control" data-trigger="fileinput">
+                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                                <span class="fileinput-filename"></span>
+                                            </div>
+                                            <span class="input-group-addon btn btn-default btn-file">
+                                                <span class="fileinput-new">Select file</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="hidden">
+                                                <input type="file" name="id"> </span>
+                                            <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists"
+                                                data-dismiss="fileinput">Remove</a>
+                                        </div>
+                                    </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
@@ -192,8 +238,30 @@ require("include/db.php");
     <script src="asset/js/jqBootstrapValidation.js"></script>
     <script src="asset/js/contact_me.js"></script>
 
+    <!--Wave Effects -->
+    <script src="asset/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="asset/dist/js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="asset/dist/js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="asset/dist/js/pages/jasny-bootstrap.js"></script>
     <!-- Custom Theme JavaScript -->
     <script>
+    $('#usertype').change(function(e) {
+        if($('#usertype').val() == 'freelancer') {
+            $("#freelancerForm").show();
+        }
+        else {
+            $("#freelancerForm").hide();
+        }
+    });
+
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
