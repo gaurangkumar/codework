@@ -96,66 +96,36 @@ require("include/db.php");
                     <form class="form-horizontal form-material" id="signupForm" action="include/add-user.php" method="post">
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
-                        <?php
-                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
-						else{
-                        ?>
-				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
-					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					        <?=$_SESSION["msg"]["msg"]?>
-				        </div>
-                        <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
-                        }
-                        ?>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <input type="text" id="name" name="name" class="form-control form-control-line" placeholder="Name" required="" value="">
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <select class="form-control form-control-line" id="usertype" required="">
                                     <option value=""> -- FREELANCER / CLIENT -- </option>
                                     <option value="freelancer">Freelancer</option>
                                     <option value="client">Client</option>
                                 </select>
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
                             </div>
                         </div>
                         <div id="freelancerForm" style="display: none">
-                                    <div class="form-group">
+                            <div class="form-group">
                                         <label>File upload</label>
                                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                             <div class="form-control" data-trigger="fileinput">
@@ -166,12 +136,12 @@ require("include/db.php");
                                                 <span class="fileinput-new">Select file</span>
                                                 <span class="fileinput-exists">Change</span>
                                                 <input type="hidden">
-                                                <input type="file" name="cv"> </span>
+                                                <input type="file" name="cv" id="cv"> </span>
                                             <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists"
                                                 data-dismiss="fileinput">Remove</a>
                                         </div>
                                     </div>
-                                    <div class="form-group">
+                            <div class="form-group">
                                         <label>File upload</label>
                                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                             <div class="form-control" data-trigger="fileinput">
@@ -182,7 +152,7 @@ require("include/db.php");
                                                 <span class="fileinput-new">Select file</span>
                                                 <span class="fileinput-exists">Change</span>
                                                 <input type="hidden">
-                                                <input type="file" name="id"> </span>
+                                                <input type="file" name="id" id="id"> </span>
                                             <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists"
                                                 data-dismiss="fileinput">Remove</a>
                                         </div>
@@ -191,7 +161,7 @@ require("include/db.php");
                         <div class="form-group row">
                             <div class="col-md-12">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <input type="checkbox" class="custom-control-input" data-id="" id="customCheck1" name="agree" value="agree">
                                     <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label> 
                                 </div> 
                             </div>
@@ -227,15 +197,15 @@ require("include/db.php");
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="vendor/popper/popper.min.js"></script>
+    <script src="/vendor/popper/popper.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="asset/js/stylish-portfolio.min.js"></script>
+    <script src="/asset/js/stylish-portfolio.min.js"></script>
 
-    <script src="asset/js/jqBootstrapValidation.js"></script>
+    <script src="/asset/js/jqBootstrapValidation.js"></script>
     <!--script src="asset/js/contact_me.js"></script-->
 
     <!--Wave Effects -->
@@ -251,6 +221,90 @@ require("include/db.php");
     <!-- This page plugins -->
     <!-- ============================================================== -->
     <script src="/asset/dist/js/pages/jasny-bootstrap.js"></script>
+
+    <script src="asset/js/jquery.validate.min.js"></script>
+    <script>
+		$.validator.setDefaults( {
+			submitHandler: function () {
+				alert( "submitted!" );
+			}
+		} );
+
+		$( document ).ready( function () {
+			$( "#signupForm" ).validate( {
+				rules: {
+					name: {
+						required: true,
+						minlength: 5
+					},
+					email: {
+						required: true,
+						email: true
+					},
+					password: {
+						required: true,
+						minlength: 6
+					},
+					cpassword: {
+						required: true,
+						minlength: 6,
+						equalTo: "#password"
+					},
+					usertype: "required",
+					customCheck1: "required"
+				},
+				messages: {
+					name: {
+						required: "Please enter your full name",
+						minlength: "Your name must consist of at least 5 characters"
+					},
+					email: "Please enter a valid email",
+					password: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 6 characters long"
+					},
+					cpassword: {
+						required: "Please provide a password",
+						minlength: "Your password must be at least 6 characters long",
+						equalTo: "Please enter the same password as above"
+					},
+					lastname: "Please enter your usertype",
+					customCheck1: "Please accept our policy"
+				},
+				errorElement: "em",
+				errorPlacement: function ( error, element ) {
+					// Add the `help-block` class to the error element
+					error.addClass( "help-block" );
+
+					// Add `has-feedback` class to the parent div.form-group
+					// in order to add icons to inputs
+					element.parents( ".col-xs-12" ).addClass( "has-feedback" );
+
+					if ( element.prop( "type" ) === "checkbox" ) {
+						error.insertAfter( element.parent( "label" ) );
+					} else {
+						error.insertAfter( element );
+					}
+				},
+				success: function ( label, element ) {
+					// Add the span element, if doesn't exists, and apply the icon classes to it.
+					if ( !$( element ).next( "span" )[ 0 ] ) {
+						$( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".col-xs-12" ).addClass( "has-error" ).removeClass( "has-success" );
+					$( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".col-xs-12" ).addClass( "has-success" ).removeClass( "has-error" );
+					$( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
+				}
+			} );
+		} );
+	</script>
+    
+    <?php /*
     <!-- Custom Theme JavaScript -->
     <script>
 $(function() {
@@ -258,9 +312,11 @@ $(function() {
   $("#signupForm input,#signupForm select").jqBootstrapValidation({
     preventSubmit: true,
     submitError: function($form, event, errors) {
+      alert(0);
       // additional error messages or events
     },
     submitSuccess: function($form, event) {
+      alert(1);
       event.preventDefault(); // prevent default submit behaviour
       // get values from FORM
       var name = $("input#name").val();
@@ -324,7 +380,6 @@ $(function() {
   });
 });
 
-/*When clicking on Full hide fail/success boxes */
 $('#name').focus(function() {
   $('#success').html('');
 });
@@ -384,5 +439,6 @@ $('#name').focus(function() {
             $("#recoverform").fadeIn();
         });
     </script>
+*/ ?>
 </body>
 </html>
