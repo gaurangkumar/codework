@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 25, 2018 at 07:33 PM
+-- Generation Time: Jan 21, 2019 at 06:47 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -25,15 +25,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `contact` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `fname` varchar(30) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `email`, `password`, `fname`, `date`) VALUES
+(1, 'abc@abc.com', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 'Admin', '2019-01-21 10:38:43');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `client`
+--
+
+CREATE TABLE `client` (
+  `cid` int(11) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `fname` varchar(30) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `fbid` int(11) NOT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT '0',
   `name` varchar(120) NOT NULL,
   `email` varchar(120) NOT NULL,
-  `phone` varchar(20) DEFAULT NULL,
   `msg` varchar(500) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -41,30 +75,28 @@ CREATE TABLE `contact` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photos`
+-- Table structure for table `freelancer`
 --
 
-CREATE TABLE `photos` (
-  `id` int(11) NOT NULL,
-  `cid` int(11) NOT NULL,
-  `type` varchar(5) NOT NULL,
-  `original` varchar(200) NOT NULL,
-  `thumb` varchar(200) NOT NULL,
-  `medium` varchar(200) NOT NULL,
-  `uid` int(11) NOT NULL,
-  `is_profile` tinyint(1) NOT NULL DEFAULT '0',
-  `caption` varchar(100) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `freelancer` (
+  `fid` int(11) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `fname` varchar(30) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `lang` varchar(10) NOT NULL,
+  `cv` varchar(50) NOT NULL,
+  `id_proof` varchar(50) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Table structure for table `post_prj`
 --
 
-CREATE TABLE `post` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `post_prj` (
+  `pid` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `detail` text NOT NULL,
   `category` varchar(30) NOT NULL,
@@ -81,11 +113,11 @@ CREATE TABLE `post` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `proposals`
+-- Table structure for table `post_req`
 --
 
-CREATE TABLE `proposals` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `post_req` (
+  `rid` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `fid` int(11) NOT NULL,
   `msg` varchar(255) NOT NULL,
@@ -93,92 +125,85 @@ CREATE TABLE `proposals` (
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `usertype` enum('admin','client','freelancer') NOT NULL DEFAULT 'client',
-  `email` varchar(120) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `fname` varchar(30) NOT NULL,
-  `lname` varchar(30) NOT NULL,
-  `skills` text NOT NULL,
-  `token` varchar(128) NOT NULL,
-  `verify` tinyint(1) NOT NULL DEFAULT '0',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `contact`
+-- Indexes for table `admin`
 --
-ALTER TABLE `contact`
+ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `photos`
+-- Indexes for table `client`
 --
-ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`cid`);
 
 --
--- Indexes for table `post`
+-- Indexes for table `feedback`
 --
-ALTER TABLE `post`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`fbid`);
 
 --
--- Indexes for table `proposals`
+-- Indexes for table `freelancer`
 --
-ALTER TABLE `proposals`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `freelancer`
+  ADD PRIMARY KEY (`fid`);
 
 --
--- Indexes for table `users`
+-- Indexes for table `post_prj`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `post_prj`
+  ADD PRIMARY KEY (`pid`);
+
+--
+-- Indexes for table `post_req`
+--
+ALTER TABLE `post_req`
+  ADD PRIMARY KEY (`rid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `contact`
+-- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `photos`
+-- AUTO_INCREMENT for table `client`
 --
-ALTER TABLE `photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+ALTER TABLE `client`
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT for table `feedback`
 --
-ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `feedback`
+  MODIFY `fbid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `proposals`
+-- AUTO_INCREMENT for table `freelancer`
 --
-ALTER TABLE `proposals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `freelancer`
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT for table `post_prj`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `post_prj`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `post_req`
+--
+ALTER TABLE `post_req`
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
