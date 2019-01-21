@@ -288,7 +288,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         <div class="row">
           <div class="col-sm-4">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
+              <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
               <h4>Gaurang Parmar</h4>
               <p class="text-muted">Lead Designer</p>
               <ul class="list-inline social-buttons">
@@ -336,7 +336,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
           </div>
           <div class="col-sm-4">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
+              <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
               <h4>Priya Patel</h4>
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
