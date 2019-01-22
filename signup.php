@@ -93,11 +93,14 @@ require("include/db.php");
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="signupForm" action="include/add-user.php" method="post">
+                    <form class="form-horizontal form-material needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate>
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
-                                <input type="text" id="name" name="name" class="form-control form-control-line" placeholder="Name" required="" value="">
+                                <input type="text" id="name" name="name" class="form-control form-control-line" placeholder="Name" required value="">
+                                <div class="invalid-feedback font-weight-bold">
+                                    Please choose a unique and valid username.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -118,14 +121,14 @@ require("include/db.php");
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
                                 <select class="form-control form-control-line" id="usertype" name="usertype" required="">
-                                    <option value=""> -- FREELANCER / CLIENT -- </option>
+                                    <option value="">User Type </option>
                                     <option value="freelancer">Freelancer</option>
                                     <option value="client">Client</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" id="cvInput" style="display: none">
-                            <div class="col-xs-12 text-danger">
+                            <div class="col-xs-12">
                                 <label class="pull-left">Resume Upload</label>
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput">
@@ -143,7 +146,7 @@ require("include/db.php");
                             </div>
                         </div>
                         <div class="form-group" id="idInput" style="display: none">
-                            <div class="col-xs-12 text-danger">
+                            <div class="col-xs-12">
                                 <label class="pull-left">ID-Proof Upload</label>
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput">
@@ -160,12 +163,15 @@ require("include/db.php");
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="col-xs-12">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" data-id="" id="customCheck1" name="agree" value="agree">
-                                    <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label> 
-                                </div> 
+                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
+                                    <label class="custom-control-label" for="agree">I agree to all <a href="javascript:void(0)">Terms</a></label>
+        <div class="invalid-tooltip">
+          Please choose a unique and valid username.
+        </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group text-center p-b-20">
@@ -221,8 +227,27 @@ require("include/db.php");
     <!-- ============================================================== -->
     <script src="asset/dist/js/pages/jasny-bootstrap.js"></script>
 
-    <script src="asset/js/jquery.validate.min.js"></script>
+    <script src="/asset/js/jquery.validate.min.js"></script>
     <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+        /*
 		$.validator.setDefaults( {
 			submitHandler: function () {
 				alert( "submitted!" );
@@ -305,6 +330,7 @@ require("include/db.php");
 				}
 			} );
 		} );
+        */
 	</script>
     
     <!-- Custom Theme JavaScript -->
