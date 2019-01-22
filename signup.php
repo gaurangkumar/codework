@@ -124,39 +124,41 @@ require("include/db.php");
                                 </select>
                             </div>
                         </div>
-                        <div id="freelancerForm" style="display: none">
-                            <div class="form-group">
-                                        <label>File upload</label>
-                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                            <div class="form-control" data-trigger="fileinput">
-                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                                <span class="fileinput-filename"></span>
-                                            </div>
-                                            <span class="input-group-addon btn btn-default btn-file">
-                                                <span class="fileinput-new">Select file</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="hidden">
-                                                <input type="file" name="cv" id="cv"> </span>
-                                            <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists"
-                                                data-dismiss="fileinput">Remove</a>
-                                        </div>
+                        <div class="form-group" id="cvInput" style="display: none">
+                            <div class="col-xs-12 text-danger">
+                                <label class="pull-left">Resume Upload</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput">
+                                        <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                        <span class="fileinput-filename"></span>
                                     </div>
-                            <div class="form-group">
-                                        <label>File upload</label>
-                                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                                            <div class="form-control" data-trigger="fileinput">
-                                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
-                                                <span class="fileinput-filename"></span>
-                                            </div>
-                                            <span class="input-group-addon btn btn-default btn-file">
-                                                <span class="fileinput-new">Select file</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="hidden">
-                                                <input type="file" name="id" id="id"> </span>
-                                            <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists"
-                                                data-dismiss="fileinput">Remove</a>
-                                        </div>
+                                    <span class="input-group-addon btn btn-default btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="hidden">
+                                        <input type="file" name="cv" id="cv">
+                                    </span>
+                                    <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="idInput" style="display: none">
+                            <div class="col-xs-12 text-danger">
+                                <label class="pull-left">ID-Proof Upload</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput">
+                                        <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                        <span class="fileinput-filename"></span>
                                     </div>
+                                    <span class="input-group-addon btn btn-default btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="hidden">
+                                        <input type="file" name="id" id="id">
+                                    </span>
+                                    <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
@@ -248,7 +250,9 @@ require("include/db.php");
 						equalTo: "#password"
 					},
 					usertype: "required",
-					customCheck1: "required"
+					cv: "required",
+					id: "required",
+					agree: "required"
 				},
 				messages: {
 					name: {
@@ -266,7 +270,9 @@ require("include/db.php");
 						equalTo: "Please enter the same password as above"
 					},
 					usertype: "Please select your usertype",
-					customCheck1: "Please accept our policy"
+					cv: "Please upload your resume",
+					id: "Please upload yourr ID-Proof",
+					agree: "Please accept our policy"
 				},
 				errorElement: "em",
 				errorPlacement: function ( error, element ) {
@@ -382,10 +388,12 @@ require("include/db.php");
 
     $('#usertype').change(function(e) {
         if($('#usertype').val() == 'freelancer') {
-            $("#freelancerForm").show();
+            $("#cvInput").show();
+            $("#idInput").show();
         }
         else {
-            $("#freelancerForm").hide();
+            $("#cvInput").hide();
+            $("#idInput").hide();
         }
     });
 
