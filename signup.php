@@ -205,9 +205,6 @@ require("include/db.php");
     <!-- Custom scripts for this template -->
     <script src="asset/js/stylish-portfolio.min.js"></script>
 
-    <script src="/asset/js/jqBootstrapValidation.js"></script>
-    <!--script src="asset/js/contact_me.js"></script-->
-
     <!--Wave Effects -->
     <script src="asset/dist/js/waves.js"></script>
     <!--Menu sidebar -->
@@ -304,10 +301,9 @@ require("include/db.php");
 		} );
 	</script>
     
-    <?php /*
     <!-- Custom Theme JavaScript -->
     <script>
-$(function() {
+    $(function() {
 
   $("#signupForm input,#signupForm select").jqBootstrapValidation({
     preventSubmit: true,
@@ -380,7 +376,7 @@ $(function() {
   });
 });
 
-$('#name').focus(function() {
+    $('#name').focus(function() {
   $('#success').html('');
 });
 
@@ -439,6 +435,5 @@ $('#name').focus(function() {
             $("#recoverform").fadeIn();
         });
     </script>
-*/ ?>
 </body>
 </html>
