@@ -117,7 +117,7 @@ require("include/db.php");
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
-                                <select class="form-control form-control-line" id="usertype" required="">
+                                <select class="form-control form-control-line" id="usertype" name="usertype" required="">
                                     <option value=""> -- FREELANCER / CLIENT -- </option>
                                     <option value="freelancer">Freelancer</option>
                                     <option value="client">Client</option>
@@ -197,30 +197,30 @@ require("include/db.php");
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="/vendor/popper/popper.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="/asset/js/stylish-portfolio.min.js"></script>
+    <script src="asset/js/stylish-portfolio.min.js"></script>
 
     <script src="/asset/js/jqBootstrapValidation.js"></script>
     <!--script src="asset/js/contact_me.js"></script-->
 
     <!--Wave Effects -->
-    <script src="/asset/dist/js/waves.js"></script>
+    <script src="asset/dist/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="/asset/dist/js/sidebarmenu.js"></script>
+    <script src="asset/dist/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="/assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="/assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
+    <script src="assets/node_modules/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/node_modules/sparkline/jquery.sparkline.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="/asset/dist/js/custom.min.js"></script>
+    <script src="asset/dist/js/custom.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugins -->
     <!-- ============================================================== -->
-    <script src="/asset/dist/js/pages/jasny-bootstrap.js"></script>
+    <script src="asset/dist/js/pages/jasny-bootstrap.js"></script>
 
     <script src="asset/js/jquery.validate.min.js"></script>
     <script>
@@ -268,7 +268,7 @@ require("include/db.php");
 						minlength: "Your password must be at least 6 characters long",
 						equalTo: "Please enter the same password as above"
 					},
-					lastname: "Please enter your usertype",
+					usertype: "Please select your usertype",
 					customCheck1: "Please accept our policy"
 				},
 				errorElement: "em",
