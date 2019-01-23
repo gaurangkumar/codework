@@ -38,6 +38,7 @@ require("include/db.php");
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
+    <link href="/vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -141,6 +142,11 @@ require("include/db.php");
                                 </div>
                             </div>
                         </div>
+  <div class="custom-file">
+    <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+    <div class="invalid-feedback">Example invalid custom file feedback</div>
+  </div>
 
   <div class="form-group">
                             <div class="col-xs-12 text-danger">
@@ -250,7 +256,8 @@ require("include/db.php");
     </a>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.slim.min.js"></script>
+    <script src="/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap tether Core JavaScript -->
