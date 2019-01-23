@@ -116,7 +116,7 @@ require("include/db.php");
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="" min="6">
+                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your password.
                                 </div>
@@ -124,7 +124,7 @@ require("include/db.php");
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="" min="6">
+                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your password again.
                                 </div>
@@ -238,7 +238,8 @@ require("include/db.php");
     <script>
 		$.validator.setDefaults( {
 			submitHandler: function () {
-				alert( "submitted!" );
+				$( "#signupForm" ).submit();
+                //alert( "submitted!" );
 			}
 		} );
 
