@@ -148,15 +148,15 @@ require("include/db.php");
     <div class="invalid-feedback">Example invalid custom file feedback</div>
   </div>
 
-  <div class="form-group">
+                        <div class="form-group">
                             <div class="col-xs-12 text-danger">
-    <label for="exampleFormControlFile1">Example file input</label>
-    <input type="file" class="form-control form-control-file" id="exampleFormControlFile1" required>
+                                <label for="exampleFormControlFile1">Example file input</label>
+                                <input type="file" class="form-control form-control-file" id="exampleFormControlFile1" required>
                                 <div class="invalid-feedback help text-left">
                                     Please enter your full name.
                                 </div>
-      </div>
-  </div>
+                          </div>
+                        </div>
                         
                         <div class="form-group">
                             <div class="col-xs-12 text-danger custom-control custom-file">
