@@ -24,7 +24,7 @@ require("config.php");
 require("db.php");
 
 session_start();
-print_r($_POST);exit;
+print_r($_POST);print_r($_FILES);exit;
 $email  = $_POST['email'];
 $name   = $_POST['fname'];
 $pw     = $_POST['password'];
