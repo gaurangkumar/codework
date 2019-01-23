@@ -38,7 +38,7 @@ require("include/db.php");
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
