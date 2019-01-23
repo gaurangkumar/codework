@@ -38,7 +38,7 @@ require("include/db.php");
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -54,9 +54,6 @@ require("include/db.php");
     <!-- Custom CSS -->
     <link href="asset/css/stylish-portfolio.min.css" rel="stylesheet">
     <style>
-    .help {
-        font-size: 16px
-    }
     .navbar-brand {
         font-size: 24px;
         text-shadow: 1px 1px 2px #FFFFFF, 0 0 1em #005500, 0 0 0.2em blue;
@@ -81,6 +78,7 @@ require("include/db.php");
     }
     </style>
 
+
 </head>
 
 <body id="page-top">
@@ -95,73 +93,39 @@ require("include/db.php");
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate>
+                    <form class="form-horizontal form-material" id="signupForm" action="include/add-user.php" method="post">
                         <h3 class="text-center m-b-20">Sign Up</h3>
-                        <div class="form-group has-success">
+                        <div class="form-group">
                             <div class="col-xs-12 text-danger">
-                                <input type="text" id="name" name="name" class="form-control form-control-line1 form-control-success" placeholder="Name" required value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your full name.
-                                </div>
+                                <input type="text" id="name" name="name" class="form-control form-control-line" placeholder="Name" required="" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
                                 <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your email.
-                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
-                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="" min="6">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your password.
-                                </div>
+                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
-                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="" min="6">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your password again.
-                                </div>
+                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger">
                                 <select class="form-control form-control-line" id="usertype" name="usertype" required="">
-                                    <option value="">User Type </option>
+                                    <option value=""> -- FREELANCER / CLIENT -- </option>
                                     <option value="freelancer">Freelancer</option>
                                     <option value="client">Client</option>
                                 </select>
-                                <div class="invalid-feedback help text-left">
-                                    Please select your user type.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger">
-                                <label for="exampleFormControlFile1">Example file input</label>
-                                <input type="file" class="form-control form-control-file" id="exampleFormControlFile1" required>
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your full name.
-                                </div>
-                          </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger custom-control custom-file1">
-                                <label class="pull-left custom-file-label" for="file">Resume Upload</label>
-                                <input type="file" id="file" name="file" class="form-control form-control-line custom-file-input" required>
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your file.
-                                </div>
                             </div>
                         </div>
                         <div class="form-group" id="cvInput" style="display: none">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <label class="pull-left">Resume Upload</label>
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput">
@@ -171,18 +135,15 @@ require("include/db.php");
                                     <span class="input-group-addon btn btn-default btn-file">
                                         <span class="fileinput-new">Select file</span>
                                         <span class="fileinput-exists">Change</span>
-                                        <input type="hidden" name="cv1">
-                                        <input type="file" name="cv" id="cv" required>
+                                        <input type="hidden">
+                                        <input type="file" name="cv" id="cv">
                                     </span>
                                     <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                </div>
-                                <div class="invalid-feedback help text-left">
-                                    Please upload your resume.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group" id="idInput" style="display: none">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12 text-danger">
                                 <label class="pull-left">ID-Proof Upload</label>
                                 <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                                     <div class="form-control" data-trigger="fileinput">
@@ -192,34 +153,19 @@ require("include/db.php");
                                     <span class="input-group-addon btn btn-default btn-file">
                                         <span class="fileinput-new">Select file</span>
                                         <span class="fileinput-exists">Change</span>
-                                        <input type="hidden" name="id1">
-                                        <input type="file" name="id" id="id" required>
-                                <div class="invalid-feedback help text-left">
-                                    Please upload your ID-Proof.
-                                </div>
+                                        <input type="hidden">
+                                        <input type="file" name="id" id="id">
                                     </span>
                                     <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
-                                    <label class="custom-control-label" for="agree">
-                                        I agree to all <a href="javascript:void(0)">Terms</a>
-                                    </label>
-                                    <div class="invalid-feedback help text-left">
-                                        Please agree our policy.
-                                    </div>
-                                </div>
-                                <!--div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
-                                    <label class="custom-control-label" for="agree">I agree to all <a href="javascript:void(0)">Terms</a></label>
-                                    <div class="invalid-feedback help">
-                                        Please agree our policy.
-                                    </div>
-                                </div-->
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" data-id="" id="customCheck1" name="agree" value="agree">
+                                    <label class="custom-control-label" for="customCheck1">I agree to all <a href="javascript:void(0)">Terms</a></label> 
+                                </div> 
                             </div>
                         </div>
                         <div class="form-group text-center p-b-20">
@@ -250,7 +196,7 @@ require("include/db.php");
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap tether Core JavaScript -->
     <script src="vendor/popper/popper.min.js"></script>
@@ -275,27 +221,8 @@ require("include/db.php");
     <!-- ============================================================== -->
     <script src="asset/dist/js/pages/jasny-bootstrap.js"></script>
 
-    <script src="/asset/js/jquery.validate.min.js"></script>
+    <script src="asset/js/jquery.validate.min.js"></script>
     <script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-        /*
 		$.validator.setDefaults( {
 			submitHandler: function () {
 				alert( "submitted!" );
@@ -378,7 +305,6 @@ require("include/db.php");
 				}
 			} );
 		} );
-        */
 	</script>
     
     <!-- Custom Theme JavaScript -->

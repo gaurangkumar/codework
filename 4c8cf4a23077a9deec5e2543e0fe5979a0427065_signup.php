@@ -38,7 +38,8 @@ require("include/db.php");
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="node_modules/bootstrap/dist/css/bootstrap.min.css"></script>
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -54,9 +55,6 @@ require("include/db.php");
     <!-- Custom CSS -->
     <link href="asset/css/stylish-portfolio.min.css" rel="stylesheet">
     <style>
-    .help {
-        font-size: 16px
-    }
     .navbar-brand {
         font-size: 24px;
         text-shadow: 1px 1px 2px #FFFFFF, 0 0 1em #005500, 0 0 0.2em blue;
@@ -80,6 +78,7 @@ require("include/db.php");
         border-bottom:1px solid #fb9678
     }
     </style>
+
 
 </head>
 
@@ -233,6 +232,98 @@ require("include/db.php");
                             </div>
                         </div>
                     </form>
+                    <form class="form-horizontal form-material needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate>
+                        <h3 class="text-center m-b-20">Sign Up</h3>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger">
+                                <input type="text" id="name" name="name" class="form-control form-control-line" placeholder="Name" required value="">
+                                <div class="invalid-feedback font-weight-bold">
+                                    Please choose a unique and valid username.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger">
+                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger">
+                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger">
+                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger">
+                                <select class="form-control form-control-line" id="usertype" name="usertype" required="">
+                                    <option value="">User Type </option>
+                                    <option value="freelancer">Freelancer</option>
+                                    <option value="client">Client</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="cvInput" style="display: none">
+                            <div class="col-xs-12">
+                                <label class="pull-left">Resume Upload</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput">
+                                        <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                        <span class="fileinput-filename"></span>
+                                    </div>
+                                    <span class="input-group-addon btn btn-default btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="hidden">
+                                        <input type="file" name="cv" id="cv">
+                                    </span>
+                                    <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="idInput" style="display: none">
+                            <div class="col-xs-12">
+                                <label class="pull-left">ID-Proof Upload</label>
+                                <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                    <div class="form-control" data-trigger="fileinput">
+                                        <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                        <span class="fileinput-filename"></span>
+                                    </div>
+                                    <span class="input-group-addon btn btn-default btn-file">
+                                        <span class="fileinput-new">Select file</span>
+                                        <span class="fileinput-exists">Change</span>
+                                        <input type="hidden">
+                                        <input type="file" name="id" id="id">
+                                    </span>
+                                    <a href="javascript:void(0)" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
+                                    <label class="custom-control-label" for="agree">I agree to all <a href="javascript:void(0)">Terms</a></label>
+        <div class="invalid-tooltip">
+          Please choose a unique and valid username.
+        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-center p-b-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-12 text-center">
+                                Already have an account? <a href="login.php" class="text-info m-l-5"><b>Login</b></a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -250,7 +341,8 @@ require("include/db.php");
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Bootstrap tether Core JavaScript -->
     <script src="vendor/popper/popper.min.js"></script>
@@ -383,6 +475,7 @@ require("include/db.php");
     
     <!-- Custom Theme JavaScript -->
     <script>
+    /*
     $(function() {
 
   $("#signupForm input,#signupForm select").jqBootstrapValidation({
@@ -455,7 +548,7 @@ require("include/db.php");
     $(this).tab("show");
   });
 });
-
+    */
     $('#name').focus(function() {
   $('#success').html('');
 });
