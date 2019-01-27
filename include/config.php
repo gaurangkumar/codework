@@ -21,6 +21,7 @@
  */
 
 date_default_timezone_set("Asia/Kolkata");
+define('NOW', date('Y-m-d-H-i-s', time()));
 
 $host    = 'localhost';
 $user    = 'root';

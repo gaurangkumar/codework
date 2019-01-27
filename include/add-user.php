@@ -20,65 +20,101 @@
  * @update        2019-01-27
  */
 
-print_r($_POST);
-print_r($_FILES);
-exit;
 require("config.php");
 require("db.php");
 
 session_start();
-$email  = $_POST['email'];
-$name   = $_POST['fname'];
-$pw     = $_POST['password'];
-$cpw    = $_POST['repassword'];
 
-if($_POST['email']==''    ||
-   $_POST['name']==''     ||
-   $_POST['password']=='' ||
-   $_POST['repassword']=='') {
+if($_POST['email']==''     ||
+   $_POST['name']==''      ||
+   $_POST['password']==''  ||
+   $_POST['cpassword']=='' ||
+   $_POST['usertype']==''
+  ) {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill All Info !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill Up All Info !';
 	header("location: ../signup.php");
-	exit();
+	exit;
 }
+
+$name      = $_POST['name'];
+$email     = $_POST['email'];
+$password  = $_POST['password'];
+$cpassword = $_POST['cpassword'];
+$usertype  = $_POST['usertype'];
+$cv        = $_FILES['cv'];
+$id        = $_FILES['id'];
 
 if($password != $cpassword) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Password Are Not Same !';
     header("location: ../signup.php");
-    exit();
+    exit;
 }
 
-$result = $mysqli->query("SELECT * FROM users WHERE email = '$email' ");
+if($usertype != 'freelancer' && $usertype != 'client') {
+    $_SESSION["msg"]["type"] = "danger";
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Select Usertype !';
+    header("location: ../signup.php");
+    exit;
+}
+
+$result = $mysqli->query("SELECT * FROM $usertype WHERE email = '$email' ");
+
+if($mysqli->errno) {
+    $_SESSION["msg"]["type"] = "danger";
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
+    header("location: ../signup.php");
+    exit;
+}
+
 if($result->num_rows) {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Email Already Used. !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Email Already Used !';
     header("location: ../signup.php");
-    exit();
+    exit;
 }
 
-$password = md5($password);
-$result1 = $mysqli->query("INSERT INTO user (`email`, `password`, `fname`)
+if(! (file_exists('../user_data') && is_dir('../user_data')) ) {
+    mkdir('../user_data');
+}
+
+$cv_path = 'user_data/'.NOW.'-'.$cv['name'];
+$id_path = 'user_data/'.NOW.'-'.$id['name'];
+
+$c = move_uploaded_file($cv['tmp_name'], '../'.$cv_path);
+$i = move_uploaded_file($id['tmp_name'], '../'.$id_path);
+
+if(!$c || !$i) {
+    echo 1;exit;
+    $_SESSION["msg"]["type"] = "danger";
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Files not save !';
+    header("location: ../signup.php");
+    exit;
+}
+
+$password = hash('sha256', $password);
+
+$result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`, `usertype`, `cv`, `id`)
 VALUES
-('$email', '$password', '$fname')");
+('$name', '$email', '$password', '$usertype', '$cv_path', '$id_path')");
 
 if($result) {
-    $result = $mysqli->query("SELECT * FROM users WHERE email = '$email'");
+    $result = $mysqli->query("SELECT * FROM $usertype WHERE email = '$email'");
     $member = $result->fetch_array();
 
-    $_SESSION['SESS_MEMBER_ID']  = $member['id'];
-    $_SESSION['SESS_FIRST_NAME'] = $member['fname'];
-    $_SESSION['SESS_USER_TYPE']  = $member['usertype'];
-    $_SESSION['SESS_PRO_PIC']	 = 'userpics/default_profile.png';
+    $_SESSION['SESS_MEMBER_ID'] = ($usertype == 'client') ? $row['cid'] : $row['fid'];
+    $_SESSION['SESS_USER_NAME']	= $row['name'];
+    $_SESSION['SESS_USER_TYPE'] = $row['usertype'];
 
     $_SESSION["msg"]["type"] = "success";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Successfully Registered!';
     header("location: ../index.php");
-    exit();
+    exit;
 }
 else {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Registered Failed!';
-    header("location: ../index.php");
-    exit();
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Error: '.$mysqli->error;
+    header("location: ../signup.php");
+    exit;
 }

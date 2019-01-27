@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/check-user.php
  * @begin         2018-12-21
- * @update        2019-01-21
+ * @update        2019-01-27
  */
 
 require("config.php");
@@ -41,7 +41,7 @@ $result = $mysqli->query("SELECT * FROM `$user` WHERE `email` = '$email'");
 if($result->num_rows) {
     $row = $result->fetch_array();
     $user_id = $row['member_id'];
-    if($row['Password'] != $password) {
+    if(!hash_equals($row['Password'], $password)) {
         //Login Unsuccessful
         $_SESSION["msg"]["type"] = "danger";
         $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Password.</strong> !';
