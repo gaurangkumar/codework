@@ -99,6 +99,21 @@ require("include/db.php");
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
+                        <?php
+                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
+						else{
+                        ?>
+				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					        <?=$_SESSION["msg"]["msg"]?>
+				        </div>
+                        <?php
+                            //$_SESSION["msg"]="";
+                            //unset($_SESSION["msg"]);
+                        }
+                        ?>
+                        </div>
+                        <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Name" required value="">
                                 <div class="invalid-feedback help text-left">
@@ -139,6 +154,14 @@ require("include/db.php");
                                 </select>
                                 <div class="invalid-feedback help text-left">
                                     Please select your user type.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="langInput" style="display: none">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="text" id="lang" name="lang" class="form-control form-control-line form-control-success" placeholder="Programming Langauge" required value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your Programming Langauge.
                                 </div>
                             </div>
                         </div>
@@ -421,10 +444,12 @@ require("include/db.php");
         if($('#usertype').val() == 'freelancer') {
             $("#cvInput").show();
             $("#idInput").show();
+            $("#langInput").show();
         }
         else {
             $("#cvInput").hide();
             $("#idInput").hide();
+            $("#langInput").hide();
         }
     });
 

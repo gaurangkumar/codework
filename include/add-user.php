@@ -95,7 +95,7 @@ if(!$c || !$i) {
 
 $password = hash('sha256', $password);
 
-$result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`, `usertype`, `cv`, `id`)
+$result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`, `usertype`, `cv`, `id_proof`)
 VALUES
 ('$name', '$email', '$password', '$usertype', '$cv_path', '$id_path')");
 
