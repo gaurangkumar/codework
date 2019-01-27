@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-01-21
+ * @update        2019-01-27
  */
 
 require("include/config.php");
@@ -96,7 +96,7 @@ require("include/db.php");
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
@@ -182,7 +182,7 @@ require("include/db.php");
                         </div>
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit">Sign Up</button>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="signupBtn">Sign Up</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
@@ -236,9 +236,23 @@ require("include/db.php");
 
     <script src="asset/js/jquery.validate.min.js"></script>
     <script>
+        /*
 		$.validator.setDefaults( {
 			submitHandler: function () {
-				$( "#signupForm" ).submit();
+                $('#signupBtn').attr('disabled','disabled');
+                $('#signupForm').attr('disabled','disabled');
+                $('#signupForm').addClass('disabled');
+                $('#name').attr('disabled','disabled');
+                $('#email').attr('disabled','disabled');
+                $('#password').attr('disabled','disabled');
+                $('#cpassword').attr('disabled','disabled');
+                $('#usertype').attr('disabled','disabled');
+                $('#cv').attr('disabled','disabled');
+                $('#id').attr('disabled','disabled');
+                $('#agree').attr('disabled','disabled');
+
+                $( "#signupForm" ).submit();
+				//$( "#btn" ).html('');
                 //alert( "submitted!" );
 			}
 		} );
@@ -319,10 +333,12 @@ require("include/db.php");
 				}
 			} );
 		} );
+        */
 	</script>
     
     <!-- Custom Theme JavaScript -->
     <script>
+    /*
     $(function() {
 
   $("#signupForm input,#signupForm select").jqBootstrapValidation({
@@ -395,10 +411,11 @@ require("include/db.php");
     $(this).tab("show");
   });
 });
+    */
 
     $('#name').focus(function() {
-  $('#success').html('');
-});
+        $('#success').html('');
+    });
 
     $('#usertype').change(function(e) {
         if($('#usertype').val() == 'freelancer') {

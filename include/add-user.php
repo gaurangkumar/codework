@@ -17,14 +17,16 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-01-21
+ * @update        2019-01-27
  */
 
+print_r($_POST);
+print_r($_FILES);
+exit;
 require("config.php");
 require("db.php");
 
 session_start();
-print_r($_POST);print_r($_FILES);exit;
 $email  = $_POST['email'];
 $name   = $_POST['fname'];
 $pw     = $_POST['password'];
