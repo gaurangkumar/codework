@@ -20,11 +20,13 @@
  * @update        2019-01-21
  */
 
+print_r($_POST);
+print_r($_FILES);
+exit;
 require("config.php");
 require("db.php");
 
 session_start();
-print_r($_POST);print_r($_FILES);exit;
 $email  = $_POST['email'];
 $name   = $_POST['fname'];
 $pw     = $_POST['password'];
