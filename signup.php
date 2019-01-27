@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-01-21
+ * @update        2019-01-27
  */
 
 require("include/config.php");
@@ -236,6 +236,7 @@ require("include/db.php");
 
     <script src="asset/js/jquery.validate.min.js"></script>
     <script>
+        /*
 		$.validator.setDefaults( {
 			submitHandler: function () {
                 $('#signupBtn').attr('disabled','disabled');
@@ -332,10 +333,12 @@ require("include/db.php");
 				}
 			} );
 		} );
+        */
 	</script>
     
     <!-- Custom Theme JavaScript -->
     <script>
+    /*
     $(function() {
 
   $("#signupForm input,#signupForm select").jqBootstrapValidation({
@@ -408,10 +411,11 @@ require("include/db.php");
     $(this).tab("show");
   });
 });
+    */
 
     $('#name').focus(function() {
-  $('#success').html('');
-});
+        $('#success').html('');
+    });
 
     $('#usertype').change(function(e) {
         if($('#usertype').val() == 'freelancer') {
