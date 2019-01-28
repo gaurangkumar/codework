@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-01-27
+ * @update        2019-01-28
  */
 
 require("config.php");
@@ -42,6 +42,7 @@ $email     = $_POST['email'];
 $password  = $_POST['password'];
 $cpassword = $_POST['cpassword'];
 $usertype  = $_POST['usertype'];
+$lang      = $_POST['lang'];
 $cv        = $_FILES['cv'];
 $id        = $_FILES['id'];
 
@@ -75,30 +76,44 @@ if($result->num_rows) {
     exit;
 }
 
-if(! (file_exists('../user_data') && is_dir('../user_data')) ) {
-    mkdir('../user_data');
-}
+if($usertype == 'freelancer') {
+    if(empty($lang)) {
+        $_SESSION["msg"]["type"] = "danger";
+        $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Programming Language is not given !';
+        header("location: ../signup.php");
+        exit;
+    }
 
-$cv_path = 'user_data/'.NOW.'-'.$cv['name'];
-$id_path = 'user_data/'.NOW.'-'.$id['name'];
+    if(! (file_exists('../user_data') && is_dir('../user_data')) ) {
+        mkdir('../user_data');
+    }
 
-$c = move_uploaded_file($cv['tmp_name'], '../'.$cv_path);
-$i = move_uploaded_file($id['tmp_name'], '../'.$id_path);
+    $cv_path = 'user_data/'.NOW.'-'.$cv['name'];
+    $id_path = 'user_data/'.NOW.'-'.$id['name'];
 
-if(!$c || !$i) {
-    echo 1;exit;
-    $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Files not save !';
-    header("location: ../signup.php");
-    exit;
+    $c = move_uploaded_file($cv['tmp_name'], '../'.$cv_path);
+    $i = move_uploaded_file($id['tmp_name'], '../'.$id_path);
+
+    if(!$c || !$i) {
+        echo 1;exit;
+        $_SESSION["msg"]["type"] = "danger";
+        $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Files not save !';
+        header("location: ../signup.php");
+        exit;
+    }
 }
 
 $password = hash('sha256', $password);
 
-$result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`, `usertype`, `cv`, `id_proof`)
-VALUES
-('$name', '$email', '$password', '$usertype', '$cv_path', '$id_path')");
-
+if($usertype == 'freelancer') {
+    $result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`, `lang`, `cv`, `id_proof`) VALUES
+    ('$name', '$email', '$password', '$lang', '$cv_path', '$id_path')");
+}
+else {
+    $result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`) VALUES
+    ('$name', '$email', '$password')");
+}
+echo $mysqli->error;exit;
 if($result) {
     $result = $mysqli->query("SELECT * FROM $usertype WHERE email = '$email'");
     $member = $result->fetch_array();
