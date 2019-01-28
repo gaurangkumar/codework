@@ -17,13 +17,11 @@
  *                Priya Patel
  * @filename      include/check-user.php
  * @begin         2018-12-21
- * @update        2019-01-27
+ * @update        2019-01-28
  */
 
 require("config.php");
 require("db.php");
-
-session_start();
 
 //$crypt_expected = crypt('rasmuslerdorf', '$6$rounds=5000$usesomesillystringforsalt$');
 //$crypt_given = crypt('apple', '$6$rounds=5000$usesomesillystringforsalt$');

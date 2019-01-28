@@ -23,8 +23,6 @@
 require("config.php");
 require("db.php");
 
-session_start();
-
 if($_POST['email']==''     ||
    $_POST['name']==''      ||
    $_POST['password']==''  ||

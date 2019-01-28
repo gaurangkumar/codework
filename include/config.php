@@ -17,11 +17,13 @@
  *                Priya Patel
  * @filename      var.php
  * @begin         2018-12-21
- * @update        2018-12-25
+ * @update        2019-01-28
  */
 
 date_default_timezone_set("Asia/Kolkata");
 define('NOW', date('Y-m-d-H-i-s', time()));
+
+session_start();
 
 $host    = 'localhost';
 $user    = 'root';
