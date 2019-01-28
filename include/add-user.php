@@ -112,7 +112,7 @@ else {
     $result = $mysqli->query("INSERT INTO $usertype (`name`, `email`, `password`) VALUES
     ('$name', '$email', '$password')");
 }
-echo $mysqli->error;exit;
+
 if($result) {
     $result = $mysqli->query("SELECT * FROM $usertype WHERE email = '$email'");
     $member = $result->fetch_array();
