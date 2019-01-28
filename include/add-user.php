@@ -95,7 +95,6 @@ if($usertype == 'freelancer') {
     $i = move_uploaded_file($id['tmp_name'], '../'.$id_path);
 
     if(!$c || !$i) {
-        echo 1;exit;
         $_SESSION["msg"]["type"] = "danger";
         $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Files not save !';
         header("location: ../signup.php");
