@@ -23,8 +23,6 @@
 
 require("include/config.php");
 require("include/db.php");
-
-session_start();
 ?>
 <html lang="en">
 
@@ -144,8 +142,8 @@ session_start();
                             <div class="col-md-12">
                                 <div class="d-flex no-block align-items-center">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember me</label>
+                                        <input type="checkbox" class="custom-control-input" id="remember_me">
+                                        <label class="custom-control-label" for="remember_me">Remember me</label>
                                     </div>
                                     <div class="ml-auto">
                                         <a href="javascript:void(0)" id="to-recover" class="text-muted"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> 

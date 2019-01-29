@@ -36,10 +36,17 @@ $password = hash('sha256', $_POST['user-password']);
 
 $result = $mysqli->query("SELECT * FROM `$user` WHERE `email` = '$email'");
 
+if($mysqli->errno) {
+    $_SESSION["msg"]["type"] = "danger";
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
+    header("location: ../login.php");
+    exit;
+}
+
 if($result->num_rows) {
     $row = $result->fetch_array();
     $user_id = $row['member_id'];
-    if(!hash_equals($row['Password'], $password)) {
+    if($row['password'] != $password) {
         //Login Unsuccessful
         $_SESSION["msg"]["type"] = "danger";
         $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Password.</strong> !';

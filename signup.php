@@ -108,8 +108,8 @@ require("include/db.php");
 					        <?=$_SESSION["msg"]["msg"]?>
 				        </div>
                         <?php
-                            //$_SESSION["msg"]="";
-                            //unset($_SESSION["msg"]);
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
                         }
                         ?>
                         </div>
@@ -147,7 +147,7 @@ require("include/db.php");
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <select class="form-control form-control-line custom-select" id="usertype" name="usertype" required="">
+                                <select class="form-control form-control-line custom-select" id="usertype" name="usertype" required>
                                     <option value="">User Type </option>
                                     <option value="freelancer">Freelancer</option>
                                     <option value="client">Client</option>

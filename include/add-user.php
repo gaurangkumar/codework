@@ -22,7 +22,7 @@
 
 require("config.php");
 require("db.php");
-
+//echo '<pre>';print_r($GLOBALS);echo '</pre>';exit;
 if($_POST['email']==''     ||
    $_POST['name']==''      ||
    $_POST['password']==''  ||
