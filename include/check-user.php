@@ -45,7 +45,7 @@ if($mysqli->errno) {
 
 if($result->num_rows) {
     $row = $result->fetch_array();
-    $user_id = $row['member_id'];
+    $user_id = ($user == 'client') ? $row['cid'] : $row['fid'];
     if($row['password'] != $password) {
         //Login Unsuccessful
         $_SESSION["msg"]["type"] = "danger";
@@ -57,13 +57,13 @@ if($result->num_rows) {
         //Login Successful
         $remember_me = (isset($_POST['remember_me'])) ? true : false;
         $_SESSION["msg"]["type"] = "success";
-        $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Welcome <strong>'.$row['fname'].'</strong> !';
+        $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Welcome <strong>'.$row['name'].'</strong> !';
 			
-        $_SESSION['SESS_MEMBER_ID']		= $row['member_id'];
-        $_SESSION['SESS_FIRST_NAME']	= $row['fname'];
-        $_SESSION['SESS_USER_TYPE']		= $row['usertype'];
+        $_SESSION['USER_ID']	= $user_id;
+        $_SESSION['USER_NAME']	= $row['name'];
+        $_SESSION['USER_TYPE']	= $user;
 
-        header("Location: ../index.php");
+        header("Location: ../$user.php");
         exit;
     }
 }

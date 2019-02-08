@@ -5,10 +5,10 @@
     <nav id="sidebar-wrapper">
       <ul class="sidebar-nav">
         <li class="sidebar-brand">
-          <a class="js-scroll-trigger" href="#page-top"><?=$site?></a>
+          <a class="js-scroll-trigger" href="index.php"><?=$site?></a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#page-top">Home</a>
+          <a class="js-scroll-trigger" href="index.php#page-top">Home</a>
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="#about">About</a>
@@ -27,6 +27,6 @@
 
     <nav class="col-2 navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="">
-        <a class="navbar-brand js-scroll-trigger brand-name" href="#page-top"><?=$site?></a>
+        <a class="navbar-brand js-scroll-trigger brand-name" href="index.php#page-top"><?=$site?></a>
       </div>
     </nav>

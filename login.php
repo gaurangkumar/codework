@@ -23,6 +23,12 @@
 
 require("include/config.php");
 require("include/db.php");
+
+if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
+    header("Location: ".$_SESSION['USER_TYPE'].".php");
+    exit;
+}
+
 ?>
 <html lang="en">
 

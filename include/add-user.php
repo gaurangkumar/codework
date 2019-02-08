@@ -115,13 +115,13 @@ if($result) {
     $result = $mysqli->query("SELECT * FROM $usertype WHERE email = '$email'");
     $member = $result->fetch_array();
 
-    $_SESSION['SESS_MEMBER_ID'] = ($usertype == 'client') ? $row['cid'] : $row['fid'];
-    $_SESSION['SESS_USER_NAME']	= $row['name'];
-    $_SESSION['SESS_USER_TYPE'] = $row['usertype'];
+    $_SESSION['USER_ID'] = ($usertype == 'client') ? $row['cid'] : $row['fid'];
+    $_SESSION['USER_NAME']	= $row['name'];
+    $_SESSION['USER_TYPE'] = $row['usertype'];
 
     $_SESSION["msg"]["type"] = "success";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Successfully Registered!';
-    header("location: ../index.php");
+    header("location: ../$usertype.php");
     exit;
 }
 else {

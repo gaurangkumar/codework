@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2019 at 10:25 AM
+-- Generation Time: Feb 08, 2019 at 05:14 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `codework`
 --
-CREATE DATABASE IF NOT EXISTS `codework` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `codework`;
 
 -- --------------------------------------------------------
 
@@ -30,16 +28,13 @@ USE `codework`;
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(120) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -54,16 +49,21 @@ INSERT INTO `admin` (`id`, `name`, `email`, `password`, `date`) VALUES
 -- Table structure for table `client`
 --
 
-DROP TABLE IF EXISTS `client`;
-CREATE TABLE IF NOT EXISTS `client` (
-  `cid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `client` (
+  `cid` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(120) NOT NULL,
   `password` varchar(128) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`cid`),
-  UNIQUE KEY `email` (`email`)
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `client`
+--
+
+INSERT INTO `client` (`cid`, `name`, `email`, `password`, `date`) VALUES
+(2, 'client1', 'client@abc.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '2019-01-28 16:42:30'),
+(3, 'abc', 'abc@abc.com', 'a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3', '2019-02-06 07:29:18');
 
 -- --------------------------------------------------------
 
@@ -71,15 +71,13 @@ CREATE TABLE IF NOT EXISTS `client` (
 -- Table structure for table `feedback`
 --
 
-DROP TABLE IF EXISTS `feedback`;
-CREATE TABLE IF NOT EXISTS `feedback` (
-  `fbid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `feedback` (
+  `fbid` int(11) NOT NULL,
   `name` varchar(120) NOT NULL,
   `email` varchar(120) NOT NULL,
   `msg` varchar(500) NOT NULL,
   `is_read` tinyint(1) NOT NULL DEFAULT '0',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`fbid`)
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -88,19 +86,23 @@ CREATE TABLE IF NOT EXISTS `feedback` (
 -- Table structure for table `freelancer`
 --
 
-DROP TABLE IF EXISTS `freelancer`;
-CREATE TABLE IF NOT EXISTS `freelancer` (
-  `fid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `freelancer` (
+  `fid` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(120) NOT NULL,
   `password` varchar(128) NOT NULL,
   `lang` varchar(10) NOT NULL,
   `cv` varchar(50) NOT NULL,
   `id_proof` varchar(50) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`fid`),
-  UNIQUE KEY `email` (`email`)
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `freelancer`
+--
+
+INSERT INTO `freelancer` (`fid`, `name`, `email`, `password`, `lang`, `cv`, `id_proof`, `date`) VALUES
+(1, 'freelancer', 'free@abc.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 'php', 'user_data/2019-01-28-22-13-29-ba683e9ab36398d2c27b', 'user_data/2019-01-28-22-13-29-Brie-Larson-Actress0', '2019-01-28 16:43:29');
 
 -- --------------------------------------------------------
 
@@ -108,22 +110,27 @@ CREATE TABLE IF NOT EXISTS `freelancer` (
 -- Table structure for table `post_prj`
 --
 
-DROP TABLE IF EXISTS `post_prj`;
-CREATE TABLE IF NOT EXISTS `post_prj` (
-  `pid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `post_prj` (
+  `pid` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `detail` text NOT NULL,
   `category` varchar(30) NOT NULL,
-  `file` varchar(255) NOT NULL,
+  `file` varchar(255) DEFAULT NULL,
   `lang` varchar(20) NOT NULL,
   `cid` int(11) NOT NULL,
-  `fid` int(11) NOT NULL,
+  `fid` int(11) DEFAULT NULL,
   `status` varchar(20) NOT NULL,
   `cost` int(11) NOT NULL,
-  `paid` tinyint(1) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`pid`)
+  `paid` tinyint(1) NOT NULL DEFAULT '0',
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `post_prj`
+--
+
+INSERT INTO `post_prj` (`pid`, `name`, `detail`, `category`, `file`, `lang`, `cid`, `fid`, `status`, `cost`, `paid`, `date`) VALUES
+(1, 'website', 'ababab', 'website', '', 'php', 3, 0, '', 5000, 0, '2019-02-06 13:07:27');
 
 -- --------------------------------------------------------
 
@@ -131,16 +138,97 @@ CREATE TABLE IF NOT EXISTS `post_prj` (
 -- Table structure for table `post_req`
 --
 
-DROP TABLE IF EXISTS `post_req`;
-CREATE TABLE IF NOT EXISTS `post_req` (
-  `rid` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `post_req` (
+  `rid` int(11) NOT NULL,
   `pid` int(11) NOT NULL,
   `fid` int(11) NOT NULL,
   `msg` varchar(255) NOT NULL,
   `status` varchar(10) NOT NULL,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`rid`)
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `client`
+--
+ALTER TABLE `client`
+  ADD PRIMARY KEY (`cid`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`fbid`);
+
+--
+-- Indexes for table `freelancer`
+--
+ALTER TABLE `freelancer`
+  ADD PRIMARY KEY (`fid`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `post_prj`
+--
+ALTER TABLE `post_prj`
+  ADD PRIMARY KEY (`pid`);
+
+--
+-- Indexes for table `post_req`
+--
+ALTER TABLE `post_req`
+  ADD PRIMARY KEY (`rid`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `client`
+--
+ALTER TABLE `client`
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `fbid` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `freelancer`
+--
+ALTER TABLE `freelancer`
+  MODIFY `fid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `post_prj`
+--
+ALTER TABLE `post_prj`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `post_req`
+--
+ALTER TABLE `post_req`
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
