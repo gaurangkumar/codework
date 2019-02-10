@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      client.php
  * @begin         2019-02-05
- * @update        2019-02-05
+ * @update        2019-02-10
  */
 
 require("include/config.php");
@@ -129,44 +129,138 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     require("include/header.php");
 	?>
 
+    <header class="masthead">
+        <div class="container text-center">
+            <!--<h2 class="mx-auto mb-5"></h2>-->
+            <div class="sinup-box card">
+                <div class="card-body">
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
+                        <h3 class="text-center m-b-20">Sign Up</h3>
+                        <div class="form-group">
+                        <?php
+                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
+						else{
+                        ?>
+				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					        <?=$_SESSION["msg"]["msg"]?>
+				        </div>
+                        <?php
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
+                        }
+                        ?>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Name" required value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your full name.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your email.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your password.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your password again.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <select class="form-control form-control-line custom-select" id="usertype" name="usertype" required>
+                                    <option value="">User Type </option>
+                                    <option value="freelancer">Freelancer</option>
+                                    <option value="client">Client</option>
+                                </select>
+                                <div class="invalid-feedback help text-left">
+                                    Please select your user type.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="langInput" style="display: none">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="text" id="lang" name="lang" class="form-control form-control-line form-control-success" placeholder="Programming Langauge" required value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your Programming Langauge.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="cvInput" style="display: none">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label class="pull-left text-primary" for="cv">Resume Upload</label>
+                                <input type="file" id="cv" name="cv" class="form-control form-control-line" required>
+                                <div class="invalid-feedback help text-left">
+                                    Please upload your resume.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="idInput" style="display: none">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label class="pull-left text-primary" for="id">ID-Proof Upload</label>
+                                <input type="file" id="id" name="id" class="form-control form-control-line" required>
+                                <div class="invalid-feedback help text-left">
+                                    Please upload your ID-Proof.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
+                                    <label class="custom-control-label" for="agree">
+                                        I agree to all <a href="javascript:void(0)">Terms</a>
+                                    </label>
+                                    <div class="invalid-feedback help">
+                                        Please agree our policy.
+                                    </div>
+                                </div>
+                                <!--div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
+                                    <label class="custom-control-label" for="agree">I agree to all <a href="javascript:void(0)">Terms</a></label>
+                                    <div class="invalid-feedback help">
+                                        Please agree our policy.
+                                    </div>
+                                </div-->
+                            </div>
+                        </div>
+                        <div class="form-group text-center p-b-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="signupBtn">Sign Up</button>
+                            </div>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <div class="col-sm-12 text-center">
+                                Already have an account? <a href="login.php" class="text-info m-l-5"><b>Login</b></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <!-- Footer -->
 	<?php
     require("include/footer.php");
 	?>
-
-    <div class="portfolio-modal modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Threads</li>
-                    <li>Category: Illustration</li>
-                  </ul>
-                  <button class="btn btn-primary" data-dismiss="modal" type="button">
-                    <i class="fas fa-times"></i>
-                    Close Project</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">

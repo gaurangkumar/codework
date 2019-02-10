@@ -17,12 +17,12 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-01-28
+ * @update        2019-02-10
  */
 
 require("config.php");
 require("db.php");
-//echo '<pre>';print_r($GLOBALS);echo '</pre>';exit;
+
 if($_POST['email']==''     ||
    $_POST['name']==''      ||
    $_POST['password']==''  ||
@@ -119,8 +119,6 @@ if($result) {
     $_SESSION['USER_NAME']	= $row['name'];
     $_SESSION['USER_TYPE'] = $row['usertype'];
 
-    $_SESSION["msg"]["type"] = "success";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Successfully Registered!';
     header("location: ../$usertype.php");
     exit;
 }

@@ -17,18 +17,11 @@
  *                Priya Patel
  * @filename      include/check-user.php
  * @begin         2018-12-21
- * @update        2019-01-28
+ * @update        2019-02-10
  */
 
 require("config.php");
 require("db.php");
-
-//$crypt_expected = crypt('rasmuslerdorf', '$6$rounds=5000$usesomesillystringforsalt$');
-//$crypt_given = crypt('apple', '$6$rounds=5000$usesomesillystringforsalt$');
-//var_dump(hash_equals($expected, $incorrect));
-//password_hash("rasmuslerdorf", PASSWORD_ARGON2ID  , ['cost' => 12])
-//print_r($password); PASSWORD_DEFAULT PASSWORD_ARGON2I PASSWORD_ARGON2ID 
-//password_verify('rasmuslerdorf', $hash)
 
 $email = $_POST['user-email'];
 $user = $_POST['user-type'];
@@ -56,9 +49,7 @@ if($result->num_rows) {
     else { 
         //Login Successful
         $remember_me = (isset($_POST['remember_me'])) ? true : false;
-        $_SESSION["msg"]["type"] = "success";
-        $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Welcome <strong>'.$row['name'].'</strong> !';
-			
+
         $_SESSION['USER_ID']	= $user_id;
         $_SESSION['USER_NAME']	= $row['name'];
         $_SESSION['USER_TYPE']	= $user;
