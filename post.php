@@ -16,16 +16,20 @@
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Vivek Patel
  *                Priya Patel
- * @filename      index.php
- * @begin         2018-12-21
+ * @filename      post.php
+ * @begin         2019-02-10
  * @update        2019-02-10
  */
 
 require("include/config.php");
 require("include/db.php");
 
-if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
-    header("Location: ".$_SESSION['USER_TYPE'].".php");
+if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+    header("Location: login.php");
+    exit;
+}
+if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
+    header("Location: login.php");
     exit;
 }
 
@@ -38,7 +42,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Signup - CodeWork</title>
+    <title>Post Project - CodeWork</title>
 
 	<link href="<?=$favicon?>" rel="shortcut icon">
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />

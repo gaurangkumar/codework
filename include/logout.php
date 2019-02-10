@@ -17,19 +17,15 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2018-12-21
+ * @update        2019-02-10
  */
 
 require("config.php");
 require("db.php");
 
-session_start();
-
-unset($_SESSION['SESS_MEMBER_ID']);
-unset($_SESSION['SESS_USER_NAME']);
-unset($_SESSION['SESS_FIRST_NAME']);
-unset($_SESSION['SESS_USER_TYPE']);
-unset($_SESSION['SESS_PRO_PIC']);
+unset($_SESSION['USER_ID']);
+unset($_SESSION['USER_NAME']);
+unset($_SESSION['USER_TYPE']);
 
 session_destroy();
 
