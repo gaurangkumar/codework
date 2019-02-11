@@ -165,51 +165,27 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                                 </div>
                             </div>
                         </div>
-
-                        <div class="form-group" id="langInput" style="display: none">
+                        <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <input type="text" id="lang" name="lang" class="form-control form-control-line form-control-success" placeholder="Programming Langauge" required value="">
+                                <label for="cost" class="text-info col-form-label">What is your budget?</label>
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost" required="" value="">
                                 <div class="invalid-feedback help text-left">
-                                    Please enter your Programming Langauge.
+                                    Please enter your project budget.
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group" id="cvInput" style="display: none">
+                        <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <label class="pull-left text-primary" for="cv">Resume Upload</label>
-                                <input type="file" id="cv" name="cv" class="form-control form-control-line" required>
+                                <label for="cost" class="text-info col-form-label">How long would you like to run your contest?</label>
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost" required="" value="">
                                 <div class="invalid-feedback help text-left">
-                                    Please upload your resume.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" id="idInput" style="display: none">
-                            <div class="col-xs-12 text-danger text-left">
-                                <label class="pull-left text-primary" for="id">ID-Proof Upload</label>
-                                <input type="file" id="id" name="id" class="form-control form-control-line" required>
-                                <div class="invalid-feedback help text-left">
-                                    Please upload your ID-Proof.
+                                    Please enter your project budget.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
-                                    <label class="custom-control-label" for="agree">
-                                        I agree to all <a href="javascript:void(0)">Terms</a>
-                                    </label>
-                                    <div class="invalid-feedback help">
-                                        Please agree our policy.
-                                    </div>
-                                </div>
-                                <!--div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
-                                    <label class="custom-control-label" for="agree">I agree to all <a href="javascript:void(0)">Terms</a></label>
-                                    <div class="invalid-feedback help">
-                                        Please agree our policy.
-                                    </div>
-                                </div-->
+                                Work with a freelancer 1‑on‑1 and only pay them when you're happy with the completed work.
                             </div>
                         </div>
                         <div class="form-group text-center p-b-20">
