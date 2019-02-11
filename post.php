@@ -106,12 +106,11 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
-                        <h3 class="text-center m-b-20">Sign Up</h3>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
+                        <h3 class="text-center m-b-20">Post New Project</h3>
                         <div class="form-group">
                         <?php
-                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
-						else{
+                        if(isset($_SESSION["msg"]) && $_SESSION["msg"] != "") {
                         ?>
 				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
 					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -125,48 +124,48 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Name" required value="">
+                                <label for="name" class="text-info">Choose a name for your project</label>
+                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="">
                                 <div class="invalid-feedback help text-left">
-                                    Please enter your full name.
+                                    Please enter name of project.
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your email.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your password.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your password again.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <select class="form-control form-control-line custom-select" id="usertype" name="usertype" required>
-                                    <option value="">User Type </option>
-                                    <option value="freelancer">Freelancer</option>
-                                    <option value="client">Client</option>
+                                <label for="prjtype" class="text-info">Choose type of your project</label>
+                                <select class="form-control form-control-line custom-select" id="prjtype" name="prjtype" required>
+                                    <option value="">Project Type </option>
+                                    <option value="webdesign">Web Design</option>
+                                    <option value="webdev">Web Developement</option>
+                                    <option value="web">Full Website</option>
+                                    <option value="logo">Logo</option>
+                                    <option value="seo">SEO</option>
                                 </select>
                                 <div class="invalid-feedback help text-left">
-                                    Please select your user type.
+                                    Please select your project type.
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label for="about" class="text-info">Tell us more about your project</label>
+                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required value="" rows="3"></textarea>
+                                <div class="invalid-feedback help text-left">
+                                    Please enter description of project.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label for="lang" class="text-info">What skills are required?</label>
+                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langauge or Skill" required="" value="">
+                                <div class="invalid-feedback help text-left">
+                                    Please enter your langauge or skill.
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group" id="langInput" style="display: none">
                             <div class="col-xs-12 text-danger text-left">
                                 <input type="text" id="lang" name="lang" class="form-control form-control-line form-control-success" placeholder="Programming Langauge" required value="">
