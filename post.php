@@ -35,7 +35,6 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
 
 ?>
 <html lang="en">
-
 <head>
     
     <meta charset="utf-8">
@@ -168,7 +167,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">What is your budget?</label>
-                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost" required="" value="">
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="" min="600" max="100000">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your project budget.
                                 </div>
@@ -177,9 +176,9 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">How long would you like to run your contest?</label>
-                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost" required="" value="">
+                                <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Duration in Days" required="" value="" min="3" max="30">
                                 <div class="invalid-feedback help text-left">
-                                    Please enter your project budget.
+                                    Please enter your project duration.
                                 </div>
                             </div>
                         </div>
