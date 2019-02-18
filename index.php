@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-02-10
+ * @update        2019-02-12
  */
 
 require("include/config.php");
@@ -396,7 +396,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     </section>
 
     <!-- Call to Action -->
-    <section class="content-section bg-dark text-white">
+    <section class="content-section bg-dark text-white" id="contact">
       <div class="container text-center">
         <h2 class="mb-4">Feedback Us</h2>
         <hr class="small">

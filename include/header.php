@@ -1,3 +1,25 @@
+<?php
+/**
+ * CodeWork : Freelancing Platform
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @package       CodeWork
+ * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * @link          
+ * @since         1.0.0
+ * @license       MIT License (https://opensource.org/licenses/mit-license.php)
+ * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
+ *                Vivek Patel
+ *                Priya Patel
+ * @filename      include/header.php
+ * @begin         2018-12-21
+ * @update        2019-02-12
+ */
+?>
     <!-- Navigation -->
     <a class="menu-toggle rounded" href="#">
       <i class="fa fa-bars"></i>
@@ -8,25 +30,28 @@
           <a class="js-scroll-trigger" href="index.php"><?=$site?></a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="index.php#page-top">Home</a>
+          <a class="js-scroll-trigger" href="index.php">Home</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#about">About</a>
+          <a class="js-scroll-trigger" href="index.php#about">About</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#services">Services</a>
+          <a class="js-scroll-trigger" href="index.php#services">Services</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#portfolio">Portfolio</a>
+          <a class="js-scroll-trigger" href="index.php#portfolio">Portfolio</a>
         </li>
         <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="#contact">Contact</a>
+          <a class="js-scroll-trigger" href="index.php#team">Team</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="index.php#contact">Contact</a>
         </li>
       </ul>
     </nav>
 
     <nav class="col-2 navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="">
-        <a class="navbar-brand js-scroll-trigger brand-name" href="index.php#page-top"><?=$site?></a>
+        <a class="navbar-brand js-scroll-trigger brand-name" href="index.php"><?=$site?></a>
       </div>
     </nav>
