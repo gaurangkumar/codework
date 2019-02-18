@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-01-27
+ * @update        2019-02-18
  */
 
 require("include/config.php");
@@ -99,7 +99,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-horizontal form-material" id="loginform" action="include/check-user.php" method="post">
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="loginForm" action="include/check-user.php" method="post" novalidate>
                         <h3 class="text-center m-b-20">Login</h3>
                         <div class="form-group">
                         <?php
@@ -119,29 +119,29 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="freelancer" name="user-type" value="freelancer" class="custom-control-input" checked>
+                                    <input type="radio" id="freelancer" name="usertype" value="freelancer" class="custom-control-input" checked>
                                     <label class="custom-control-label" for="freelancer">Freelancer</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" id="client" name="user-type" value="client" class="custom-control-input">
+                                    <input type="radio" id="client" name="usertype" value="client" class="custom-control-input">
                                     <label class="custom-control-label" for="client">Client</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="email" id="email" name="user-email" class="form-control form-control-line" placeholder="Email" required="" value="" autocomplete="off" autofocus>
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
+                            <div class="col-xs-12 text-danger text-left" id="eml">
+                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="" autocomplete="off" autofocus>
+                                <div class="invalid-feedback help help-block text-left">
+                                    Please enter your email.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12">
-                                <input type="password" id="password" name="user-password" class="form-control form-control-line" placeholder="Password" required="" value="" autocomplete="off">
-                                <span class="help-block text-muted">
-                                    <small></small>
-                                </span>
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
+                                <div class="invalid-feedback help help-block text-left">
+                                    Please enter your password.
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -159,7 +159,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                         </div>
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info btn-rounded">Login</button>
+                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit" id="loginBtn">Login</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
@@ -214,8 +214,81 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     <!-- Custom scripts for this template -->
     <script src="asset/js/stylish-portfolio.min.js"></script>
 
-    <script src="asset/js/jqBootstrapValidation.js"></script>
-    <script src="asset/js/contact_me.js"></script>
+    <script src="/asset/js/jqBootstrapValidation.js"></script>
+    <script src="/asset/js/contact_me.js"></script>
+
+    <script src="asset/dist/js/pages/jasny-bootstrap.js"></script>
+
+    <script src="asset/js/jquery.validate.min.js"></script>
+    <script>
+		$.validator.setDefaults( {
+			submitHandler: function () {
+                $('#loginBtn').attr('disabled','disabled');
+                $('#loginForm').attr('disabled','disabled');
+                $('#loginForm').addClass('disabled');
+                $("[name='usertype']").attr('disabled','disabled');
+                $('#email').attr('disabled','disabled');
+                $('#password').attr('disabled','disabled');
+
+                $( "#loginForm" ).submit();
+				//$( "#btn" ).html('');
+                //alert( "submitted!" );
+			}
+		} );
+
+		$( document ).ready( function () {
+            $( "#loginForm" ).validate( {
+				rules: {
+					usertype: "required",
+					email: {
+						required: true,
+						email: true
+					},
+					password: {
+						required: true
+					}
+				},
+				messages: {
+					usertype: "Please select your usertype",
+					email: "Please enter a valid email",
+					password: {
+						required: "Please provide a password"
+					}
+				},
+				errorElement: "em",
+				errorPlacement: function ( error, element ) {
+					// Add the `help-block` class to the error element
+					error.addClass( "help-block" );
+
+					// Add `has-feedback` class to the parent div.form-group
+					// in order to add icons to inputs
+					element.parents( ".col-xs-12" ).addClass( "has-feedback" );
+
+					if ( element.prop( "type" ) === "checkbox" ) {
+						error.insertAfter( element.parent( "label" ) );
+					} else {
+						error.insertAfter( element );
+					}
+				},
+				success: function ( label, element ) {
+					// Add the span element, if doesn't exists, and apply the icon classes to it.
+					if ( !$( element ).next( "span" )[ 0 ] ) {
+						$( "<span class='glyphicon glyphicon-ok form-control-feedback'></span>" ).insertAfter( $( element ) );
+					}
+				},
+				highlight: function ( element, errorClass, validClass ) {
+					$( element ).parents( ".col-xs-12" ).addClass( "has-error" ).removeClass( "has-success" );
+					$( element ).next( "span" ).addClass( "glyphicon-remove" ).removeClass( "glyphicon-ok" );
+				},
+				unhighlight: function (element, errorClass, validClass) {
+					$( element ).parents( ".col-xs-12" ).addClass( "has-success" ).removeClass( "has-error" );
+					$( element ).next( "span" ).addClass( "glyphicon-ok" ).removeClass( "glyphicon-remove" );
+				}
+			} );
+		} );
+        /*
+        */
+	</script>
 
     <!-- Custom Theme JavaScript -->
     <script>

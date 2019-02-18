@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-02-10
+ * @update        2019-02-18
  */
 
 require("include/config.php");
@@ -128,8 +128,8 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="">
+                            <div class="col-xs-12 text-danger text-left" id="eml">
+                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="" autocomplete="off" >
                                 <div class="invalid-feedback help text-left">
                                     Please enter your email.
                                 </div>
@@ -265,7 +265,6 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 
     <script src="asset/js/jquery.validate.min.js"></script>
     <script>
-        /*
 		$.validator.setDefaults( {
 			submitHandler: function () {
                 $('#signupBtn').attr('disabled','disabled');
@@ -287,7 +286,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 		} );
 
 		$( document ).ready( function () {
-			$( "#signupForm" ).validate( {
+            $( "#signupForm" ).validate( {
 				rules: {
 					name: {
 						required: true,
@@ -362,6 +361,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 				}
 			} );
 		} );
+        /*
         */
 	</script>
     
