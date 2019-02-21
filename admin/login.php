@@ -1,8 +1,28 @@
+<?php
+/**
+ * CodeWork : Freelancing Platform
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @package       CodeWork
+ * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * @link          
+ * @since         1.0.0
+ * @license       MIT License (https://opensource.org/licenses/mit-license.php)
+ * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
+ *                Vivek Patel
+ *                Priya Patel
+ * @filename      admin/login.php
+ * @begin         2019-02-21
+ * @update        2019-02-21
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from eliteadmin.themedesigner.in/demos/bt4/material/pages-login-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Oct 2018 12:20:25 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -77,7 +97,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
                             <div class="social">
-                                <button class="btn  btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fab fa-facebook-f"></i> </button>
+                                <button class="btn btn-facebook" data-toggle="tooltip" title="Login with Facebook"> <i aria-hidden="true" class="fab fa-facebook-f"></i> </button>
                                 <button class="btn btn-googleplus" data-toggle="tooltip" title="Login with Google"> <i aria-hidden="true" class="fab fa-google-plus-g"></i> </button>
                             </div>
                         </div>
