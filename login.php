@@ -84,7 +84,6 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     }
     </style>
 
-
 </head>
 
 <body id="page-top">
@@ -99,7 +98,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="loginForm" action="include/check-user.php" method="post" novalidate>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="loginForm" action="include/check-user.php" method="post">
                         <h3 class="text-center m-b-20">Login</h3>
                         <div class="form-group">
                         <?php
@@ -226,10 +225,10 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                 $('#loginBtn').attr('disabled','disabled');
                 $('#loginForm').attr('disabled','disabled');
                 $('#loginForm').addClass('disabled');
-                $("[name='usertype']").attr('disabled','disabled');
-                $('#email').attr('disabled','disabled');
-                $('#password').attr('disabled','disabled');
-
+                $("[name='usertype']").attr('readonly','readonly');
+                $('#email').attr('readonly','readonly');
+                $('#password').attr('readonly','readonly');
+                
                 $( "#loginForm" ).submit();
 				//$( "#btn" ).html('');
                 //alert( "submitted!" );

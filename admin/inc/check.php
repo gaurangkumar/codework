@@ -15,20 +15,21 @@
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Vivek Patel
  *                Priya Patel
- * @filename      include/check-user.php
- * @begin         2018-12-21
+ * @filename      admin/inc/check.php
+ * @begin         2019-02-24
  * @update        2019-02-24
  */
 
-require("config.php");
-require("db.php");
-
-if(empty($_POST['user-email']) || $_POST['user-password'] || $_POST['user-type']) {
+if(empty($_POST['user-email']) || $_POST['user-password']) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> All fields are required!';
     header("location: ../login.php");
     exit;
 }
+print_r($_POST);exit;
+
+require("config.php");
+require("db.php");
 
 $email = $_POST['user-email'];
 $user = $_POST['user-type'];

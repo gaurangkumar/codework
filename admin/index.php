@@ -18,8 +18,13 @@
  *                Priya Patel
  * @filename      admin/index.php
  * @begin         2018-12-21
- * @update        2019-01-21
+ * @update        2019-02-24
  */
+
+if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
+    header("Location: login.php");
+    exit;
+}
 
 require("../include/config.php");
 require("../include/db.php");
