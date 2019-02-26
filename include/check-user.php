@@ -23,16 +23,16 @@
 require("config.php");
 require("db.php");
 
-if(empty($_POST['user-email']) || $_POST['user-password'] || $_POST['user-type']) {
+if(empty($_POST['email']) || $_POST['password'] || $_POST['usertype']) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> All fields are required!';
     header("location: ../login.php");
     exit;
 }
 
-$email = $_POST['user-email'];
-$user = $_POST['user-type'];
-$password = hash('sha256', $_POST['user-password']);
+$user = $_POST['usertype'];
+$email = $_POST['email'];
+$password = hash('sha256', $_POST['password']);
 
 $result = $mysqli->query("SELECT * FROM `$user` WHERE `email` = '$email'");
 
@@ -60,6 +60,10 @@ if($result->num_rows) {
         $_SESSION['USER_ID']	= $user_id;
         $_SESSION['USER_NAME']	= $row['name'];
         $_SESSION['USER_TYPE']	= $user;
+
+        if($remember_me) {
+            setcookie('USER_ID', $user_id);
+        }
 
         header("Location: ../$user.php");
         exit;

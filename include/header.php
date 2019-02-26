@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/header.php
  * @begin         2018-12-21
- * @update        2019-02-12
+ * @update        2019-02-26
  */
 ?>
     <!-- Navigation -->
@@ -46,6 +46,12 @@
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="index.php#contact">Contact</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="login.php">Login</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="signup.php">Signup</a>
         </li>
       </ul>
     </nav>
