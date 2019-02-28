@@ -23,7 +23,7 @@
 require("config.php");
 require("db.php");
 
-if(empty($_POST['email']) || $_POST['password'] || $_POST['usertype']) {
+if(empty($_POST['email']) || empty($_POST['password']) || empty($_POST['usertype']) ) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> All fields are required!';
     header("location: ../login.php");

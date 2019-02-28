@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-02-12
+ * @update        2019-02-28
  */
 
 require("include/config.php");
@@ -290,20 +290,20 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
               <h4>Gaurang Parmar</h4>
-              <p class="text-muted">Lead Designer</p>
+              <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="https://twitter.com/gaurangkumarp">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="https://facebook.com/gaurangkumarp/">
                     <i class="fa fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="https://www.linkedin.com/in/gaurangkumar/">
                     <i class="fa fa-linkedin"></i>
                   </a>
                 </li>
