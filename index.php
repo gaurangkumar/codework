@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-02-28
+ * @update        2019-03-01
  */
 
 require("include/config.php");
@@ -317,17 +317,17 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="javascript:void()">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="javascript:void()">
                     <i class="fa fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="javascript:void()">
                     <i class="fa fa-linkedin"></i>
                   </a>
                 </li>
@@ -341,17 +341,17 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="javascript:void()">
                     <i class="fa fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="javascript:void()">
                     <i class="fa fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="#">
+                  <a href="javascript:void()">
                     <i class="fa fa-linkedin"></i>
                   </a>
                 </li>
@@ -361,7 +361,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         </div>
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+            <p class="large text-muted"></p>
           </div>
         </div>
       </div>
@@ -395,7 +395,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
       </div>
     </section>
 
-    <!-- Call to Action -->
+    <!-- Contact -->
     <section class="content-section bg-dark text-white" id="contact">
       <div class="container text-center">
         <h2 class="mb-4">Feedback Us</h2>
