@@ -143,7 +143,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     <header class="masthead">
         <div class="container text-center my-auto">
             <h1 class="mb-5 h2">Freelancer Dashboard</h1>
-            <a class="btn btn-primary btn-xl" href="post.php" id="login_btn">Post Project</a>
+            <!--a class="btn btn-primary btn-xl" href="post.php" id="login_btn">Post Project</a-->
             <a class="btn btn-primary btn-xl" href="include/logout.php">Logout</a>
         </div>
         <div class="overlay"></div>
@@ -219,46 +219,25 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         </div>
     </section>
         <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 m-t-30">
-                        <h4 class="m-b-0">Content types</h4>
-                        <p class="text-muted m-t-0">The building block of a card is the <code>.card</code> <code>.card-body</code> Use it whenever you need a padded section within a card.</p>
-                        <div class="card">
-                            <div class="card-body collapse show">
-                                <h4 class="card-title">Special title treatment</h4>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
+            <div class="row">
                     <div class="col-12 m-t-30">
                         <h4 class="m-b-0">Titles, text, and links</h4>
                         <p class="text-muted m-t-0">Card titles are used by adding <code>.card-title</code> &amp; <code>.card-subtitle</code> for subtitle of card.</p>
-                        <div class="card">
+                        <div class="card border-dark">
+                            <div class="card-header bg-dark ">
+                                <h4 class="m-0 p-0 text-white font-weight-light">Card Title</h4>
+                            </div>
                             <div class="card-body">
                                 <h4 class="card-title">Card title</h4>
                                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <a href="javascript:void(0)" class="card-link">Card link</a>
                                 <a href="javascript:void(0)" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12 m-t-30">
-                        <h4 class="m-b-0">Card styles</h4>
-                        <p class="text-muted m-t-0 font-12">Cards include various options for customizing their backgrounds, borders, and color.<code>.card-primary info, warning, danger</code></p>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card border-dark">
-                            <div class="card-header bg-dark">
-                                <h4 class="m-b-0 text-white font-weight-light">Card Title</h4></div>
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                 <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn card-actions">card-actions</a>
+                            </div>
+                            <div class="card-footer">
+                                card-footer
                             </div>
                         </div>
                     </div>
