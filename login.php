@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-02-26
+ * @update        2019-03-03
  */
 
 require("include/config.php");
@@ -83,7 +83,21 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
         border-bottom:1px solid #fb9678
     }
     </style>
+    <style>
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    </style>
 </head>
 
 <body id="page-top">
@@ -213,15 +227,13 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     <!-- Custom scripts for this template -->
     <script src="asset/js/stylish-portfolio.min.js"></script>
 
-    <script src="/asset/js/jqBootstrapValidation.js"></script>
-    <script src="/asset/js/contact_me.js"></script>
-
     <script src="asset/dist/js/pages/jasny-bootstrap.js"></script>
 
     <script src="asset/js/jquery.validate.min.js"></script>
     <script>
 		$.validator.setDefaults( {
 			submitHandler: function () {
+                $('#loginBtn').html('Login <div class="loader pull-right"></div>');
                 $('#loginBtn').attr('disabled','disabled');
                 $('#loginForm').attr('disabled','disabled');
                 $('#loginForm').addClass('disabled');

@@ -224,9 +224,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                         <h4 class="m-b-0">Titles, text, and links</h4>
                         <p class="text-muted m-t-0">Card titles are used by adding <code>.card-title</code> &amp; <code>.card-subtitle</code> for subtitle of card.</p>
                         <div class="card border-dark">
-                            <div class="card-header bg-dark ">
-                                <h4 class="m-0 p-0 text-white font-weight-light">Card Title</h4>
-                            </div>
                             <div class="card-body">
                                 <h4 class="card-title">Card title</h4>
                                 <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -236,15 +233,32 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                 <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
                                 <a href="#" class="btn card-actions">card-actions</a>
                             </div>
-                            <div class="card-footer">
-                                card-footer
+                        </div>
+                        <div class="card border-dark">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="javascript:void(0)" class="card-link">Card link</a>
+                                <a href="javascript:void(0)" class="card-link">Another link</a>
+                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn card-actions">card-actions</a>
+                            </div>
+                        </div>
+                        <div class="card border-dark">
+                            <div class="card-body">
+                                <h4 class="card-title">Card title</h4>
+                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <a href="javascript:void(0)" class="card-link">Card link</a>
+                                <a href="javascript:void(0)" class="card-link">Another link</a>
+                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
+                                <a href="#" class="btn card-actions">card-actions</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card border-info">
-                            <div class="card-header bg-info">
-                                <h4 class="m-b-0 text-white font-weight-normal">Card Title</h4></div>
                             <div class="card-body">
                                 <h3 class="card-title">Special title treatment</h3>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -254,8 +268,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                     </div>
                     <div class="col-md-6">
                         <div class="card border-primary">
-                            <div class="card-header bg-primary">
-                                <h4 class="m-b-0 text-white">Card Title</h4></div>
                             <div class="card-body">
                                 <h3 class="card-title">Special title treatment</h3>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -265,8 +277,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                     </div>
                     <div class="col-md-6">
                         <div class="card border-danger">
-                            <div class="card-header bg-danger">
-                                <h4 class="m-b-0 text-white">Card Title</h4></div>
                             <div class="card-body">
                                 <h3 class="card-title">Special title treatment</h3>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -276,8 +286,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                     </div>
                     <div class="col-md-6">
                         <div class="card border-warning">
-                            <div class="card-header bg-warning">
-                                <h4 class="m-b-0 text-white">Card Title</h4></div>
                             <div class="card-body">
                                 <h3 class="card-title">Special title treatment</h3>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -287,8 +295,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                     </div>
                     <div class="col-md-6">
                         <div class="card border-success">
-                            <div class="card-header bg-success">
-                                <h4 class="m-b-0 text-white">Card Title</h4></div>
                             <div class="card-body">
                                 <h3 class="card-title">Special title treatment</h3>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
