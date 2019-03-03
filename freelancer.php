@@ -10,7 +10,7 @@
  *
  * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
- * @link          
+ * @link          http://codework.ml/
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      freelancer.php
  * @begin         2019-02-05
- * @update        2019-03-01
+ * @update        2019-03-03
  */
 
 require("include/config.php");
@@ -150,53 +150,32 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     </header>
 
     <section class="content-section bg-light" id="about">
-      <div class="container text-center">
-        <div class="row">
-          <div class="col-lg-12 mx-auto">
-            <h2>Perfect Websites Are The Perfect Way For Your Next Project !</h2>
-            <p class="lead mb-5">We Build The Way To Your Success..</p>
-          </div>
-        </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-lg-12 mx-auto">
+                    <h2>Find Work</h2>
+                    <p class="lead mb-5"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 m-t-30">
+                    <h4 class="m-b-0">Search Result For "Angular Js"</h4>
+                    <p class="text-muted m-t-0">About 14,700 result ( 0.10 seconds)</p>
+                </div>
+                <div class="col-md-6">
+                        <div class="card border-info">
                             <div class="card-body">
-                                <h4 class="card-title">Search Result For "Angular Js"</h4>
-                                <h6 class="card-subtitle">About 14,700 result ( 0.10 seconds)</h6>
-                                <ul class="search-listing">
-                                    <li>
-                                        <h3><a href="javacript:void(0)">AngularJs</a></h3>
-                                        <a href="javascript:void(0)" class="search-links">http://www.google.com/angularjs</a>
-                                        <p>Lorem Ipsum viveremus probamus opus apeirian haec perveniri, memoriter.Praebeat pecunias viveremus probamus opus apeirian haec perveniri, memoriter.</p>
-                                    </li>
-                                    <li>
-                                        <h3><a href="javacript:void(0)">AngularJS — Superheroic JavaScript MVW Framework</a></h3>
-                                        <a href="javascript:void(0)" class="search-links">http://www.google.com/angularjs</a>
-                                        <p>Lorem Ipsum viveremus probamus opus apeirian haec perveniri, memoriter.Praebeat pecunias viveremus probamus opus apeirian haec perveniri, memoriter.</p>
-                                    </li>
-                                    <li>
-                                        <h3><a href="javacript:void(0)">AngularJS Tutorial - W3Schools</a></h3>
-                                        <a href="javascript:void(0)" class="search-links">http://www.google.com/angularjs</a>
-                                        <p>Lorem Ipsum viveremus probamus opus apeirian haec perveniri, memoriter.Praebeat pecunias viveremus probamus opus apeirian haec perveniri, memoriter.</p>
-                                    </li>
-                                    <li>
-                                        <h3><a href="javacript:void(0)">Introduction to AngularJS - W3Schools</a></h3>
-                                        <a href="javascript:void(0)" class="search-links">http://www.google.com/angularjs</a>
-                                        <p>Lorem Ipsum viveremus probamus opus apeirian haec perveniri, memoriter.Praebeat pecunias viveremus probamus opus apeirian haec perveniri, memoriter.</p>
-                                    </li>
-                                    <li>
-                                        <h3><a href="javacript:void(0)">AngularJS Tutorial</a></h3>
-                                        <a href="javascript:void(0)" class="search-links">http://www.google.com/angularjs</a>
-                                        <p>Lorem Ipsum viveremus probamus opus apeirian haec perveniri, memoriter.Praebeat pecunias viveremus probamus opus apeirian haec perveniri, memoriter.</p>
-                                    </li>
-                                    <li>
-                                        <h3><a href="javacript:void(0)">Angular 2: One framework.</a></h3>
-                                        <a href="javascript:void(0)" class="search-links">http://www.google.com/angularjs</a>
-                                        <p>Lorem Ipsum viveremus probamus opus apeirian haec perveniri, memoriter.Praebeat pecunias viveremus probamus opus apeirian haec perveniri, memoriter.</p>
-                                    </li>
-                                </ul>
-                                <nav aria-label="Page navigation example" class="m-t-40">
-                                    <ul class="pagination">
+                                <h3 class="card-title">Special title treatment</h3>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6 m-t-30 offset-5">
+                    <nav aria-label="Page navigation example" class="m-t-40">
+                        <ul class="pagination">
                                         <li class="page-item disabled">
                                             <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
                                         </li>
@@ -211,99 +190,11 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                             <a class="page-link" href="javascript:void(0)">Next</a>
                                         </li>
                                     </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
+                    </nav>
                 </div>
+            </div>
         </div>
     </section>
-        <div class="container-fluid">
-            <div class="row">
-                    <div class="col-12 m-t-30">
-                        <h4 class="m-b-0">Titles, text, and links</h4>
-                        <p class="text-muted m-t-0">Card titles are used by adding <code>.card-title</code> &amp; <code>.card-subtitle</code> for subtitle of card.</p>
-                        <div class="card border-dark">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="javascript:void(0)" class="card-link">Card link</a>
-                                <a href="javascript:void(0)" class="card-link">Another link</a>
-                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
-                                <a href="#" class="btn card-actions">card-actions</a>
-                            </div>
-                        </div>
-                        <div class="card border-dark">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="javascript:void(0)" class="card-link">Card link</a>
-                                <a href="javascript:void(0)" class="card-link">Another link</a>
-                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
-                                <a href="#" class="btn card-actions">card-actions</a>
-                            </div>
-                        </div>
-                        <div class="card border-dark">
-                            <div class="card-body">
-                                <h4 class="card-title">Card title</h4>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="javascript:void(0)" class="card-link">Card link</a>
-                                <a href="javascript:void(0)" class="card-link">Another link</a>
-                                <a href="javascript:void(0)" class="btn btn-primary">Go somewhere</a>
-                                <a href="#" class="btn card-actions">card-actions</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-info">
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-primary">
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-danger">
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-warning">
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card border-success">
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-      </div>
 
     <!-- Footer -->
 	<?php

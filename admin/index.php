@@ -10,7 +10,7 @@
  *
  * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
- * @link          
+ * @link          http://codework.ml/
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      admin/index.php
  * @begin         2018-12-21
- * @update        2019-02-24
+ * @update        2019-03-03
  */
 
 if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {

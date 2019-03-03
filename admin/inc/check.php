@@ -9,7 +9,7 @@
  *
  * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
- * @link          
+ * @link          http://codework.ml/
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      admin/inc/check.php
  * @begin         2019-02-24
- * @update        2019-02-24
+ * @update        2019-03-03
  */
 
 if(empty($_POST['user-email']) || $_POST['user-password']) {
