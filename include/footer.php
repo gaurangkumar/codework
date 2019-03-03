@@ -40,6 +40,6 @@
             </a>
           </li>
         </ul>
-        <p class="text-muted small mb-0">Copyright &copy; Your Website 2018</p>
+        <p class="text-muted small mb-0">Copyright &copy; CodeWork 2019</p>
       </div>
     </footer>
