@@ -44,7 +44,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -172,8 +172,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                         </div>
                         <div class="form-group text-center">
                             <div class="col-xs-12 p-b-20">
-                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit" id="loginBtn">Login</button>
-                            </div>
+                                <button class="btn btn-block btn-lg btn-info btn-rounded" type="submit" id="loginBtn">Login</div>
                         </div>
                         <div class="form-group m-b-0">
                             <div class="col-sm-12 text-center">
@@ -233,7 +232,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     <script>
 		$.validator.setDefaults( {
 			submitHandler: function () {
-                $('#loginBtn').html('Login <div class="loader pull-right"></div>');
+                $('#loginBtn').html('Login <div class="spinner-border text-secondary float-right" role="status"><span class="sr-only">Loading...</span></div>');
                 $('#loginBtn').attr('disabled','disabled');
                 $('#loginForm').attr('disabled','disabled');
                 $('#loginForm').addClass('disabled');

@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-02-18
+ * @update        2019-03-03
  */
 
 require("include/config.php");
@@ -44,7 +44,6 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -267,6 +266,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     <script>
 		$.validator.setDefaults( {
 			submitHandler: function () {
+                $('#signupBtn').html('Signup <div class="spinner-border text-secondary float-right" role="status"><span class="sr-only">Loading...</span></div>');
                 $('#signupBtn').attr('disabled','disabled');
                 $('#signupForm').attr('disabled','disabled');
                 $('#signupForm').addClass('disabled');
