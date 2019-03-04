@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      freelancer.php
  * @begin         2019-02-05
- * @update        2019-03-03
+ * @update        2019-03-04
  */
 
 require("include/config.php");
@@ -32,6 +32,14 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'freelancer') {
     header("Location: login.php");
     exit;
 }
+$fid = $_SESSION['USER_ID'];
+
+$result = $mysqli->query("SELECT `lang` FROM `freelancer` WHERE `fid` = $fid");
+$row = $result->fetch_assoc();
+$lang = $row['lang'];
+
+$result = $mysqli->query("SELECT `pid`, `name`, `detail`, `cost` FROM `post_prj` WHERE `lang` = '$lang'");
+$count = $result->num_rows;
 ?>
 <html lang="en">
 
@@ -159,37 +167,42 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             </div>
             <div class="row">
                 <div class="col-12 m-t-30">
-                    <h4 class="m-b-0">Search Result For "Angular Js"</h4>
-                    <p class="text-muted m-t-0">About 14,700 result ( 0.10 seconds)</p>
+                    <h4 class="m-b-0">Search Result For "<?=$lang?>"</h4>
+                    <p class="text-muted m-t-0">About <?=$count?> result</p>
                 </div>
+                <?php
+                while($row = $result->fetch_assoc()) {
+                ?>
                 <div class="col-md-6">
-                        <div class="card border-info">
-                            <div class="card-body">
-                                <h3 class="card-title">Special title treatment</h3>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="javascript:void(0)" class="btn btn-inverse">Go somewhere</a>
-                            </div>
+                    <div class="card border-info">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a href="projects.php?pid=<?=$row['pid']?>"><?=$row['name']?></a>
+                            </h3>
+                            <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
+                            <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                             include/placebid.php" class="btn btn-inverse card-actions">Bid</a>
                         </div>
                     </div>
+                </div>
+                <?php
+                }
+                ?>
             </div>
             <div class="row text-center">
                 <div class="col-6 m-t-30 offset-5">
                     <nav aria-label="Page navigation example" class="m-t-40">
                         <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
-
-
-
-
-                                        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="javascript:void(0)">Next</a>
-                                        </li>
-                                    </ul>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)">1</a>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)">Next</a>
+                            </li>
+                        </ul>
                     </nav>
                 </div>
             </div>
