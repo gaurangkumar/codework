@@ -45,11 +45,10 @@ if($mysqli->errno) {
 if($result->num_rows) {
     $row = $result->fetch_array();
     $user_id = $row['id'];
-print_r($password);exit;
     if($row['password'] != $password) {
         //Login Unsuccessful
         $_SESSION["msg"]["type"] = "danger";
-        $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Password.</strong> !';
+        $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Password !</strong>';
         header("Location: ../login.php");
         exit;
     }

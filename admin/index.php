@@ -21,13 +21,13 @@
  * @update        2019-03-03
  */
 
+require("../include/config.php");
+require("../include/db.php");
+
 if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
     header("Location: login.php");
     exit;
 }
-
-require("../include/config.php");
-require("../include/db.php");
 ?>
 <html lang="en">
 <head>

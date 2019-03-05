@@ -17,16 +17,16 @@
  *                Priya Patel
  * @filename      admin/login.php
  * @begin         2019-02-21
- * @update        2019-03-03
+ * @update        2019-03-05
  */
+
+require("../include/config.php");
+require("../include/db.php");
 
 if(isset($_SESSION['ADMIN_ID']) && !empty($_SESSION['ADMIN_ID'])) {
     header("Location: index.php");
     exit;
 }
-
-require("../include/config.php");
-require("../include/db.php");
 
 ?>
 <!DOCTYPE html>
