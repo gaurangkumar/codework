@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      admin/index.php
  * @begin         2018-12-21
- * @update        2019-03-03
+ * @update        2019-03-06
  */
 
 require("../include/config.php");
@@ -28,6 +28,20 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
     header("Location: login.php");
     exit;
 }
+
+$result = $mysqli->query("SELECT `cid` FROM `client`");
+$client = $result->num_rows;
+
+$result = $mysqli->query("SELECT `fid` FROM `freelancer`");
+$freelancer = $result->num_rows;
+
+$result = $mysqli->query("SELECT `pid` FROM `post_prj`");
+$project = $result->num_rows;
+
+$result = $mysqli->query("SELECT `fbid` FROM `feedback`");
+$feedback = $result->num_rows;
+
+
 ?>
 <html lang="en">
 <head>
@@ -58,94 +72,23 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
 </head>
 
 <body class="skin-default fixed-layout">
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
             <p class="loader__label">CodeWork admin</p>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
         <?php
         require("inc/header.php");
         ?>
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <aside class="left-sidebar">
-            <!-- Sidebar scroll-->
-            <div class="scroll-sidebar">
-                <!-- Sidebar navigation-->
-                <nav class="sidebar-nav">
-                    <ul id="sidebarnav">
-                        <li class="user-pro"> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"><span class="hide-menu">Admin</span></a>
-                            <ul aria-expanded="false" class="collapse">
-                                <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-email"></i> Inbox</a></li>
-                                <li><a href="javascript:void(0)"><i class="ti-settings"></i> Account Setting</a></li>
-                                <li><a href="javascript:void(0)"><i class="fa fa-power-off"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="waves-effect waves-dark" href="." aria-expanded="false">
-                                <i class="far fa-circle text-danger"></i>
-                                <span class="hide-menu">Dashboard</span>
-                            </a>
-                        </li>
-                        <li> <a class="waves-effect waves-dark" href="pages-login.html" aria-expanded="false"><i class="far fa-circle text-success"></i><span class="hide-menu">Log Out</span></a></li>
-                        <li> <a class="waves-effect waves-dark" href="pages-faq.html" aria-expanded="false"><i class="far fa-circle text-info"></i><span class="hide-menu">FAQs</span></a></li>
-                    </ul>
-                </nav>
-                <!-- End Sidebar navigation -->
-            </div>
-            <!-- End Sidebar scroll-->
-        </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
                 <div class="row page-titles">
                     <div class="col-md-5 align-self-center">
                         <h4 class="text-themecolor">Dashboard</h4>
                     </div>
-                    <div class="col-md-7 align-self-center text-right">
-                        <div class="d-flex justify-content-end align-items-center">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                            <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
-                        </div>
-                    </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Info box -->
-                <!-- ============================================================== -->
                 <div class="card-group">
                     <div class="card">
                         <div class="card-body">
@@ -154,10 +97,10 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-screen-desktop"></i></h3>
-                                            <p class="text-muted">MYNEW CLIENTS</p>
+                                            <p class="text-muted">TOTAL CLIENTS</p>
                                         </div>
                                         <div class="ml-auto">
-                                            <h2 class="counter text-primary">23</h2>
+                                            <h2 class="counter text-primary"><?=$client?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -169,32 +112,6 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="d-flex no-block align-items-center">
-                                        <div>
-                                            <h3><i class="icon-note"></i></h3>
-                                            <p class="text-muted">NEW PROJECTS</p>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <h2 class="counter text-cyan">169</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-cyan" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Column -->
-                    <!-- Column -->
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -202,10 +119,10 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-doc"></i></h3>
-                                            <p class="text-muted">NEW INVOICES</p>
+                                            <p class="text-muted">TOTAL FREELANCER</p>
                                         </div>
                                         <div class="ml-auto">
-                                            <h2 class="counter text-purple">157</h2>
+                                            <h2 class="counter text-purple"><?=$freelancer?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -217,8 +134,28 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                             </div>
                         </div>
                     </div>
-                    <!-- Column -->
-                    <!-- Column -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex no-block align-items-center">
+                                        <div>
+                                            <h3><i class="icon-note"></i></h3>
+                                            <p class="text-muted">TOTAL PROJECTS</p>
+                                        </div>
+                                        <div class="ml-auto">
+                                            <h2 class="counter text-cyan"><?=$project?></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="progress">
+                                        <div class="progress-bar bg-cyan" role="progressbar" style="width: 85%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -226,10 +163,10 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-bag"></i></h3>
-                                            <p class="text-muted">All PROJECTS</p>
+                                            <p class="text-muted">TOTAL FEEDBACK</p>
                                         </div>
                                         <div class="ml-auto">
-                                            <h2 class="counter text-success">431</h2>
+                                            <h2 class="counter text-success"><?=$feedback?></h2>
                                         </div>
                                     </div>
                                 </div>
@@ -242,13 +179,6 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Info box -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right sidebar -->
-                <!-- ============================================================== -->
-                <!-- .right-sidebar -->
                 <div class="right-sidebar">
                     <div class="slimscrollright">
                         <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
@@ -299,33 +229,12 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Right sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
         <footer class="footer">
-            © 2018 CodeWork by Gaurang, Vivek &amp; Priya
+            © 2019 CodeWork by Gaurang, Vivek &amp; Priya
         </footer>
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
     <script src="../assets/node_modules/jquery/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap popper Core JavaScript -->
     <script src="../assets/node_modules/popper/popper.min.js"></script>
@@ -348,6 +257,6 @@ if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
     <!-- Popup message jquery -->
     <script src="../assets/node_modules/toast-master/js/jquery.toast.js"></script>
     <!-- Chart JS -->
-    <script src="dist/js/dashboard1.js"></script>
+    <script src="/dist/js/dashboard1.js"></script>
 </body>
 </html>

@@ -87,8 +87,8 @@ if(isset($_SESSION['ADMIN_ID']) && !empty($_SESSION['ADMIN_ID'])) {
 					        <?=$_SESSION["msg"]["msg"]?>
 				        </div>
                         <?php
-                            //$_SESSION["msg"]="";
-                            //unset($_SESSION["msg"]);
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
                         }
                         ?>
                     </div>

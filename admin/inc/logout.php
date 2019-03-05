@@ -15,19 +15,18 @@
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Vivek Patel
  *                Priya Patel
- * @filename      include/logout.php
+ * @filename      inc/logout.php
  * @begin         2018-12-21
- * @update        2019-03-05
+ * @update        2019-03-04
  */
 
-require("config.php");
-require("db.php");
+require("../../include/config.php");
+require("../../include/db.php");
 
-unset($_SESSION['USER_ID']);
-unset($_SESSION['USER_NAME']);
-unset($_SESSION['USER_TYPE']);
+unset($_SESSION['ADMIN_ID']);
+unset($_SESSION['ADMIN_NAME']);
 
 session_destroy();
 
-header("Location: ../index.php");
+header("Location: ../login.php");
 exit;
