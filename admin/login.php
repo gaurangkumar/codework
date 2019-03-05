@@ -87,8 +87,8 @@ require("../include/db.php");
 					        <?=$_SESSION["msg"]["msg"]?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            //$_SESSION["msg"]="";
+                            //unset($_SESSION["msg"]);
                         }
                         ?>
                     </div>

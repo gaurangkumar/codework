@@ -17,25 +17,23 @@
  *                Priya Patel
  * @filename      admin/inc/check.php
  * @begin         2019-02-24
- * @update        2019-03-03
+ * @update        2019-03-05
  */
 
-if(empty($_POST['user-email']) || $_POST['user-password']) {
+require("../../include/config.php");
+require("../../include/db.php");
+
+if(empty($_POST['email']) || empty($_POST['password'])) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> All fields are required!';
     header("location: ../login.php");
     exit;
 }
-print_r($_POST);exit;
 
-require("config.php");
-require("db.php");
+$email = $_POST['email'];
+$password = hash('sha256', $_POST['password']);
 
-$email = $_POST['user-email'];
-$user = $_POST['user-type'];
-$password = hash('sha256', $_POST['user-password']);
-
-$result = $mysqli->query("SELECT * FROM `$user` WHERE `email` = '$email'");
+$result = $mysqli->query("SELECT * FROM `admin` WHERE `email` = '$email'");
 
 if($mysqli->errno) {
     $_SESSION["msg"]["type"] = "danger";
@@ -46,7 +44,8 @@ if($mysqli->errno) {
 
 if($result->num_rows) {
     $row = $result->fetch_array();
-    $user_id = ($user == 'client') ? $row['cid'] : $row['fid'];
+    $user_id = $row['id'];
+print_r($password);exit;
     if($row['password'] != $password) {
         //Login Unsuccessful
         $_SESSION["msg"]["type"] = "danger";
@@ -56,13 +55,10 @@ if($result->num_rows) {
     }
     else { 
         //Login Successful
-        $remember_me = (isset($_POST['remember_me'])) ? true : false;
+        $_SESSION['ADMIN_ID']	= $user_id;
+        $_SESSION['ADMIN_NAME']	= $row['name'];
 
-        $_SESSION['USER_ID']	= $user_id;
-        $_SESSION['USER_NAME']	= $row['name'];
-        $_SESSION['USER_TYPE']	= $user;
-
-        header("Location: ../$user.php");
+        header("Location: ../index.php");
         exit;
     }
 }

@@ -112,10 +112,16 @@ $row = $result->fetch_assoc();
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card border-primary">
                 <div class="card-header bg-primary">
-                    <h3 class="m-0 text-light"><?=$row['name']?></h3>
+                    <h3 class="m-0 text-light"><?=ucfirst($row['name'])?></h3>
                 </div>
-                <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="signupForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
+                <div class="card-body text-left">
+                    <h4 class="card-title h5">Project Budget (INR)</h4>
+                    <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                    <h4 class="card-title h5">Project Description</h4>
+                    <p class="card-text"><?=ucfirst($row['detail'])?></p>
+                    <h4 class="card-title h5">Bid Proposal</h4>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/placebid.php" method="post" novalidate>
+                        <input type="hidden" name="pid" value="<?=$row['pid']?>">
                         <div class="form-group">
                         <?php
                         if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
@@ -133,102 +139,16 @@ $row = $result->fetch_assoc();
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
-                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Name" required value="">
+                                <label for="msg" class="text-info col-form-label">What makes you the best candidate for this project?</label>
+                                <textarea rows="5" id="msg" name="msg" class="form-control form-control-line form-control-success" placeholder="Your message" required value=""></textarea>
                                 <div class="invalid-feedback help text-left">
-                                    Please enter your full name.
+                                    Please enter your message.
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left" id="eml">
-                                <input type="email" id="email" name="email" class="form-control form-control-line" placeholder="Email" required="" value="" autocomplete="off" >
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your email.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <input type="password" id="password" name="password" class="form-control form-control-line" placeholder="Password" required="" value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your password.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <input type="password" id="cpassword" name="cpassword" class="form-control form-control-line" placeholder="Confirm Password" required="" value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your password again.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12 text-danger text-left">
-                                <select class="form-control form-control-line custom-select" id="usertype" name="usertype" required>
-                                    <option value="">User Type </option>
-                                    <option value="freelancer">Freelancer</option>
-                                    <option value="client">Client</option>
-                                </select>
-                                <div class="invalid-feedback help text-left">
-                                    Please select your user type.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" id="langInput" style="display: none">
-                            <div class="col-xs-12 text-danger text-left">
-                                <input type="text" id="lang" name="lang" class="form-control form-control-line form-control-success" placeholder="Programming Langauge" required value="">
-                                <div class="invalid-feedback help text-left">
-                                    Please enter your Programming Langauge.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" id="cvInput" style="display: none">
-                            <div class="col-xs-12 text-danger text-left">
-                                <label class="pull-left text-primary" for="cv">Resume Upload</label>
-                                <input type="file" id="cv" name="cv" class="form-control form-control-line" required>
-                                <div class="invalid-feedback help text-left">
-                                    Please upload your resume.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group" id="idInput" style="display: none">
-                            <div class="col-xs-12 text-danger text-left">
-                                <label class="pull-left text-primary" for="id">ID-Proof Upload</label>
-                                <input type="file" id="id" name="id" class="form-control form-control-line" required>
-                                <div class="invalid-feedback help text-left">
-                                    Please upload your ID-Proof.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
-                                    <label class="custom-control-label" for="agree">
-                                        I agree to all <a href="javascript:void(0)">Terms</a>
-                                    </label>
-                                    <div class="invalid-feedback help">
-                                        Please agree our policy.
-                                    </div>
-                                </div>
-                                <!--div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="agree" required>
-                                    <label class="custom-control-label" for="agree">I agree to all <a href="javascript:void(0)">Terms</a></label>
-                                    <div class="invalid-feedback help">
-                                        Please agree our policy.
-                                    </div>
-                                </div-->
                             </div>
                         </div>
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="signupBtn">Sign Up</button>
-                            </div>
-                        </div>
-                        <div class="form-group m-b-0">
-                            <div class="col-sm-12 text-center">
-                                Already have an account? <a href="login.php" class="text-info m-l-5"><b>Login</b></a>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="bidBtn">Place Bid</button>
                             </div>
                         </div>
                     </form>
@@ -279,69 +199,30 @@ $row = $result->fetch_assoc();
     <script>
 		$.validator.setDefaults( {
 			submitHandler: function () {
-                $('#signupBtn').html('Signup <div class="spinner-border text-secondary float-right" role="status"><span class="sr-only">Loading...</span></div>');
-                $('#signupBtn').attr('disabled','disabled');
-                $('#signupForm').attr('disabled','disabled');
-                $('#signupForm').addClass('disabled');
-                $('#name').attr('disabled','disabled');
-                $('#email').attr('disabled','disabled');
-                $('#password').attr('disabled','disabled');
-                $('#cpassword').attr('disabled','disabled');
-                $('#usertype').attr('disabled','disabled');
-                $('#cv').attr('disabled','disabled');
-                $('#id').attr('disabled','disabled');
-                $('#agree').attr('disabled','disabled');
-
-                $( "#signupForm" ).submit();
+                $('#bidBtn').html('Place Bid <div class="spinner-border text-secondary float-right" role="status"><span class="sr-only">Loading...</span></div>');
+                $('#bidBtn').attr('disabled','disabled');
+                $('#bidForm').attr('disabled','disabled');
+                $('#bidForm').addClass('disabled');
+                $('#msg').attr('disabled','disabled');
+                $( "#bidForm" ).submit();
 				//$( "#btn" ).html('');
                 //alert( "submitted!" );
 			}
 		} );
 
 		$( document ).ready( function () {
-            $( "#signupForm" ).validate( {
+            $( "#bidForm" ).validate( {
 				rules: {
-					name: {
+					msg: {
 						required: true,
-						minlength: 5
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					password: {
-						required: true,
-						minlength: 6
-					},
-					cpassword: {
-						required: true,
-						minlength: 6,
-						equalTo: "#password"
-					},
-					usertype: "required",
-					cv: "required",
-					id: "required",
-					agree: "required"
+						minlength: 30
+					}
 				},
 				messages: {
-					name: {
-						required: "Please enter your full name",
-						minlength: "Your name must consist of at least 5 characters"
-					},
-					email: "Please enter a valid email",
-					password: {
-						required: "Please provide a password",
-						minlength: "Your password must be at least 6 characters long"
-					},
-					cpassword: {
-						required: "Please provide a password",
-						minlength: "Your password must be at least 6 characters long",
-						equalTo: "Please enter the same password as above"
-					},
-					usertype: "Please select your usertype",
-					cv: "Please upload your resume",
-					id: "Please upload yourr ID-Proof",
-					agree: "Please accept our policy"
+					msg: {
+						required: "Please enter your message",
+						minlength: "Your message must consist of at least 30 characters"
+					}
 				},
 				errorElement: "em",
 				errorPlacement: function ( error, element ) {
@@ -374,87 +255,10 @@ $row = $result->fetch_assoc();
 				}
 			} );
 		} );
-        /*
-        */
 	</script>
     
     <!-- Custom Theme JavaScript -->
     <script>
-    /*
-    $(function() {
-
-  $("#signupForm input,#signupForm select").jqBootstrapValidation({
-    preventSubmit: true,
-    submitError: function($form, event, errors) {
-      alert(0);
-      // additional error messages or events
-    },
-    submitSuccess: function($form, event) {
-      alert(1);
-      event.preventDefault(); // prevent default submit behaviour
-      // get values from FORM
-      var name = $("input#name").val();
-      var email = $("input#email").val();
-      var phone = $("input#phone").val();
-      var message = $("textarea#message").val();
-      var firstName = name; // For Success/Failure Message
-      // Check for white space in name for Success/Fail message
-      if (firstName.indexOf(' ') >= 0) {
-        firstName = name.split(' ').slice(0, -1).join(' ');
-      }
-      $this = $("#sendMessageButton");
-      $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
-      $.ajax({
-        url: "../../include/contact_me.php",
-        type: "POST",
-        data: {
-          name: name,
-          phone: phone,
-          email: email,
-          message: message
-        },
-        cache: false,
-        success: function() {
-          // Success message
-          $('#success').html("<div class='alert alert-success'>");
-          $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-success')
-            .append("<strong>Your message has been sent. </strong>");
-          $('#success > .alert-success')
-            .append('</div>');
-          //clear all fields
-          $('#contactForm').trigger("reset");
-        },
-        error: function() {
-          // Fail message
-          $('#success').html("<div class='alert alert-danger'>");
-          $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
-          $('#success > .alert-danger').append('</div>');
-          //clear all fields
-          $('#contactForm').trigger("reset");
-        },
-        complete: function() {
-          setTimeout(function() {
-            $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
-          }, 1000);
-        }
-      });
-    },
-    filter: function() {
-      return $(this).is(":visible");
-    },
-  });
-
-  $("a[data-toggle=\"tab\"]").click(function(e) {
-    e.preventDefault();
-    $(this).tab("show");
-  });
-});
-    */
-
     $('#name').focus(function() {
         $('#success').html('');
     });

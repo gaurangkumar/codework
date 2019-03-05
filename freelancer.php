@@ -177,11 +177,10 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                     <div class="card border-info">
                         <div class="card-body">
                             <h3 class="card-title">
-                                <a href="projects.php?pid=<?=$row['pid']?>"><?=$row['name']?></a>
+                                <a href="projects.php?pid=<?=$row['pid']?>"><?=ucfirst($row['name'])?></a>
                             </h3>
                             <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
                             <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
-                             include/placebid.php" class="btn btn-inverse card-actions">Bid</a>
                         </div>
                     </div>
                 </div>
