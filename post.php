@@ -105,7 +105,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/add-user.php" method="post" novalidate enctype="multipart/form-data">
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/add-post.php" method="post" novalidate enctype="multipart/form-data">
                         <h3 class="text-center m-b-20">Post New Project</h3>
                         <div class="form-group">
                         <?php
