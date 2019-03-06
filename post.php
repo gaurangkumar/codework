@@ -189,7 +189,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         </div>
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="signupBtn">Sign Up</button>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="signupBtn">Post</button>
                             </div>
                         </div>
                         <div class="form-group m-b-0">
