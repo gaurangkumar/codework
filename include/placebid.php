@@ -19,6 +19,10 @@
  * @begin         2019-03-04
  * @update        2019-03-04
  */
+
+require("config.php");
+require("db.php");
+
 if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
     header("Location: login.php");
     exit;
@@ -28,9 +32,6 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'freelancer') {
     exit;
 }
 $fid = $_SESSION['USER_ID'];
-
-require("config.php");
-require("db.php");
 
 if($_POST['pid']=='' || $_POST['msg']=='') {
     $_SESSION["msg"]["type"] = "danger";
@@ -68,6 +69,8 @@ if($result->num_rows) {
 $result = $mysqli->query("INSERT INTO `post_req` (`pid`, `fid`, `msg`) VALUES ($pid, $fid, '$msg')");
 
 if($result) {
+    $_SESSION["msg"]["type"] = "success";
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Requested successfully !';
     header("location: ../projects.php");
     exit;
 }

@@ -203,7 +203,7 @@ $row = $result->fetch_assoc();
                 $('#bidBtn').attr('disabled','disabled');
                 $('#bidForm').attr('disabled','disabled');
                 $('#bidForm').addClass('disabled');
-                $('#msg').attr('disabled','disabled');
+                //$('#msg').attr('disabled','disabled');
                 $( "#bidForm" ).submit();
 				//$( "#btn" ).html('');
                 //alert( "submitted!" );
