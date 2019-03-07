@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      client.php
  * @begin         2019-02-05
- * @update        2019-03-03
+ * @update        2019-03-07
  */
 
 require("include/config.php");
@@ -132,11 +132,115 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     <header class="masthead">
         <div class="container text-center my-auto">
             <h1 class="mb-5 h2">Client Dashboard</h1>
-            <a class="btn btn-primary btn-xl" href="post.php" id="login_btn">Post Project</a>
+            <a class="btn btn-primary btn-xl" href="#projects">Projects</a>
+            <a class="btn btn-primary btn-xl" href="#requests">Requests</a>
+            <a class="btn btn-primary btn-xl" href="post.php">Post Project</a>
             <a class="btn btn-primary btn-xl" href="include/logout.php">Logout</a>
         </div>
         <div class="overlay"></div>
     </header>
+
+    <section class="content-section bg-light" id="projects">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-lg-12 mx-auto">
+                    <h2>Find Work</h2>
+                    <p class="lead mb-5"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 m-t-30">
+                    <h4 class="m-b-0">Search Result For "<?=$lang?>"</h4>
+                    <p class="text-muted m-t-0">About <?=$count?> result</p>
+                </div>
+                <?php
+                while($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-md-6">
+                    <div class="card border-info">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a href="projects.php?pid=<?=$row['pid']?>"><?=ucfirst($row['name'])?></a>
+                            </h3>
+                            <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
+                            <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="row text-center">
+                <div class="col-6 m-t-30 offset-5">
+                    <nav aria-label="Page navigation example" class="m-t-40">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)">1</a>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-light" id="requests">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-lg-12 mx-auto">
+                    <h2>Find Work</h2>
+                    <p class="lead mb-5"></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 m-t-30">
+                    <h4 class="m-b-0">Search Result For "<?=$lang?>"</h4>
+                    <p class="text-muted m-t-0">About <?=$count?> result</p>
+                </div>
+                <?php
+                while($row = $result->fetch_assoc()) {
+                ?>
+                <div class="col-md-6">
+                    <div class="card border-info">
+                        <div class="card-body">
+                            <h3 class="card-title">
+                                <a href="projects.php?pid=<?=$row['pid']?>"><?=ucfirst($row['name'])?></a>
+                            </h3>
+                            <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
+                            <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="row text-center">
+                <div class="col-6 m-t-30 offset-5">
+                    <nav aria-label="Page navigation example" class="m-t-40">
+                        <ul class="pagination">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="javascript:void(0)">1</a>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="javascript:void(0)">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
 	<?php

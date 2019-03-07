@@ -131,8 +131,19 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
           <em>Get Hire, Get Paid</em>
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" id="about_btn">Find Out More</a>
+        <?php
+        if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+        ?>
         <a class="btn btn-primary btn-xl" href="login.php" id="login_btn">Login</a>
         <a class="btn btn-primary btn-xl" href="signup.php" id="post_btn">Signup</a>
+        <?php
+        }
+        else {
+        ?>
+        <a class="btn btn-primary btn-xl" href="<?=$_SESSION['USER_TYPE']?>.php">Dashboard</a>
+        <?php
+        }
+        ?>
         <!--a class="btn btn-primary btn-xl portfolio-link" data-toggle="modal" href="#post" id="post_btn">Signup</a-->
       </div>
       <div class="overlay"></div>
