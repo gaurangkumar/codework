@@ -32,6 +32,8 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
     header("Location: login.php");
     exit;
 }
+
+$cid = $_SESSION['USER_ID'];
 ?>
 <html lang="en">
 
@@ -133,7 +135,6 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         <div class="container text-center my-auto">
             <h1 class="mb-5 h2">Client Dashboard</h1>
             <a class="btn btn-primary btn-xl" href="#projects">Projects</a>
-            <a class="btn btn-primary btn-xl" href="#requests">Requests</a>
             <a class="btn btn-primary btn-xl" href="post.php">Post Project</a>
             <a class="btn btn-primary btn-xl" href="include/logout.php">Logout</a>
         </div>
@@ -144,83 +145,64 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         <div class="container-fluid">
             <div class="row text-center">
                 <div class="col-lg-12 mx-auto">
-                    <h2>Find Work</h2>
+                    <h2>Projects</h2>
                     <p class="lead mb-5"></p>
                 </div>
             </div>
+            <?php
+            $result = $mysqli->query("SELECT * FROM `post_prj` WHERE `cid` = $cid");
+            $num_prj = $result->num_rows;
+            ?>
             <div class="row">
-                <div class="col-12 m-t-30">
-                    <h4 class="m-b-0">Search Result For "<?=$lang?>"</h4>
-                    <p class="text-muted m-t-0">About <?=$count?> result</p>
-                </div>
-                <?php
-                while($row = $result->fetch_assoc()) {
-                ?>
-                <div class="col-md-6">
-                    <div class="card border-info">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                <a href="projects.php?pid=<?=$row['pid']?>"><?=ucfirst($row['name'])?></a>
-                            </h3>
-                            <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
-                            <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><?=$num_prj?> project posted</h4>
+                                <h6 class="card-subtitle"></h6>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Lang</th>
+                                                <th>Cost</th>
+                                                <th>Request</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        while($row = $result->fetch_assoc()) {
+                                        ?>
+                                            <tr>
+                                                <td>
+                                                    <a href="projects.php?pid=<?=$row['pid']?>">
+                                                        #<?=$row['pid']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="projects.php?pid=<?=$row['pid']?>">
+                                                        <?=ucfirst($row['name'])?>
+                                                    </a>
+                                                </td>
+                                                <td><?=$row['row']?></td>
+                                                <td><i class="fa fa-rupee"></i> <?=$row['cost']?></td>
+                                                <td>
+                                                    <div class="label label-table label-success">Paid</div>
+                                                </td>
+                                                <td>EN</td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <?php
-                }
-                ?>
-            </div>
-            <div class="row text-center">
-                <div class="col-6 m-t-30 offset-5">
-                    <nav aria-label="Page navigation example" class="m-t-40">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="javascript:void(0)" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:void(0)">1</a>
-                            </li>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="javascript:void(0)">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="content-section bg-light" id="requests">
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-lg-12 mx-auto">
-                    <h2>Find Work</h2>
-                    <p class="lead mb-5"></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 m-t-30">
-                    <h4 class="m-b-0">Search Result For "<?=$lang?>"</h4>
-                    <p class="text-muted m-t-0">About <?=$count?> result</p>
-                </div>
-                <?php
-                while($row = $result->fetch_assoc()) {
-                ?>
-                <div class="col-md-6">
-                    <div class="card border-info">
-                        <div class="card-body">
-                            <h3 class="card-title">
-                                <a href="projects.php?pid=<?=$row['pid']?>"><?=ucfirst($row['name'])?></a>
-                            </h3>
-                            <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
-                            <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                }
-                ?>
             </div>
             <div class="row text-center">
                 <div class="col-6 m-t-30 offset-5">
