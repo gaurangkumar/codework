@@ -131,7 +131,7 @@ if ($result->num_rows) {
                                                 <td><?=$row['cv']?></td>
                                                 <td><?=$row['id_proof']?></td>
                                                 <td class="text-nowrap">
-                                                    <a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Edit"> <i class="fa fa-pencil text-inverse m-r-10"></i> </a>
+                                                    <input type="button" name="remove" value="REMOVE" class="btn-outline-cyan"/>
                                                     <a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Close"> <i class="fa fa-close text-danger"></i> </a>
                                                 </td>
                                             </tr>
