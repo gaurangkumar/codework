@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      post.php
  * @begin         2019-02-10
- * @update        2019-03-03
+ * @update        2019-03-07
  */
 
 require("include/config.php");
@@ -189,12 +189,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         </div>
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="signupBtn">Post</button>
-                            </div>
-                        </div>
-                        <div class="form-group m-b-0">
-                            <div class="col-sm-12 text-center">
-                                Already have an account? <a href="login.php" class="text-info m-l-5"><b>Login</b></a>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn">Post</button>
                             </div>
                         </div>
                     </form>
