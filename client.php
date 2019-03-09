@@ -137,7 +137,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             <a class="btn btn-primary btn-xl" href="#projects">Projects</a>
             <a class="btn btn-primary btn-xl" href="post.php">Post Project</a>
             <a class="btn btn-primary btn-xl" href="include/logout.php">Logout</a>
-            <div class="row">
+            <div class="row p-3">
                 <div class="col-12">
                     <div class="form-group">
                         <?php
@@ -149,8 +149,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 					        <?=$_SESSION["msg"]["msg"]?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            //$_SESSION["msg"]="";
+                            //unset($_SESSION["msg"]);
                         }
                         ?>
                     </div>
@@ -207,11 +207,14 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                                 ?>
                                                 <td><?=$res->num_rows?></td>
                                                 <td>
-                                                    <div class="label label-table label-success">Paid</div>
+                                                    <div class="label label-table label-success"><?=$row['status']?></div>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
-                                                        <i class="fa fa-close"></i>
+                                                    <a href="include/delete-post.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
+                                                        <i class="fa fa-close"></i> Delete
+                                                    </a>
+                                                    <a href="post.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Delete">
+                                                        <i class="fa fa-pencil"></i> Edit
                                                     </a>
                                                 </td>
                                             </tr>

@@ -15,8 +15,8 @@
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Vivek Patel
  *                Priya Patel
- * @filename      include/add-post.php
- * @begin         2019-03-06
+ * @filename      include/add-delete.php
+ * @begin         2019-03-09
  * @update        2019-03-09
  */
 
@@ -34,35 +34,26 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
 
 $cid = $_SESSION['USER_ID'];
 
-if($_POST['name']==''    ||
-   $_POST['prjtype']=='' ||
-   $_POST['about']==''   ||
-   $_POST['lang']==''    ||
-   $_POST['cost']==''
-  ) {
+if(empty($_GET['pid'])) {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill Up All Info !';
-	header("location: ../post.php");
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Nothing to delete !';
+	header("location: ../client.php");
 	exit;
 }
 
-$name = $_POST['name'];
-$prjtype = $_POST['prjtype'];
-$about  = $_POST['about'];
-$lang = $_POST['lang'];
-$cost  = $_POST['cost'];
+$pid = $_GET['pid'];
 
-$result = $mysqli->query("INSERT INTO `post_prj`(`name`, `detail`, `category`, `lang`, `cid`, `status`, `cost`) VALUES ('$name', '$about', '$prjtype', '$lang', $cid, 'Pending', $cost')");
+$result = $mysqli->query("DELETE FROM `post_prj` WHERE `pid` = $pid");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Project posted successfully !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Deleted successfully !';
     header("location: ../client.php");
     exit;
 }
 else {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Error: '.$mysqli->error;
-    header("location: ../client.php");
+    header("location: ../signup.php");
     exit;
 }

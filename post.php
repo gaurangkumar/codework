@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      post.php
  * @begin         2019-02-10
- * @update        2019-03-08
+ * @update        2019-03-09
  */
 
 require("include/config.php");
@@ -32,7 +32,19 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
     header("Location: login.php");
     exit;
 }
-
+if(empty($_GET['pid'])) {
+    $pid = 0;
+}
+else {
+    $pid = $_GET['pid'];
+    $result = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
+    if($result && $result->num_rows) {
+        $row = $result->fetch_assoc();
+    }
+    else {
+        $pid = 0;
+    }
+}
 ?>
 <html lang="en">
 <head>
@@ -41,7 +53,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
 	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Post Project - CodeWork</title>
+    <title><?=($pid?'Edit':'Add')?>Post Project - CodeWork</title>
 
 	<link href="<?=$favicon?>" rel="shortcut icon">
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
@@ -105,8 +117,9 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/add-post.php" method="post" novalidate enctype="multipart/form-data">
-                        <h3 class="text-center m-b-20">Post New Project</h3>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/<?=($pid?'update':'add')?>-post.php" method="post" novalidate enctype="multipart/form-data">
+                        <h3 class="text-center m-b-20"><?=($pid?'Edit':'Post New')?> Project</h3>
+                        <input type="hidden" name="pid" value="<?=$pid?>">
                         <div class="form-group">
                         <?php
                         if(isset($_SESSION["msg"]) && $_SESSION["msg"] != "") {
@@ -124,7 +137,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="name" class="text-info">Choose a name for your project</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="">
+                                <input type="text" id="name" name="name" class="form-control form-control-line form-control-success" placeholder="Project Name" required value="<?=@$row['name']?>">
                                 <div class="invalid-feedback help text-left">
                                     Please enter name of project.
                                 </div>
@@ -134,12 +147,12 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="prjtype" class="text-info">Choose type of your project</label>
                                 <select class="form-control form-control-line custom-select" id="prjtype" name="prjtype" required>
-                                    <option value="">Project Type </option>
-                                    <option value="webdesign">Web Design</option>
-                                    <option value="webdev">Web Developement</option>
-                                    <option value="web">Full Website</option>
-                                    <option value="logo">Logo</option>
-                                    <option value="seo">SEO</option>
+                                    <option value="" <?=@($row['category']=='')?'selected':''?>>Project Type </option>
+                                    <option value="webdesign" <?=@($row['category']=='webdesign')?'selected':''?>>Web Design</option>
+                                    <option value="webdev" <?=@($row['category']=='webdev')?'selected':''?>>Web Developement</option>
+                                    <option value="web" <?=@($row['category']=='web')?'selected':''?>>Full Website</option>
+                                    <option value="logo" <?=@($row['category']=='logo')?'selected':''?>>Logo</option>
+                                    <option value="seo" <?=@($row['category']=='seo')?'selected':''?>>SEO</option>
                                 </select>
                                 <div class="invalid-feedback help text-left">
                                     Please select your project type.
@@ -149,7 +162,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="about" class="text-info">Tell us more about your project</label>
-                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required value="" rows="3"></textarea>
+                                <textarea id="about" name="about" class="form-control form-control-line form-control-success" placeholder="Project Description" required value="" rows="3"><?=@$row['detail']?></textarea>
                                 <div class="invalid-feedback help text-left">
                                     Please enter description of project.
                                 </div>
@@ -158,7 +171,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="lang" class="text-info">What skills are required?</label>
-                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langauge or Skill" required="" value="">
+                                <input type="text" id="lang" name="lang" class="form-control form-control-line" placeholder="Langauge or Skill" required="" value="<?=@$row['lang']?>">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your langauge or skill.
                                 </div>
@@ -167,7 +180,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">What is your budget?</label>
-                                <input type="text" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="" min="600" max="100000">
+                                <input type="text" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Cost in INR" required="" value="<?=@$row['cost']?>" min="600" max="100000">
                                 <div class="invalid-feedback help text-left">
                                     Please enter your project budget.
                                 </div>
@@ -189,7 +202,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                         </div>
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn">Post</button>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn"><?=($pid?'Edit':'Post')?> Project</button>
                             </div>
                         </div>
                     </form>

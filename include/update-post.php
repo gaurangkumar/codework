@@ -15,8 +15,8 @@
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Vivek Patel
  *                Priya Patel
- * @filename      include/add-post.php
- * @begin         2019-03-06
+ * @filename      include/update-post.php
+ * @begin         2019-03-09
  * @update        2019-03-09
  */
 
@@ -34,7 +34,9 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
 
 $cid = $_SESSION['USER_ID'];
 
-if($_POST['name']==''    ||
+if($_POST['pid']==''     ||
+   $_POST['pid']!=0      ||
+   $_POST['name']==''    ||
    $_POST['prjtype']=='' ||
    $_POST['about']==''   ||
    $_POST['lang']==''    ||
@@ -42,27 +44,28 @@ if($_POST['name']==''    ||
   ) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill Up All Info !';
-	header("location: ../post.php");
+	header("location: ../post.php?pid=$pid");
 	exit;
 }
 
+$pid = $_POST['pid'];
 $name = $_POST['name'];
 $prjtype = $_POST['prjtype'];
 $about  = $_POST['about'];
 $lang = $_POST['lang'];
 $cost  = $_POST['cost'];
 
-$result = $mysqli->query("INSERT INTO `post_prj`(`name`, `detail`, `category`, `lang`, `cid`, `status`, `cost`) VALUES ('$name', '$about', '$prjtype', '$lang', $cid, 'Pending', $cost')");
+$result = $mysqli->query("UPDATE `post_prj` SET `name` = '$name', `detail` = '$about', `category` = '$prjtype', `lang` = '$lang', `cid` = $cid, `cost` = $cost WHERE `pid` = $pid");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Project posted successfully !';
-    header("location: ../client.php");
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Project updated successfully !';
+    header("location: ../post.php?pid=$pid");
     exit;
 }
 else {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Error: '.$mysqli->error;
-    header("location: ../client.php");
+    header("location: ../post.php?pid=$pid");
     exit;
 }
