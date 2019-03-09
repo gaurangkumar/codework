@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      client.php
  * @begin         2019-02-05
- * @update        2019-03-07
+ * @update        2019-03-08
  */
 
 require("include/config.php");
@@ -137,6 +137,25 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             <a class="btn btn-primary btn-xl" href="#projects">Projects</a>
             <a class="btn btn-primary btn-xl" href="post.php">Post Project</a>
             <a class="btn btn-primary btn-xl" href="include/logout.php">Logout</a>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <?php
+                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
+						else{
+                        ?>
+				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					        <?=$_SESSION["msg"]["msg"]?>
+				        </div>
+                        <?php
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="overlay"></div>
     </header>
@@ -163,11 +182,10 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                     <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Lang</th>
                                                 <th>Cost</th>
-                                                <th>Request</th>
+                                                <th>Requests</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -179,20 +197,23 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                             <tr>
                                                 <td>
                                                     <a href="projects.php?pid=<?=$row['pid']?>">
-                                                        #<?=$row['pid']?>
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a href="projects.php?pid=<?=$row['pid']?>">
                                                         <?=ucfirst($row['name'])?>
                                                     </a>
                                                 </td>
-                                                <td><?=$row['row']?></td>
+                                                <td><?=$row['lang']?></td>
                                                 <td><i class="fa fa-rupee"></i> <?=$row['cost']?></td>
+                                                <?php
+                                                $res = $mysqli->query("SELECT `rid` FROM `post_req` WHERE `pid` = {$row['pid']}");
+                                                ?>
+                                                <td><?=$res->num_rows?></td>
                                                 <td>
                                                     <div class="label label-table label-success">Paid</div>
                                                 </td>
-                                                <td>EN</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
+                                                        <i class="fa fa-close"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         <?php
                                         }

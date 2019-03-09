@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      post.php
  * @begin         2019-02-10
- * @update        2019-03-07
+ * @update        2019-03-08
  */
 
 require("include/config.php");
@@ -173,7 +173,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="cost" class="text-info col-form-label">How long would you like to run your contest?</label>
                                 <input type="number" id="cost" name="cost" class="form-control form-control-line" placeholder="Project Duration in Days" required="" value="" min="3" max="30">
@@ -181,7 +181,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
                                     Please enter your project duration.
                                 </div>
                             </div>
-                        </div>
+                        </div-->
                         <div class="form-group">
                             <div class="col-xs-12">
                                 Work with a freelancer 1‑on‑1 and only pay them when you're happy with the completed work.
