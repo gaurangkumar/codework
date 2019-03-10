@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      client.php
  * @begin         2019-02-05
- * @update        2019-03-09
+ * @update        2019-03-10
  */
 
 require("include/config.php");
@@ -187,7 +187,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                                 <th>Cost</th>
                                                 <th>Requests</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
+                                                <th class="text-right">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -209,12 +209,15 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                                 <td>
                                                     <div class="label label-table label-success"><?=$row['status']?></div>
                                                 </td>
-                                                <td>
+                                                <td class="text-right">
                                                     <a href="include/delete-post.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
                                                         <i class="fa fa-close"></i> Delete
                                                     </a>
                                                     <a href="post.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Delete">
                                                         <i class="fa fa-pencil"></i> Edit
+                                                    </a>
+                                                    <a href="request.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-original-title="Show request">
+                                                        <i class="fa fa-users"></i> All Request
                                                     </a>
                                                 </td>
                                             </tr>
