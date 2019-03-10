@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      client.php
  * @begin         2019-02-05
- * @update        2019-03-08
+ * @update        2019-03-09
  */
 
 require("include/config.php");
@@ -149,8 +149,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 					        <?=$_SESSION["msg"]["msg"]?>
 				        </div>
                         <?php
-                            //$_SESSION["msg"]="";
-                            //unset($_SESSION["msg"]);
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
                         }
                         ?>
                     </div>

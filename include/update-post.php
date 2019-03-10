@@ -35,7 +35,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
 $cid = $_SESSION['USER_ID'];
 
 if($_POST['pid']==''     ||
-   $_POST['pid']!=0      ||
+   $_POST['pid']==0      ||
    $_POST['name']==''    ||
    $_POST['prjtype']=='' ||
    $_POST['about']==''   ||
@@ -44,7 +44,7 @@ if($_POST['pid']==''     ||
   ) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill Up All Info !';
-	header("location: ../post.php?pid=$pid");
+	header("location: ../post.php");
 	exit;
 }
 

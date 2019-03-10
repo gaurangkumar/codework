@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      projects.php
  * @begin         2019-03-04
- * @update        2019-03-04
+ * @update        2019-03-10
  */
 
 require("include/config.php");
@@ -34,7 +34,7 @@ if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'freelancer') {
 }
 $fid = $_SESSION['USER_ID'];
 
-$pid = $_GET['pid'];
+$pid = (int) @$_GET['pid'];
 $result = $mysqli->query("SELECT `pid`, `name`, `detail`, `cost` FROM `post_prj` WHERE `pid` = $pid");
 if(!$result->num_rows) {
     exit("No project found.");
@@ -120,6 +120,15 @@ $row = $result->fetch_assoc();
                     <h4 class="card-title h5">Project Description</h4>
                     <p class="card-text"><?=ucfirst($row['detail'])?></p>
                     <h4 class="card-title h5">Bid Proposal</h4>
+                    <?php
+                    $res = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $fid AND `pid` = $pid");
+                    if($res->num_rows) {
+                        ?>
+                        <p class="card-text">Request Sent</p>
+                        <?php
+                    }
+                    else {
+                    ?>
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/placebid.php" method="post" novalidate>
                         <input type="hidden" name="pid" value="<?=$row['pid']?>">
                         <div class="form-group">
@@ -152,6 +161,9 @@ $row = $result->fetch_assoc();
                             </div>
                         </div>
                     </form>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

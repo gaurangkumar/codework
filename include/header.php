@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/header.php
  * @begin         2018-12-21
- * @update        2019-03-03
+ * @update        2019-03-09
  */
 ?>
     <!-- Navigation -->
@@ -47,12 +47,28 @@
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="index.php#contact">Contact</a>
         </li>
+        <?php
+        if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+        ?>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="login.php">Login</a>
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="signup.php">Signup</a>
         </li>
+        <?php
+        }
+        else {
+        ?>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="<?=$_SESSION['USER_TYPE']?>.php">Dashboard</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="include/logout.php">Logout</a>
+        </li>
+        <?php
+        }
+        ?>
       </ul>
     </nav>
 

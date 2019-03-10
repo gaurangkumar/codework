@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-03-03
+ * @update        2019-03-09
  */
 
 require("include/config.php");
@@ -233,7 +233,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
       </div>
     </section>
 
-    <!-- Portfolio -->
+    <!-- Portfolio
     <section class="content-section" id="portfolio">
       <div class="container">
         <div class="content-section-heading text-center">
@@ -288,6 +288,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         </div>
       </div>
     </section>
+    -->
 
     <!-- Team -->
     <section class="content-section bg-light" id="team">
