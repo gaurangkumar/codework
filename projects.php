@@ -36,7 +36,7 @@ if(!isset($_SESSION['USER_TYPE']) || ($_SESSION['USER_TYPE'] != 'freelancer' && 
 $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
-$result = $mysqli->query("SELECT `pid`, `name`, `detail`, `cost` FROM `post_prj` WHERE `pid` = $pid");
+$result = $mysqli->query("SELECT `pid`, `name`, `detail`, `cost`, `fid` FROM `post_prj` WHERE `pid` = $pid");
 if(!$result->num_rows) {
     exit("No project found.");
 }
@@ -186,16 +186,32 @@ $row = $result->fetch_assoc();
                     <p class="text-muted m-t-0"><?=$res->num_rows?> requests</p>
                 </div>
                 <?php
-                while($row = $res->fetch_assoc()) {
+                while($r = $res->fetch_assoc()) {
                 ?>
                 <div class="col-md-12">
                     <div class="card border-info">
                         <div class="card-body">
                             <h3 class="card-title">
-                                #<?=ucfirst($row['fid'])?>
+                                #<?=ucfirst($r['fid'])?>
                             </h3>
-                            <p class="card-text"><?=$row['msg']?></p>
-                            <button class="btn btn-info card-actions" name="fid" value="<?=$row['fid']?>">Accept & Hire</button>
+                            <p class="card-text"><?=$r['msg']?></p>
+                            <?php
+                            if($row['fid']==NULL || $row['fid']==0) {
+                            ?>
+                            <button class="btn btn-info card-actions" name="fid" value="<?=$r['fid']?>">Accept & Hire</button>
+                            <?php
+                            }
+                            elseif($r['fid'] != $row['fid']) {
+                            ?>
+                            <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>">Acceptd</button>
+                            <?php
+                            }
+                            else {
+                            ?>
+                            <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>"> - </button>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/accept.php
  * @begin         2019-03-10
- * @update        2019-03-10
+ * @update        2019-03-11
  */
 
 require("config.php");
@@ -49,7 +49,7 @@ $pid = $_POST['pid'];
 if($_POST['fid']=='' || $_POST['fid']==0) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Invalid request !';
-	header("location: ../project.php?pid=$pid");
+	header("location: ../projects.php?pid=$pid");
 	exit;
 }
 
@@ -58,37 +58,38 @@ $fid = $_POST['fid'];
 if(strlen($msg) < 30) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Message is too short !';
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 
 $result = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $fid AND `pid` = $pid");
 
-if($mysqli->errno) {
+if($mysqli->errno || !$result->num_rows) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
-
-if($result->num_rows) {
+$row = $result->fetch_assoc();
+if($row['status'] == 'accepted') {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Bid already placed !';
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 
-$result = $mysqli->query("INSERT INTO `post_req` (`pid`, `fid`, `msg`) VALUES ($pid, $fid, '$msg')");
+$result = $mysqli->query("UPDATE `post_req` SET `status` = 'accepted' WHERE `pid` = $pid, `fid` = $fid");
+$res = $mysqli->query("UPDATE `post_prj` SET `fid` = $fid WHERE `pid` = $pid");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Requested successfully !';
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 else {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Error: '.$mysqli->error;
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
