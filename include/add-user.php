@@ -64,7 +64,7 @@ if($mysqli->errno) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
     header("location: ../signup.php");
-    exit;
+	exit;
 }
 
 if($result->num_rows) {
