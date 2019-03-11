@@ -17,12 +17,12 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-03-11
+ * @update        2019-03-03
  */
 
 require("config.php");
 require("db.php");
-print_r($_POST);exit;
+
 if($_POST['email']==''     ||
    $_POST['name']==''      ||
    $_POST['password']==''  ||
@@ -64,7 +64,7 @@ if($mysqli->errno) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
     header("location: ../signup.php");
-    exit;
+	exit;
 }
 
 if($result->num_rows) {
