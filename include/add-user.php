@@ -17,12 +17,12 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-03-11
+ * @update        2019-03-03
  */
 
 require("config.php");
 require("db.php");
-print_r($_POST);exit;
+
 if($_POST['email']==''     ||
    $_POST['name']==''      ||
    $_POST['password']==''  ||
