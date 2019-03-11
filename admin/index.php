@@ -97,7 +97,7 @@ $feedback = $result->num_rows;
                                     <div class="d-flex no-block align-items-center">
                                         <div>
                                             <h3><i class="icon-screen-desktop"></i></h3>
-                                            <p class="text-muted"><a href="client.php">TOTAL CLIENTS</a></p>
+                                            <p class="text-muted">TOTAL CLIENTS</p>
                                         </div>
                                         <div class="ml-auto">
                                             <h2 class="counter text-primary"><?=$client?></h2>

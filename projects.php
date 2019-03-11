@@ -148,7 +148,7 @@ $row = $result->fetch_assoc();
                     <h4 class="card-title h5">Bid Proposal</h4>
                     <?php
                     if($_SESSION['USER_TYPE'] == 'freelancer') {
-                        $res = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $fid AND `pid` = $pid");
+                        $res = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $uid AND `pid` = $pid");
                         if($res->num_rows) {
                         ?>
                         <p class="card-text">Request Sent</p>
@@ -201,9 +201,9 @@ $row = $result->fetch_assoc();
                             <button class="btn btn-info card-actions" name="fid" value="<?=$r['fid']?>">Accept & Hire</button>
                             <?php
                             }
-                            elseif($r['fid'] != $row['fid']) {
+                            elseif($r['fid'] == $row['fid']) {
                             ?>
-                            <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>">Acceptd</button>
+                            <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>">Accepted</button>
                             <?php
                             }
                             else {

@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/placebid.php
  * @begin         2019-03-04
- * @update        2019-03-10
+ * @update        2019-03-11
  */
 
 require("config.php");
@@ -49,7 +49,7 @@ $pid = $_POST['pid'];
 if($_POST['msg']=='') {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill Up All Info !';
-	header("location: ../project.php?pid=$pid");
+	header("location: ../projects.php?pid=$pid");
 	exit;
 }
 
@@ -58,7 +58,7 @@ $msg = $_POST['msg'];
 if(strlen($msg) < 30) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Message is too short !';
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 
@@ -67,14 +67,14 @@ $result = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $fid AND `pid` 
 if($mysqli->errno) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 
 if($result->num_rows) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Bid already placed !';
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 
@@ -83,12 +83,12 @@ $result = $mysqli->query("INSERT INTO `post_req` (`pid`, `fid`, `msg`) VALUES ($
 if($result) {
     $_SESSION["msg"]["type"] = "success";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Requested successfully !';
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }
 else {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Error: '.$mysqli->error;
-    header("location: ../project.php?pid=$pid");
+    header("location: ../projects.php?pid=$pid");
     exit;
 }

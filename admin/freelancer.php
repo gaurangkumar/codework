@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      admin/client.php
  * @begin         2019-02-27
- * @update        2019-02-27
+ * @update        2019-03-11
  */
 
 require("../include/config.php");
@@ -76,7 +76,7 @@ require("../include/db.php");
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
-                    <div class="col-md-5 align-self-center">
+                    <!--div class="col-md-5 align-self-center">
                         <h4 class="text-themecolor">Table Basic</h4>
                     </div>
                     <div class="col-md-7 align-self-center text-right">
@@ -87,7 +87,7 @@ require("../include/db.php");
                             </ol>
                             <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
                         </div>
-                    </div>
+                    </div-->
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->

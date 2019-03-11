@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      client.php
  * @begin         2019-02-05
- * @update        2019-03-10
+ * @update        2019-03-11
  */
 
 require("include/config.php");
@@ -207,7 +207,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                                 ?>
                                                 <td><?=$res->num_rows?></td>
                                                 <td>
-                                                    <div class="label label-table label-success"><?=$row['status']?></div>
+                                                    <div class="label label-table label-success"><?=empty($row['status'])?'pending':$row['status']?></div>
                                                 </td>
                                                 <td class="text-right">
                                                     <a href="include/delete-post.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-danger" data-toggle="tooltip" data-original-title="Delete">
@@ -216,7 +216,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                                     <a href="post.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-info" data-toggle="tooltip" data-original-title="Delete">
                                                         <i class="fa fa-pencil"></i> Edit
                                                     </a>
-                                                    <a href="request.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-original-title="Show request">
+                                                    <a href="projects.php?pid=<?=$row['pid']?>" class="btn btn-sm btn-success" data-toggle="tooltip" data-original-title="Show request">
                                                         <i class="fa fa-users"></i> All Request
                                                     </a>
                                                 </td>

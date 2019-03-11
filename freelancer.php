@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      freelancer.php
  * @begin         2019-02-05
- * @update        2019-03-04
+ * @update        2019-03-11
  */
 
 require("include/config.php");
@@ -181,6 +181,18 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                             </h3>
                             <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
                             <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
+                            <?php
+							$res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = {$row['pid']} AND `fid` = $fid");
+							if($res->num_rows) {
+								$r = $res->fetch_assoc();
+								$status = empty($r['status'])?'Requested':$r['status'];
+							}
+							else {
+								$status = '';
+							}
+							
+							?>
+                            <p class="card-text"><span class="badge badge-<?=($status=='accepted'?'success':'info')?>"><?=$status?></span></p>
                         </div>
                     </div>
                 </div>

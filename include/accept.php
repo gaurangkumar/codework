@@ -55,31 +55,34 @@ if($_POST['fid']=='' || $_POST['fid']==0) {
 
 $fid = $_POST['fid'];
 
-if(strlen($msg) < 30) {
-    $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Message is too short !';
-    header("location: ../projects.php?pid=$pid");
-    exit;
-}
-
 $result = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $fid AND `pid` = $pid");
 
-if($mysqli->errno || !$result->num_rows) {
+if($mysqli->errno) {
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
     header("location: ../projects.php?pid=$pid");
     exit;
 }
-$row = $result->fetch_assoc();
-if($row['status'] == 'accepted') {
+
+if(!$result->num_rows) {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Bid already placed !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Unexcepted error found !';
     header("location: ../projects.php?pid=$pid");
     exit;
 }
 
-$result = $mysqli->query("UPDATE `post_req` SET `status` = 'accepted' WHERE `pid` = $pid, `fid` = $fid");
-$res = $mysqli->query("UPDATE `post_prj` SET `fid` = $fid WHERE `pid` = $pid");
+$row = $result->fetch_assoc();
+
+if($row['status'] == 'accepted') {
+    $_SESSION["msg"]["type"] = "danger";
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Request already accepted !';
+    header("location: ../projects.php?pid=$pid");
+    exit;
+}
+
+$result = $mysqli->query("UPDATE `post_req` SET `status` = 'accepted' WHERE `pid` = $pid AND `fid` = $fid");
+
+$res = $mysqli->query("UPDATE `post_prj` SET `fid` = $fid, `status` = 'ongoing' WHERE `pid` = $pid");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";
