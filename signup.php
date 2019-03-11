@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-03-03
+ * @update        2019-03-11
  */
 
 require("include/config.php");
@@ -270,14 +270,15 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                 $('#signupBtn').attr('disabled','disabled');
                 $('#signupForm').attr('disabled','disabled');
                 $('#signupForm').addClass('disabled');
-                $('#name').attr('disabled','disabled');
-                $('#email').attr('disabled','disabled');
-                $('#password').attr('disabled','disabled');
-                $('#cpassword').attr('disabled','disabled');
-                $('#usertype').attr('disabled','disabled');
-                $('#cv').attr('disabled','disabled');
-                $('#id').attr('disabled','disabled');
-                $('#agree').attr('disabled','disabled');
+                $('#name').attr('readonly','readonly');
+                $('#email').attr('readonly','readonly');
+                $('#password').attr('readonly','readonly');
+                $('#cpassword').attr('readonly','readonly');
+                $('#usertype').attr('readonly','readonly');
+                $('#lang').attr('readonly','readonly');
+                $('#cv').attr('readonly','readonly');
+                $('#id').attr('readonly','readonly');
+                $('#agree').attr('readonly','readonly');
 
                 $( "#signupForm" ).submit();
 				//$( "#btn" ).html('');
@@ -487,7 +488,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             }
         });
     });
-    </script>
+    </script> 
 
     <!--Custom JavaScript -->
     <script type="text/javascript">
