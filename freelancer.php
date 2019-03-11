@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      freelancer.php
  * @begin         2019-02-05
- * @update        2019-03-11
+ * @update        2019-03-12
  */
 
 require("include/config.php");
@@ -151,13 +151,32 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     <header class="masthead">
         <div class="container text-center my-auto">
             <h1 class="mb-5 h2">Freelancer Dashboard</h1>
-            <!--a class="btn btn-primary btn-xl" href="post.php" id="login_btn">Post Project</a-->
+            <a class="btn btn-primary btn-xl" href="#projects">Projects</a>
             <a class="btn btn-primary btn-xl" href="include/logout.php">Logout</a>
+            <div class="row p-3">
+                <div class="col-12">
+                    <div class="form-group">
+                        <?php
+                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
+						else{
+                        ?>
+				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					        <?=$_SESSION["msg"]["msg"]?>
+				        </div>
+                        <?php
+                            $_SESSION["msg"]="";
+                            unset($_SESSION["msg"]);
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="overlay"></div>
     </header>
 
-    <section class="content-section bg-light" id="about">
+    <section class="content-section bg-light" id="projects">
         <div class="container-fluid">
             <div class="row text-center">
                 <div class="col-lg-12 mx-auto">

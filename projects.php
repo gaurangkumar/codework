@@ -158,6 +158,10 @@ $row = $result->fetch_assoc();
                                         $msg = '<p class="card-text"><span class="badge badge-success">Project Awarded</span></p>';
                                         $upload = true;
                                     }
+                                    if($r['status'] == 'completed') {
+                                        $msg = '<p class="card-text"><span class="badge badge-success">Project Completed</span></p>';
+                                        $upload = true;
+                                    }
                                     else {
                                         $msg = '<p class="card-text"><span class="badge badge-info">Request Sent</span></p>';
                                     }

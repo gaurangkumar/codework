@@ -22,7 +22,7 @@
 
 require("config.php");
 require("db.php");
-print_r([$_POST,$_FILES]);exit;
+
 if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
     $_SESSION["msg"]["type"] = "warning";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Login as freelancer !';
@@ -46,43 +46,36 @@ if($_POST['pid']=='' || $_POST['pid']==0) {
 
 $pid = $_POST['pid'];
 
-if($_POST['msg']=='') {
+$file = $_FILES['prj'];
+if($_FILES['prj']['name']=='') {
     $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please Fill Up All Info !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Please select valid file !';
 	header("location: ../projects.php?pid=$pid");
 	exit;
 }
 
-$msg = $_POST['msg'];
+    if(! (file_exists('../user_data') && is_dir('../user_data')) ) {
+        mkdir('../user_data');
+    }
 
-if(strlen($msg) < 30) {
-    $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Message is too short !';
-    header("location: ../projects.php?pid=$pid");
-    exit;
-}
+    $file_path = 'user_data/'.NOW.'-'.$file['name'];
 
-$result = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $fid AND `pid` = $pid");
+    $f = move_uploaded_file($file['tmp_name'], '../'.$file_path);
 
-if($mysqli->errno) {
-    $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Error: '.$mysqli->error;
-    header("location: ../projects.php?pid=$pid");
-    exit;
-}
+    if(!$f) {
+        $_SESSION["msg"]["type"] = "danger";
+        $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> File is not saved !';
+        header("location: ../projects.php?pid=$pid");
+        exit;
+    }
 
-if($result->num_rows) {
-    $_SESSION["msg"]["type"] = "danger";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i> Bid already placed !';
-    header("location: ../projects.php?pid=$pid");
-    exit;
-}
+$result = $mysqli->query("UPDATE `post_prj` SET `file` = '$file_path', `status` = 'completed' WHERE `pid` = $pid");
 
-$result = $mysqli->query("INSERT INTO `post_req` (`pid`, `fid`, `msg`) VALUES ($pid, $fid, '$msg')");
+$result = $mysqli->query("UPDATE `post_req` SET `status` = 'completed' WHERE `pid` = $pid AND `fid` = $fid");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";
-    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Requested successfully !';
+    $_SESSION["msg"]["msg"] = '<i class="fa fa-info-circle"></i> Uploaded successfully !';
     header("location: ../projects.php?pid=$pid");
     exit;
 }

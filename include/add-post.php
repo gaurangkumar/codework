@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/add-post.php
  * @begin         2019-03-06
- * @update        2019-03-09
+ * @update        2019-03-11
  */
 
 require("config.php");
