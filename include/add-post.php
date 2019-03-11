@@ -52,7 +52,7 @@ $about  = $_POST['about'];
 $lang = $_POST['lang'];
 $cost  = $_POST['cost'];
 
-$result = $mysqli->query("INSERT INTO `post_prj`(`name`, `detail`, `category`, `lang`, `cid`, `status`, `cost`) VALUES ('$name', '$about', '$prjtype', '$lang', $cid, 'Pending', $cost')");
+$result = $mysqli->query("INSERT INTO `post_prj`(`name`, `detail`, `category`, `lang`, `cid`, `status`, `cost`) VALUES ('$name', '$about', '$prjtype', '$lang', $cid, 'Pending', $cost)");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";

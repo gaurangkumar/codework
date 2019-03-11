@@ -148,12 +148,48 @@ $row = $result->fetch_assoc();
                     <h4 class="card-title h5">Bid Proposal</h4>
                     <?php
                     if($_SESSION['USER_TYPE'] == 'freelancer') {
-                        $res = $mysqli->query("SELECT * FROM `post_req` WHERE `fid` = $uid AND `pid` = $pid");
+                        $query = "SELECT * FROM `post_req` WHERE `pid` = $pid AND (`fid` = $uid OR `status` = 'accepted')";
+                        $res = $mysqli->query($query);
+                        $upload = false;
                         if($res->num_rows) {
-                        ?>
-                        <p class="card-text">Request Sent</p>
-                        <?php
-                    }
+                            while($r = $res->fetch_assoc()) {
+                                if($r['fid'] == $uid) {
+                                    if($r['status'] == 'accepted') {
+                                        $msg = '<p class="card-text"><span class="badge badge-success">Project Awarded</span></p>';
+                                        $upload = true;
+                                    }
+                                    else {
+                                        $msg = '<p class="card-text"><span class="badge badge-info">Request Sent</span></p>';
+                                    }
+                                }
+                                elseif($r['status'] == 'accepted') {
+                                    $msg = '<p class="card-text"><span class="badge badge-danger">Request Rejected</span></p>';
+                                }
+                            }
+                            echo $msg;
+                            if($upload) {
+                            ?>
+                    <h4 class="card-title h5">Upload Completed Project</h4>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/upload.php" method="post" novalidate enctype="multipart/form-data">
+                        <input type="hidden" name="pid" value="<?=$row['pid']?>">
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <label for="prj" class="text-info col-form-label">Upload a single archived file (e.g. .rar, .zip) containing whole project.</label>
+                                <input type="file" id="prj" name="prj" class="form-control form-control-line" required>
+                                <div class="invalid-feedback help text-left">
+                                    Please upload your project.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-center p-b-20">
+                            <div class="col-xs-12">
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="uploadBtn">Upload</button>
+                            </div>
+                        </div>
+                    </form>
+                            <?php
+                            }
+                        }
                         else {
                     ?>
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/placebid.php" method="post" novalidate>
