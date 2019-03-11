@@ -218,6 +218,14 @@ $row = $result->fetch_assoc();
                     }
                     else {
                         $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = $pid");
+                        echo $res->num_rows.' requests.';
+                        $rs = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
+                        $rw = $rs->fetch_assoc();
+                        if($rw['status']=='completed') {
+                            echo '<p class="card-text"><span class="badge badge-success">Project Completed</span></p>';
+                            echo "<a href='$rw[file]' class='btn btn-primary'>Download</a>";
+                        }
+                        else {
                     ?>
                 <form id="acptForm" action="include/accept.php" method="post" novalidate>
                     <input type="hidden" name="pid" value="<?=$row['pid']?>">
@@ -278,6 +286,7 @@ $row = $result->fetch_assoc();
                 </div>
             </div>
                     <?php
+                        }
                     }
                     ?>
                 </div>
