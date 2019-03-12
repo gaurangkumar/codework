@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-03-09
+ * @update        2019-03-12
  */
 
 require("include/config.php");
@@ -502,7 +502,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
     <script src="asset/js/stylish-portfolio.min.js"></script>
 
     <script src="asset/js/jqBootstrapValidation.js"></script>
-    <script src="asset/js/contact_me.js"></script>
+    <script src="asset/js/contact_me.js?t=<?=time()?>"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>

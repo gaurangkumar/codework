@@ -1,17 +1,38 @@
-$(function() {
+/**
+ * CodeWork : Freelancing Platform
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @package       CodeWork
+ * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * @link          http://codework.ml/
+ * @since         1.0.0
+ * @license       MIT License (https://opensource.org/licenses/mit-license.php)
+ * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
+ *                Vivek Patel
+ *                Priya Patel
+ * @filename      asset/js/contact_me.js
+ * @begin         2018-12-26
+ * @update        2019-03-12
+ */
+    alert("name+email+phone+message");
 
-  $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
-    preventSubmit: true,
-    submitError: function($form, event, errors) {
-      // additional error messages or events
-    },
-    submitSuccess: function($form, event) {
-      event.preventDefault(); // prevent default submit behaviour
-      // get values from FORM
-      var name = $("input#name").val();
-      var email = $("input#email").val();
-      var phone = $("input#phone").val();
-      var message = $("textarea#message").val();
+$(function() {
+    $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function($form, event, errors) {
+            // additional error messages or events
+        },
+        submitSuccess: function($form, event) {
+            event.preventDefault(); // prevent default submit behaviour
+            // get values from FORM
+            var name = $("input#name").val();
+            var email = $("input#email").val();
+            var phone = $("input#phone").val();
+            var message = $("textarea#message").val();
       var firstName = name; // For Success/Failure Message
       // Check for white space in name for Success/Fail message
       if (firstName.indexOf(' ') >= 0) {
@@ -58,15 +79,14 @@ $(function() {
         }
       });
     },
-    filter: function() {
-      return $(this).is(":visible");
-    },
-  });
-
-  $("a[data-toggle=\"tab\"]").click(function(e) {
-    e.preventDefault();
-    $(this).tab("show");
-  });
+        filter: function() {
+            return $(this).is(":visible");
+        },
+    });
+    $("a[data-toggle=\"tab\"]").click(function(e) {
+        e.preventDefault();
+        $(this).tab("show");
+    });
 });
 
 /*When clicking on Full hide fail/success boxes */
