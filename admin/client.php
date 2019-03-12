@@ -34,7 +34,7 @@ require("../include/db.php");
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" sizes="16x16" href="../asset/favicon.ico">
     <title>Client - Codework Admin</title>
     <!-- Custom CSS -->
     <link href="dist/css/style.min.css" rel="stylesheet">
@@ -76,18 +76,18 @@ require("../include/db.php");
                 <!-- Bread crumb and right sidebar toggle -->
                 <!-- ============================================================== -->
                 <div class="row page-titles">
-                    <!--div class="col-md-5 align-self-center">
-                        <h4 class="text-themecolor">Table Basic</h4>
+                    <div class="col-md-5 align-self-center">
+                        <!--h4 class="text-themecolor">Table Basic</h4-->
                     </div>
                     <div class="col-md-7 align-self-center text-right">
                         <div class="d-flex justify-content-end align-items-center">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                                <li class="breadcrumb-item active">Table Basic</li>
+                                <li class="breadcrumb-item active">Client</li>
                             </ol>
                             <button type="button" class="btn btn-info d-none d-lg-block m-l-15"><i class="fa fa-plus-circle"></i> Create New</button>
                         </div>
-                    </div-->
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Bread crumb and right sidebar toggle -->
