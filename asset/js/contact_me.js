@@ -16,9 +16,8 @@
  *                Priya Patel
  * @filename      asset/js/contact_me.js
  * @begin         2018-12-26
- * @update        2019-03-12
+ * @update        2019-03-13
  */
-    alert("name+email+phone+message");
 
 $(function() {
     $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
@@ -33,52 +32,53 @@ $(function() {
             var email = $("input#email").val();
             var phone = $("input#phone").val();
             var message = $("textarea#message").val();
-      var firstName = name; // For Success/Failure Message
-      // Check for white space in name for Success/Fail message
-      if (firstName.indexOf(' ') >= 0) {
-        firstName = name.split(' ').slice(0, -1).join(' ');
-      }
-      $this = $("#sendMessageButton");
-      $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
-      $.ajax({
-        url: "../../include/contact_me.php",
-        type: "POST",
-        data: {
-          name: name,
-          phone: phone,
-          email: email,
-          message: message
+
+            var firstName = name; // For Success/Failure Message
+            // Check for white space in name for Success/Fail message
+            if (firstName.indexOf(' ') >= 0) {
+                firstName = name.split(' ').slice(0, -1).join(' ');
+            }
+            $this = $("#sendMessageButton");
+            // Disable submit button until AJAX call is complete to prevent duplicate messages
+            $this.prop("disabled", true);
+            $.ajax({
+                url: "include/add-feedback.php",
+                type: "POST",
+                data: {
+                    name: name,
+                    phone: phone,
+                    email: email,
+                    message: message
+                },
+                cache: false,
+                success: function(data,status,xhr) {
+				    alert('data:'+data+' status:'+status+' xhr.status:'+xhr.status+' xhr.statusText:'+xhr.statusText);
+                    // Success message
+                    $('#success').html("<div class='alert alert-success'>");
+                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                    $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
+                    $('#success > .alert-success').append('</div>');
+                    //clear all fields
+                    //$('#contactForm').trigger("reset");
+                },
+                error: function(xhr,status,error) {
+                    alert('xhr.status:'+xhr.status+' xhr.statusText:'+xhr.statusText+' status:'+status+' error:'+error);
+                    // Fail message
+                    $('#success').html("<div class='alert alert-danger'>");
+                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+                    $('#success > .alert-danger').append('</div>');
+                    //clear all fields
+                    //$('#contactForm').trigger("reset");
+                },
+                complete: function() {
+                    setTimeout(function() {
+                        $this.prop("disabled", false);
+                        // Re-enable submit button when AJAX call is complete
+                    }, 1000);
+                }
+            });
         },
-        cache: false,
-        success: function() {
-          // Success message
-          $('#success').html("<div class='alert alert-success'>");
-          $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-success')
-            .append("<strong>Your message has been sent. </strong>");
-          $('#success > .alert-success')
-            .append('</div>');
-          //clear all fields
-          $('#contactForm').trigger("reset");
-        },
-        error: function() {
-          // Fail message
-          $('#success').html("<div class='alert alert-danger'>");
-          $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-            .append("</button>");
-          $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
-          $('#success > .alert-danger').append('</div>');
-          //clear all fields
-          $('#contactForm').trigger("reset");
-        },
-        complete: function() {
-          setTimeout(function() {
-            $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
-          }, 1000);
-        }
-      });
-    },
         filter: function() {
             return $(this).is(":visible");
         },

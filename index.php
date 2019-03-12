@@ -18,7 +18,7 @@
  *                Priya Patel
  * @filename      index.php
  * @begin         2018-12-21
- * @update        2019-03-12
+ * @update        2019-03-13
  */
 
 require("include/config.php");
@@ -425,21 +425,21 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                 <input type="email" class="form-control input-lg" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address." style="height: 50px">
                                 <p class="help-block text-danger">&nbsp;</p>
                             </div>
-                            <div class="form-group">
+                            <!--div class="form-group">
                                 <input type="tel" class="form-control input-lg" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number." style="height: 50px">
                                 <p class="help-block text-danger">&nbsp;</p>
-                            </div>
+                            </div-->
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <textarea class="form-control input-lg" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message." rows="9"></textarea>
+                                <textarea class="form-control input-lg" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message." rows="5"></textarea>
                                 <p class="help-block text-danger">&nbsp;</p>
                             </div>
                         </div>
                         <div class="clearfix"></div>
                         <div class="col-lg-12 text-center">
                             <div id="success"></div>
-                            <button type="submit" class="btn btn-xl btn-light mr-4 btn-block">Send Message</button>
+                            <button type="submit" class="btn btn-xl btn-light mr-4 btn-block" id="sendMessageButton">Send Message</button>
                         </div>
                     </div>
                 </form>
