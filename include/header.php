@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/header.php
  * @begin         2018-12-21
- * @update        2019-03-09
+ * @update        2019-03-13
  */
 ?>
     <!-- Navigation -->
@@ -37,9 +37,6 @@
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="index.php#services">Services</a>
-        </li>
-        <li class="sidebar-nav-item">
-          <a class="js-scroll-trigger" href="index.php#portfolio">Portfolio</a>
         </li>
         <li class="sidebar-nav-item">
           <a class="js-scroll-trigger" href="index.php#team">Team</a>
