@@ -47,14 +47,14 @@ if($result->num_rows) {
     $row = $result->fetch_array();
     $user_id = ($user == 'client') ? $row['cid'] : $row['fid'];
     if($row['password'] != $password) {
-        //Login Unsuccessful
+        // Wrong Password
         $_SESSION["msg"]["type"] = "danger";
         $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Password.</strong> !';
         header("Location: ../login.php");
         exit;
     }
     else { 
-        //Login Successful
+        // Login Successful
         $remember_me = (isset($_POST['remember_me'])) ? true : false;
 
         $_SESSION['USER_ID']	= $user_id;
@@ -70,7 +70,7 @@ if($result->num_rows) {
     }
 }
 else {
-    //Login Unsuccessful
+    // Wrong Email
     $_SESSION["msg"]["type"] = "danger";
     $_SESSION["msg"]["msg"] = '<i class="fa fa-warning-circle"></i><strong> Wrong Email!</strong>';
     header("Location: ../login.php");

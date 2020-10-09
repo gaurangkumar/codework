@@ -298,9 +298,9 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
           <h2 class="mb-5">Our Amazing Team</h2>
         </div>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
+              <img class="mx-auto rounded-circle" src="<!--img/team/3.jpg-->" alt="">
               <h4>Gaurang Parmar</h4>
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
@@ -322,34 +322,10 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
               </ul>
             </div>
           </div>
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/2.jpg" alt="">
-              <h4>Vivek Patel</h4>
-              <p class="text-muted">Lead Developer</p>
-              <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                  <a href="javascript:void()">
-                    <i class="fa fa-twitter"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="javascript:void()">
-                    <i class="fa fa-facebook-f"></i>
-                  </a>
-                </li>
-                <li class="list-inline-item">
-                  <a href="javascript:void()">
-                    <i class="fa fa-linkedin"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src="img/team/1.jpg" alt="">
-              <h4>Priya Patel</h4>
+              <img class="mx-auto rounded-circle" src="<!--img/team/2.jpg-->" alt="">
+              <h4>Krunal Bhavsar</h4>
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
