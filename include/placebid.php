@@ -13,11 +13,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      include/placebid.php
- * @begin         2019-03-04
- * @update        2019-03-11
  */
 
 require("config.php");
@@ -54,6 +51,8 @@ if($_POST['msg']=='') {
 }
 
 $msg = $_POST['msg'];
+$price = $_POST['price'];
+$duration = $_POST['duration'];
 
 if(strlen($msg) < 30) {
     $_SESSION["msg"]["type"] = "danger";
@@ -78,7 +77,7 @@ if($result->num_rows) {
     exit;
 }
 
-$result = $mysqli->query("INSERT INTO `post_req` (`pid`, `fid`, `msg`) VALUES ($pid, $fid, '$msg')");
+$result = $mysqli->query("INSERT INTO `post_req` (`pid`, `fid`, `msg`, `price`, `duration`) VALUES ($pid, $fid, '$msg', $price, '$duration')");
 
 if($result) {
     $_SESSION["msg"]["type"] = "success";

@@ -14,11 +14,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      index.php
- * @begin         2018-12-21
- * @update        2019-03-13
  */
 
 require("include/config.php");
@@ -128,7 +125,13 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             <?=$site?>
         </h1>
         <h3 class="mb-5">
-          <em>Get Hire, Get Paid</em>
+          <em>Hire the best freelancers for any job, online.</em>
+        </h3>
+        <h3 class="mb-5">
+          <em>Turn your ideas into reality</em>
+        </h3>
+        <h3 class="mb-5">
+          <em>Web, Mobile & Software Dev</em>
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" id="about_btn">Find Out More</a>
         <?php
@@ -184,7 +187,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
           </div>
           <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
             <span class="service-icon rounded-circle mx-auto mb-3">
-              <i class="fa fa-pencil"></i>
+              <i class="fa fa-pencil-alt"></i>
             </span>
             <h4>
               <strong>Web Design</strong>
@@ -219,7 +222,7 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
             <p class="text-faded mb-0">Suitable For Your Business</p>
           </div>
         </div>
-        <div class="col-lg-10 mx-auto">
+        <div class="col-lg-10 mx-auto mt-5">
             <a class="btn btn-dark btn-xl js-scroll-trigger" href="#portfolio">Work We Have Done</a>
         </div>
       </div>
@@ -300,23 +303,23 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         <div class="row">
           <div class="col-sm-6">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="<!--img/team/3.jpg-->" alt="">
+              <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
               <h4>Gaurang Parmar</h4>
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="https://twitter.com/gaurangkumarp">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="https://facebook.com/gaurangkumarp/">
-                    <i class="fa fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="https://www.linkedin.com/in/gaurangkumar/">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fab fa-linkedin"></i>
                   </a>
                 </li>
               </ul>
@@ -324,23 +327,23 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
           </div>
           <div class="col-sm-6">
             <div class="team-member">
-              <img class="mx-auto rounded-circle" src="<!--img/team/2.jpg-->" alt="">
+              <img class="mx-auto rounded-circle" src="img/team/5.jpg" alt="">
               <h4>Krunal Bhavsar</h4>
               <p class="text-muted">Lead Developer</p>
               <ul class="list-inline social-buttons">
                 <li class="list-inline-item">
                   <a href="javascript:void()">
-                    <i class="fa fa-twitter"></i>
+                    <i class="fab fa-twitter"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="javascript:void()">
-                    <i class="fa fa-facebook-f"></i>
+                    <i class="fab fa-facebook-f"></i>
                   </a>
                 </li>
                 <li class="list-inline-item">
                   <a href="javascript:void()">
-                    <i class="fa fa-linkedin"></i>
+                    <i class="fab fa-linkedin"></i>
                   </a>
                 </li>
               </ul>

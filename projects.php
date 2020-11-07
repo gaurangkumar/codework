@@ -14,11 +14,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      projects.php
- * @begin         2019-03-04
- * @update        2019-03-12
  */
 
 require("include/config.php");
@@ -59,7 +56,7 @@ $row = $result->fetch_assoc();
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
@@ -153,6 +150,7 @@ $row = $result->fetch_assoc();
                         $upload = false;
                         if($res->num_rows) {
                             while($r = $res->fetch_assoc()) {
+                                echo 'Price: '.$r['price'].'<br>'.'Duration: '.$r['duration'];
                                 if($r['fid'] == $uid) {
                                     if($r['status'] == 'accepted') {
                                         $msg = '<p class="card-text"><span class="badge badge-success">Project Awarded</span></p>';
@@ -200,6 +198,22 @@ $row = $result->fetch_assoc();
                         <input type="hidden" name="pid" value="<?=$row['pid']?>">
                         <div class="form-group">
                             <div class="col-xs-12 text-danger text-left">
+                                <input type="number" id="price" name="price" class="form-control form-control-line" placeholder="Price" required="" value="">
+                                <div class="invalid-feedback help help-block text-left">
+                                    Please enter your price.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
+                                <input type="text" id="duration" name="duration" class="form-control form-control-line" placeholder="Duration" required="" value="">
+                                <div class="invalid-feedback help help-block text-left">
+                                    Please enter your duration.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 text-danger text-left">
                                 <label for="msg" class="text-info col-form-label">What makes you the best candidate for this project?</label>
                                 <textarea rows="5" id="msg" name="msg" class="form-control form-control-line form-control-success" placeholder="Your message" required value=""></textarea>
                                 <div class="invalid-feedback help text-left">
@@ -218,7 +232,6 @@ $row = $result->fetch_assoc();
                     }
                     else {
                         $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = $pid");
-                        echo $res->num_rows.' requests.';
                         $rs = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
                         $rw = $rs->fetch_assoc();
                         if($rw['status']=='completed') {
@@ -231,7 +244,7 @@ $row = $result->fetch_assoc();
                     <input type="hidden" name="pid" value="<?=$row['pid']?>">
             <div class="row">
                 <div class="col-12 m-t-30">
-                    <p class="text-muted m-t-0"><?=$res->num_rows?> requests</p>
+                    <p class="text-muted m-t-0"><?=$res->num_rows?> request<?=$res->num_rows>1?'s':null?></p>
                 </div>
                 <?php
                 while($r = $res->fetch_assoc()) {
@@ -242,7 +255,8 @@ $row = $result->fetch_assoc();
                             <h3 class="card-title">
                                 #<?=ucfirst($r['fid'])?>
                             </h3>
-                            <p class="card-text"><?=$r['msg']?></p>
+                            <p class="card-text"><?='₹ '.$r['price']?>, <?=$r['duration'].' duration'?></p>
+                            <p class="card-text"><?=ucfirst($r['msg'])?></p>
                             <?php
                             if($row['fid']==NULL || $row['fid']==0) {
                             ?>

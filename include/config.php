@@ -13,11 +13,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      var.php
- * @begin         2018-12-21
- * @update        2019-03-03
  */
 
 date_default_timezone_set("Asia/Kolkata");
@@ -28,7 +25,7 @@ session_start();
 $host    = 'localhost';
 $user    = 'root';
 $pass    = '';
-$db      = 'codework';
+$db      = 'id13666318_codework';
 
 $site    = "CodeWork";
 

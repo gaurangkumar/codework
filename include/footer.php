@@ -13,11 +13,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      include/footer.php
- * @begin         2018-12-21
- * @update        2019-03-03
  */
 ?>
     <!-- Footer -->
@@ -26,20 +23,25 @@
         <ul class="list-inline mb-5">
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white mr-3" href="https://twitter.com/gaurangkumarp">
-              <i class="fa fa-facebook"></i>
+              <i class="fab fa-facebook-f"></i>
             </a>
           </li>
           <li class="list-inline-item">
             <a class="social-link rounded-circle text-white mr-3" href="https://www.facebook.com/gaurangkumarp">
-              <i class="fa fa-twitter"></i>
+              <i class="fab fa-twitter"></i>
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="https://github.com/gaurangkumar/codework">
-              <i class="fa fa-github"></i>
+            <a class="social-link rounded-circle text-white mr-3" href="#">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+          <li class="list-inline-item">
+            <a class="social-link rounded-circle text-white" href="#">
+              <i class="fab fa-linkedin"></i>
             </a>
           </li>
         </ul>
-        <p class="text-muted small mb-0">Copyright &copy; CodeWork 2019</p>
+        <p class="text-muted small mb-0">Copyright &copy; CodeWork 2020</p>
       </div>
     </footer>

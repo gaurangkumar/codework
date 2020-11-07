@@ -14,11 +14,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      index.php
- * @begin         2018-12-21
- * @update        2019-03-03
  */
 
 require("include/config.php");
@@ -47,7 +44,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
 
@@ -112,7 +109,7 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="login-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="loginForm" action="include/check-user.php" method="post">
+                    <form class="form-material form-horizontal m-t-40" id="loginForm" action="include/check-user.php" method="post"><!-- class needs-validation -->
                         <h3 class="text-center m-b-20">Login</h3>
                         <div class="form-group">
                         <?php

@@ -13,11 +13,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      include/add-feedback.php
- * @begin         2019-03-13
- * @update        2019-03-13
  */
 
 require("config.php");

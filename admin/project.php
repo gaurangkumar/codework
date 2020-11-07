@@ -14,11 +14,8 @@
  * @since         1.0.0
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
- *                Vivek Patel
- *                Priya Patel
+ *                Krunal Bhavsar
  * @filename      admin/client.php
- * @begin         2019-02-27
- * @update        2019-03-12
  */
 
 require("../include/config.php");
