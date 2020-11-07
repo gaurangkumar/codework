@@ -17,7 +17,7 @@
  *                Priya Patel
  * @filename      include/footer.php
  * @begin         2018-12-21
- * @update        2019-03-03
+ * @update        2020-11-07
  */
 ?>
     <!-- Footer -->
@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="list-inline-item">
-            <a class="social-link rounded-circle text-white" href="https://github.com/gaurangkumar/codework">
+            <a class="social-link rounded-circle text-white" href="https://github.com/gaurangkumar/codework/tree/vivek-priya-gaurang">
               <i class="fa fa-github"></i>
             </a>
           </li>
