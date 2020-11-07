@@ -1,2 +1,5 @@
-# codework
-PHP Freelancer website made by me, Vivek Patel and Priya Patel
+# Codework
+PHP Freelancer website updated by `Me`, `Krunal Bhavsar`
+
+# New Features
+- Freelancer can set their bid price and project duration along with project request
