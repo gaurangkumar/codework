@@ -2,24 +2,24 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
- * @link          
+ *
+ * @link
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      admin/client.php
  */
-
-require("../include/config.php");
-require("../include/db.php");
+require '../include/config.php';
+require '../include/db.php';
 ?>
 <html lang="en">
 
@@ -61,7 +61,7 @@ require("../include/db.php");
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <?php
-        require("inc/header.php");
+        require 'inc/header.php';
         ?>
 
         <div class="page-wrapper">
@@ -95,7 +95,7 @@ require("../include/db.php");
                                 <div class="table-responsive">
                                     <table class="table table-striped">
 <?php
-$sql = "SELECT * FROM freelancer"; 
+$sql = 'SELECT * FROM freelancer';
 $result = $mysqli->query($sql);
 ?>
                                         <thead>
@@ -113,8 +113,8 @@ $result = $mysqli->query($sql);
                                         <tbody>
                                             <?php
 if ($result->num_rows) {
-        while ($row = $result->fetch_assoc()) {
-			?>
+    while ($row = $result->fetch_assoc()) {
+        ?>
                                             <tr>
                                                 <td><?=$row['fid']?></td>
                                                 <td><?=$row['name']?></td>
@@ -128,7 +128,7 @@ if ($result->num_rows) {
                                                 </td>
                                             </tr>
 <?php
-		}
+    }
 }
 ?>
                                         </tbody>

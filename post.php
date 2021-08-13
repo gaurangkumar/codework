@@ -2,42 +2,40 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  * @filename      post.php
  */
+require 'include/config.php';
+require 'include/db.php';
 
-require("include/config.php");
-require("include/db.php");
-
-if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+    header('Location: login.php');
     exit;
 }
-if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
+    header('Location: login.php');
     exit;
 }
-if(empty($_GET['pid'])) {
+if (empty($_GET['pid'])) {
     $pid = 0;
-}
-else {
+} else {
     $pid = $_GET['pid'];
     $result = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
-    if($result && $result->num_rows) {
+    if ($result && $result->num_rows) {
         $row = $result->fetch_assoc();
-    }
-    else {
+    } else {
         $pid = 0;
     }
 }
@@ -49,7 +47,7 @@ else {
 	<meta content="IE=11.0000" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?=($pid?'Edit':'Add')?>Post Project - CodeWork</title>
+    <title><?=($pid ? 'Edit' : 'Add')?>Post Project - CodeWork</title>
 
 	<link href="<?=$favicon?>" rel="shortcut icon">
 	<link href="<?=$favicon?>" rel="icon" type="image/x-icon" />
@@ -105,28 +103,28 @@ else {
 
     <!-- Header -->
 	<?php
-    require("include/header.php");
-	?>
+    require 'include/header.php';
+    ?>
 
     <header class="masthead">
         <div class="container text-center">
             <!--<h2 class="mx-auto mb-5"></h2>-->
             <div class="sinup-box card">
                 <div class="card-body">
-                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/<?=($pid?'update':'add')?>-post.php" method="post" novalidate enctype="multipart/form-data">
-                        <h3 class="text-center m-b-20"><?=($pid?'Edit':'Post New')?> Project</h3>
+                    <form class="form-material form-horizontal m-t-40 needs-validation" id="postForm" action="include/<?=($pid ? 'update' : 'add')?>-post.php" method="post" novalidate enctype="multipart/form-data">
+                        <h3 class="text-center m-b-20"><?=($pid ? 'Edit' : 'Post New')?> Project</h3>
                         <input type="hidden" name="pid" value="<?=$pid?>">
                         <div class="form-group">
                         <?php
-                        if(isset($_SESSION["msg"]) && $_SESSION["msg"] != "") {
-                        ?>
-				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+                        if (isset($_SESSION['msg']) && $_SESSION['msg'] != '') {
+                            ?>
+				        <div class="alert alert-<?=$_SESSION['msg']['type']?> alert-dismissable">
 					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					        <?=$_SESSION["msg"]["msg"]?>
+					        <?=$_SESSION['msg']['msg']?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            $_SESSION['msg'] = '';
+                            unset($_SESSION['msg']);
                         }
                         ?>
                         </div>
@@ -143,12 +141,12 @@ else {
                             <div class="col-xs-12 text-danger text-left">
                                 <label for="prjtype" class="text-info">Choose type of your project</label>
                                 <select class="form-control form-control-line custom-select" id="prjtype" name="prjtype" required>
-                                    <option value="" <?=@($row['category']=='')?'selected':''?>>Project Type </option>
-                                    <option value="webdesign" <?=@($row['category']=='webdesign')?'selected':''?>>Web Design</option>
-                                    <option value="webdev" <?=@($row['category']=='webdev')?'selected':''?>>Web Developement</option>
-                                    <option value="web" <?=@($row['category']=='web')?'selected':''?>>Full Website</option>
-                                    <option value="logo" <?=@($row['category']=='logo')?'selected':''?>>Logo</option>
-                                    <option value="seo" <?=@($row['category']=='seo')?'selected':''?>>SEO</option>
+                                    <option value="" <?=@($row['category'] == '') ? 'selected' : ''?>>Project Type </option>
+                                    <option value="webdesign" <?=@($row['category'] == 'webdesign') ? 'selected' : ''?>>Web Design</option>
+                                    <option value="webdev" <?=@($row['category'] == 'webdev') ? 'selected' : ''?>>Web Developement</option>
+                                    <option value="web" <?=@($row['category'] == 'web') ? 'selected' : ''?>>Full Website</option>
+                                    <option value="logo" <?=@($row['category'] == 'logo') ? 'selected' : ''?>>Logo</option>
+                                    <option value="seo" <?=@($row['category'] == 'seo') ? 'selected' : ''?>>SEO</option>
                                 </select>
                                 <div class="invalid-feedback help text-left">
                                     Please select your project type.
@@ -198,7 +196,7 @@ else {
                         </div>
                         <div class="form-group text-center p-b-20">
                             <div class="col-xs-12">
-                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn"><?=($pid?'Edit':'Post')?> Project</button>
+                                <button class="btn btn-info btn-lg btn-block btn-rounded text-uppercase waves-effect waves-light" type="submit" id="postBtn"><?=($pid ? 'Edit' : 'Post')?> Project</button>
                             </div>
                         </div>
                     </form>
@@ -209,8 +207,8 @@ else {
 
     <!-- Footer -->
 	<?php
-    require("include/footer.php");
-	?>
+    require 'include/footer.php';
+    ?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">

@@ -2,31 +2,31 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      freelancer.php
  */
+require 'include/config.php';
+require 'include/db.php';
 
-require("include/config.php");
-require("include/db.php");
-
-if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+    header('Location: login.php');
     exit;
 }
-if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'freelancer') {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'freelancer') {
+    header('Location: login.php');
     exit;
 }
 $fid = $_SESSION['USER_ID'];
@@ -142,8 +142,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
     <!-- Header -->
 	<?php
-    require("include/header.php");
-	?>
+    require 'include/header.php';
+    ?>
 
     <header class="masthead">
         <div class="container text-center my-auto">
@@ -154,16 +154,16 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                 <div class="col-12">
                     <div class="form-group">
                         <?php
-                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
-						else{
-                        ?>
-				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+                        if (!isset($_SESSION['msg']) || $_SESSION['msg'] == '') {
+                        } else {
+                            ?>
+				        <div class="alert alert-<?=$_SESSION['msg']['type']?> alert-dismissable">
 					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					        <?=$_SESSION["msg"]["msg"]?>
+					        <?=$_SESSION['msg']['msg']?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            $_SESSION['msg'] = '';
+                            unset($_SESSION['msg']);
                         }
                         ?>
                     </div>
@@ -187,8 +187,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                     <p class="text-muted m-t-0">About <?=$count?> result</p>
                 </div>
                 <?php
-                while($row = $result->fetch_assoc()) {
-                ?>
+                while ($row = $result->fetch_assoc()) {
+                    ?>
                 <div class="col-md-6">
                     <div class="card border-info">
                         <div class="card-body">
@@ -198,17 +198,14 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                             <p class="card-text"><?=substr($row['detail'], 0, 100)?></p>
                             <p class="card-text"><i class="fa fa-rupee"></i> <?=$row['cost']?></p>
                             <?php
-							$res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = {$row['pid']} AND `fid` = $fid");
-							if($res->num_rows) {
-								$r = $res->fetch_assoc();
-								$status = empty($r['status'])?'Requested':$r['status'];
-							}
-							else {
-								$status = '';
-							}
-							
-							?>
-                            <p class="card-text"><span class="badge badge-<?=($status=='accepted'?'success':'info')?>"><?=$status?></span></p>
+                            $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = {$row['pid']} AND `fid` = $fid");
+                    if ($res->num_rows) {
+                        $r = $res->fetch_assoc();
+                        $status = empty($r['status']) ? 'Requested' : $r['status'];
+                    } else {
+                        $status = '';
+                    } ?>
+                            <p class="card-text"><span class="badge badge-<?=($status == 'accepted' ? 'success' : 'info')?>"><?=$status?></span></p>
                         </div>
                     </div>
                 </div>
@@ -238,8 +235,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
     <!-- Footer -->
 	<?php
-    require("include/footer.php");
-	?>
+    require 'include/footer.php';
+    ?>
     
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">

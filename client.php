@@ -2,31 +2,31 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      client.php
  */
+require 'include/config.php';
+require 'include/db.php';
 
-require("include/config.php");
-require("include/db.php");
-
-if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+    header('Location: login.php');
     exit;
 }
-if(!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_TYPE']) || $_SESSION['USER_TYPE'] != 'client') {
+    header('Location: login.php');
     exit;
 }
 
@@ -125,8 +125,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
     <!-- Header -->
 	<?php
-    require("include/header.php");
-	?>
+    require 'include/header.php';
+    ?>
 
     <header class="masthead">
         <div class="container text-center my-auto">
@@ -138,16 +138,16 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                 <div class="col-12">
                     <div class="form-group">
                         <?php
-                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
-						else{
-                        ?>
-				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+                        if (!isset($_SESSION['msg']) || $_SESSION['msg'] == '') {
+                        } else {
+                            ?>
+				        <div class="alert alert-<?=$_SESSION['msg']['type']?> alert-dismissable">
 					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					        <?=$_SESSION["msg"]["msg"]?>
+					        <?=$_SESSION['msg']['msg']?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            $_SESSION['msg'] = '';
+                            unset($_SESSION['msg']);
                         }
                         ?>
                     </div>
@@ -190,8 +190,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                         </thead>
                                         <tbody>
                                         <?php
-                                        while($row = $result->fetch_assoc()) {
-                                        ?>
+                                        while ($row = $result->fetch_assoc()) {
+                                            ?>
                                             <tr>
                                                 <td>
                                                     <a href="projects.php?pid=<?=$row['pid']?>">
@@ -201,11 +201,10 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
                                                 <td><?=$row['lang']?></td>
                                                 <td><i class="fa fa-rupee"></i> <?=$row['cost']?></td>
                                                 <?php
-                                                $res = $mysqli->query("SELECT `rid` FROM `post_req` WHERE `pid` = {$row['pid']}");
-                                                ?>
+                                                $res = $mysqli->query("SELECT `rid` FROM `post_req` WHERE `pid` = {$row['pid']}"); ?>
                                                 <td><?=$res->num_rows?></td>
                                                 <td>
-                                                    <div class="label label-table label-success"><?=empty($row['status'])?'pending':$row['status']?></div>
+                                                    <div class="label label-table label-success"><?=empty($row['status']) ? 'pending' : $row['status']?></div>
                                                 </td>
                                                 <td><?=$row['duration']?></td>
                                                 <td class="text-right">
@@ -252,8 +251,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
     <!-- Footer -->
 	<?php
-    require("include/footer.php");
-	?>
+    require 'include/footer.php';
+    ?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
