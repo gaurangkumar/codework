@@ -2,42 +2,41 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      admin/index.php
  */
+require '../include/config.php';
+require '../include/db.php';
 
-require("../include/config.php");
-require("../include/db.php");
-
-if(!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['ADMIN_ID']) || empty($_SESSION['ADMIN_ID'])) {
+    header('Location: login.php');
     exit;
 }
 
-$result = $mysqli->query("SELECT `cid` FROM `client`");
+$result = $mysqli->query('SELECT `cid` FROM `client`');
 $client = $result->num_rows;
 
-$result = $mysqli->query("SELECT `fid` FROM `freelancer`");
+$result = $mysqli->query('SELECT `fid` FROM `freelancer`');
 $freelancer = $result->num_rows;
 
-$result = $mysqli->query("SELECT `pid` FROM `post_prj`");
+$result = $mysqli->query('SELECT `pid` FROM `post_prj`');
 $project = $result->num_rows;
 
-$result = $mysqli->query("SELECT `fbid` FROM `feedback`");
+$result = $mysqli->query('SELECT `fbid` FROM `feedback`');
 $feedback = $result->num_rows;
-
 
 ?>
 <html lang="en">
@@ -77,7 +76,7 @@ $feedback = $result->num_rows;
     </div>
     <div id="main-wrapper">
         <?php
-        require("inc/header.php");
+        require 'inc/header.php';
         ?>
         <div class="page-wrapper">
             <div class="container-fluid">

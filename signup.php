@@ -2,27 +2,27 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      index.php
  */
+require 'include/config.php';
+require 'include/db.php';
 
-require("include/config.php");
-require("include/db.php");
-
-if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
-    header("Location: ".$_SESSION['USER_TYPE'].".php");
+if (isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
+    header('Location: '.$_SESSION['USER_TYPE'].'.php');
     exit;
 }
 
@@ -90,8 +90,8 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 
     <!-- Header -->
 	<?php
-    require("include/header.php");
-	?>
+    require 'include/header.php';
+    ?>
 
     <header class="masthead">
         <div class="container text-center">
@@ -102,16 +102,16 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
                         <h3 class="text-center m-b-20">Sign Up</h3>
                         <div class="form-group">
                         <?php
-                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
-						else{
-                        ?>
-				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+                        if (!isset($_SESSION['msg']) || $_SESSION['msg'] == '') {
+                        } else {
+                            ?>
+				        <div class="alert alert-<?=$_SESSION['msg']['type']?> alert-dismissable">
 					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					        <?=$_SESSION["msg"]["msg"]?>
+					        <?=$_SESSION['msg']['msg']?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            $_SESSION['msg'] = '';
+                            unset($_SESSION['msg']);
                         }
                         ?>
                         </div>
@@ -223,8 +223,8 @@ if(isset($_SESSION['USER_ID']) && !empty($_SESSION['USER_ID'])) {
 
     <!-- Footer -->
 	<?php
-    require("include/footer.php");
-	?>
+    require 'include/footer.php';
+    ?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">

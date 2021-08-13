@@ -2,24 +2,24 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      index.php
  */
-
-require("include/config.php");
-require("include/db.php");
+require 'include/config.php';
+require 'include/db.php';
 ?>
 <html lang="en">
 
@@ -114,14 +114,14 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
     <!-- Header -->
 	<?php
-    require("include/header.php");
-	?>
+    require 'include/header.php';
+    ?>
 
     <!-- Header -->
     <header class="masthead d-flex">
       <div class="container text-center my-auto">
         <h1 class="mb-1">
-            <img src="<?=$logo;?>" alt="logo" width="65" style="margin-top:-10px">
+            <img src="<?=$logo; ?>" alt="logo" width="65" style="margin-top:-10px">
             <?=$site?>
         </h1>
         <h3 class="mb-5">
@@ -135,14 +135,13 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
         </h3>
         <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about" id="about_btn">Find Out More</a>
         <?php
-        if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
-        ?>
+        if (!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+            ?>
         <a class="btn btn-primary btn-xl" href="login.php" id="login_btn">Login</a>
         <a class="btn btn-primary btn-xl" href="signup.php" id="post_btn">Signup</a>
         <?php
-        }
-        else {
-        ?>
+        } else {
+            ?>
         <a class="btn btn-primary btn-xl" href="<?=$_SESSION['USER_TYPE']?>.php">Dashboard</a>
         <?php
         }
@@ -429,8 +428,8 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 
     <!-- Footer -->
 	<?php
-    require("include/footer.php");
-	?>
+    require 'include/footer.php';
+    ?>
 
     <div class="portfolio-modal modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog">

@@ -2,31 +2,31 @@
 <?php
 /**
  * CodeWork : Freelancing Platform
- * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ * Copyright (c) CodeWork (https://github.com/gaurangkumar/codework).
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @package       CodeWork
  * @copyright     Copyright (c) CodeWork (https://github.com/gaurangkumar/codework)
+ *
  * @link          http://codework.ml/
  * @since         1.0.0
+ *
  * @license       MIT License (https://opensource.org/licenses/mit-license.php)
  * @auther        GaurangKumar Parmar <gaurangkumarp@gmail.com>
  *                Krunal Bhavsar
  * @filename      projects.php
  */
+require 'include/config.php';
+require 'include/db.php';
 
-require("include/config.php");
-require("include/db.php");
-
-if(!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_ID']) || empty($_SESSION['USER_ID'])) {
+    header('Location: login.php');
     exit;
 }
-if(!isset($_SESSION['USER_TYPE']) || ($_SESSION['USER_TYPE'] != 'freelancer' && $_SESSION['USER_TYPE'] != 'client')) {
-    header("Location: login.php");
+if (!isset($_SESSION['USER_TYPE']) || ($_SESSION['USER_TYPE'] != 'freelancer' && $_SESSION['USER_TYPE'] != 'client')) {
+    header('Location: login.php');
     exit;
 }
 
@@ -34,8 +34,8 @@ $uid = $_SESSION['USER_ID'];
 
 $pid = (int) @$_GET['pid'];
 $result = $mysqli->query("SELECT `pid`, `name`, `detail`, `cost`, `fid` FROM `post_prj` WHERE `pid` = $pid");
-if(!$result->num_rows) {
-    exit("No project found.");
+if (!$result->num_rows) {
+    exit('No project found.');
 }
 $row = $result->fetch_assoc();
 ?>
@@ -112,8 +112,8 @@ $row = $result->fetch_assoc();
 
     <!-- Header -->
 	<?php
-    require("include/header.php");
-	?>
+    require 'include/header.php';
+    ?>
 
     <header class="masthead">
         <div class="container text-center">
@@ -125,16 +125,16 @@ $row = $result->fetch_assoc();
                 <div class="card-body text-left">
                     <div class="form-group">
                         <?php
-                        if(!isset($_SESSION["msg"]) || $_SESSION["msg"] == "") {}
-						else{
-                        ?>
-				        <div class="alert alert-<?=$_SESSION["msg"]["type"]?> alert-dismissable">
+                        if (!isset($_SESSION['msg']) || $_SESSION['msg'] == '') {
+                        } else {
+                            ?>
+				        <div class="alert alert-<?=$_SESSION['msg']['type']?> alert-dismissable">
 					        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					        <?=$_SESSION["msg"]["msg"]?>
+					        <?=$_SESSION['msg']['msg']?>
 				        </div>
                         <?php
-                            $_SESSION["msg"]="";
-                            unset($_SESSION["msg"]);
+                            $_SESSION['msg'] = '';
+                            unset($_SESSION['msg']);
                         }
                         ?>
                     </div>
@@ -144,33 +144,31 @@ $row = $result->fetch_assoc();
                     <p class="card-text"><?=ucfirst($row['detail'])?></p>
                     <h4 class="card-title h5">Bid Proposal</h4>
                     <?php
-                    if($_SESSION['USER_TYPE'] == 'freelancer') {
+                    if ($_SESSION['USER_TYPE'] == 'freelancer') {
                         $query = "SELECT * FROM `post_req` WHERE `pid` = $pid AND (`fid` = $uid OR `status` = 'accepted')";
                         $res = $mysqli->query($query);
                         $upload = false;
-                        if($res->num_rows) {
-                            while($r = $res->fetch_assoc()) {
+                        if ($res->num_rows) {
+                            while ($r = $res->fetch_assoc()) {
                                 echo 'Price: '.$r['price'].'<br>'.'Duration: '.$r['duration'];
-                                if($r['fid'] == $uid) {
-                                    if($r['status'] == 'accepted') {
+                                if ($r['fid'] == $uid) {
+                                    if ($r['status'] == 'accepted') {
                                         $msg = '<p class="card-text"><span class="badge badge-success">Project Awarded</span></p>';
                                         $upload = true;
                                     }
-                                    if($r['status'] == 'completed') {
+                                    if ($r['status'] == 'completed') {
                                         $msg = '<p class="card-text"><span class="badge badge-success">Project Completed</span></p>';
                                         $upload = true;
-                                    }
-                                    else {
+                                    } else {
                                         $msg = '<p class="card-text"><span class="badge badge-info">Request Sent</span></p>';
                                     }
-                                }
-                                elseif($r['status'] == 'accepted') {
+                                } elseif ($r['status'] == 'accepted') {
                                     $msg = '<p class="card-text"><span class="badge badge-danger">Request Rejected</span></p>';
                                 }
                             }
                             echo $msg;
-                            if($upload) {
-                            ?>
+                            if ($upload) {
+                                ?>
                     <h4 class="card-title h5">Upload Completed Project</h4>
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/upload.php" method="post" novalidate enctype="multipart/form-data">
                         <input type="hidden" name="pid" value="<?=$row['pid']?>">
@@ -191,9 +189,8 @@ $row = $result->fetch_assoc();
                     </form>
                             <?php
                             }
-                        }
-                        else {
-                    ?>
+                        } else {
+                            ?>
                     <form class="form-material form-horizontal m-t-40 needs-validation" id="bidForm" action="include/placebid.php" method="post" novalidate>
                         <input type="hidden" name="pid" value="<?=$row['pid']?>">
                         <div class="form-group">
@@ -229,26 +226,24 @@ $row = $result->fetch_assoc();
                     </form>
                     <?php
                         }
-                    }
-                    else {
+                    } else {
                         $res = $mysqli->query("SELECT * FROM `post_req` WHERE `pid` = $pid");
                         $rs = $mysqli->query("SELECT * FROM `post_prj` WHERE `pid` = $pid");
                         $rw = $rs->fetch_assoc();
-                        if($rw['status']=='completed') {
+                        if ($rw['status'] == 'completed') {
                             echo '<p class="card-text"><span class="badge badge-success">Project Completed</span></p>';
                             echo "<a href='$rw[file]' class='btn btn-primary'>Download</a>";
-                        }
-                        else {
-                    ?>
+                        } else {
+                            ?>
                 <form id="acptForm" action="include/accept.php" method="post" novalidate>
                     <input type="hidden" name="pid" value="<?=$row['pid']?>">
             <div class="row">
                 <div class="col-12 m-t-30">
-                    <p class="text-muted m-t-0"><?=$res->num_rows?> request<?=$res->num_rows>1?'s':null?></p>
+                    <p class="text-muted m-t-0"><?=$res->num_rows?> request<?=$res->num_rows > 1 ? 's' : null?></p>
                 </div>
                 <?php
-                while($r = $res->fetch_assoc()) {
-                ?>
+                while ($r = $res->fetch_assoc()) {
+                    ?>
                 <div class="col-md-12">
                     <div class="card border-info">
                         <div class="card-body">
@@ -258,28 +253,24 @@ $row = $result->fetch_assoc();
                             <p class="card-text"><?='₹ '.$r['price']?>, <?=$r['duration'].' duration'?></p>
                             <p class="card-text"><?=ucfirst($r['msg'])?></p>
                             <?php
-                            if($row['fid']==NULL || $row['fid']==0) {
-                            ?>
+                            if ($row['fid'] == null || $row['fid'] == 0) {
+                                ?>
                             <button class="btn btn-info card-actions" name="fid" value="<?=$r['fid']?>">Accept & Hire</button>
                             <?php
-                            }
-                            elseif($r['fid'] == $row['fid']) {
-                            ?>
+                            } elseif ($r['fid'] == $row['fid']) {
+                                ?>
                             <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>">Accepted</button>
                             <?php
-                            }
-                            else {
-                            ?>
+                            } else {
+                                ?>
                             <button class="btn btn-info card-actions disabled" disabled name="fid" value="<?=$r['fid']?>"> - </button>
                             <?php
-                            }
-                            ?>
+                            } ?>
                         </div>
                     </div>
                 </div>
                 <?php
-                }
-                ?>
+                } ?>
             </div>
                 </form>
             <div class="row text-center">
@@ -310,8 +301,8 @@ $row = $result->fetch_assoc();
 
     <!-- Footer -->
 	<?php
-    require("include/footer.php");
-	?>
+    require 'include/footer.php';
+    ?>
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
